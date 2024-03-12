@@ -1,0 +1,217 @@
+% \usepackage{fullpage}
+% \usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage[margin=2cm]{geometry}
+\usepackage[charter]{mathdesign}
+\usepackage{epsfig}
+\usepackage{graphicx}
+% \usepackage{amssymb}
+% \usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\usepackage[rgb]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{matrix,positioning,fit,shapes,arrows,shadows,calc,backgrounds}
+\usepackage{pgfplots}
+\usepackage{natbib}
+\usepackage{enumitem}
+\usepackage{pgfgantt}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{xspace}
+\usepackage{wrapfig}
+\usepackage[show]{chato-notes}
+\usepackage{multirow}
+\usepackage[official]{eurosym}
+\usepackage[bottom]{footmisc}
+
+\usepackage{lipsum}% http://ctan.org/pkg/{graphicx,lipsum}
+\newcommand{\PRLsep}{\noindent\makebox[\linewidth]{\resizebox{0.3333\linewidth}{1pt}{$\bullet$}}\bigskip}
+
+\definecolor{verylightmagenta}{rgb}{0.95,0.96,1.0}
+\definecolor{brightred}{rgb}{0.90,0.2,0.2}
+
+\newcommand{\ag}[1]{\vspace{1mm}\noindent{\color{orange}{\textbf{Comment:} #1}}}
+% \newcommand{\ag}[1]{}
+\newcommand{\instructions}[1]{\vspace{1mm}\noindent{\color{blue}{#1}}}
+% \newcommand{\instructions}[1]{}
+
+\newcommand{\mpara}[1]{\medskip\noindent{\bf #1}}
+\newcommand{\spara}[1]{\smallskip\noindent{\bf #1}}
+\newcommand{\para}[1]{\noindent{\bf #1}}
+
+\newcommand{\acronym}{{\sf\small ACRONYM}\xspace}
+\newcommand{\acronymtitle}{{\sf\large ACRONYM}\xspace}
+
+\newcommand{\exploration}{{\sf\small Exploration}\xspace}
+\newcommand{\networks}{{\sf\small Networks}\xspace}
+\newcommand{\markets}{{\sf\small Information-Markets}\xspace}
+
+\newcommand{\proposaltitle}{{Title}}
+\newcommand{\proposalabstitle}{{Title}}
+
+\newcommand{\NP}{{\ensuremath{\mathbf{NP}}}}
+
+% CoG problems
+\newcommand{\structure}{{\sc Structure}\xspace}
+\newcommand{\dense}{{\sc Dense}\xspace}
+\newcommand{\important}{{\sc Important}\xspace}
+\newcommand{\event}{{\sc Event}\xspace}
+\newcommand{\summarize}{{\sc Summarize}\xspace}
+
+% AdG problems
+\newcommand{\model}{{\sc\large Modeling}\xspace}
+\newcommand{\discover}{{\sc\large Discovery}\xspace}
+\newcommand{\explore}{{\sc\large Exploration}\xspace}
+\newcommand{\recommend}{{\sc\large Recommendation}\xspace}
+\newcommand{\ui}{{\sc\large UserInterface}\xspace}
+\newcommand{\methods}{{\sc\large methods}\xspace}
+
+\newcommand{\rto}{{\bf RT1}\xspace}
+\newcommand{\rtw}{{\bf RT2}\xspace}
+\newcommand{\rtr}{{\bf RT3}\xspace}
+
+%% squishlist
+\newcommand{\squishlist}{\begin{list}{$\bullet$}
+  { \setlength{\itemsep}{-1pt}
+     \setlength{\parsep}{2pt}
+     \setlength{\topsep}{2pt}
+     \setlength{\partopsep}{0pt}
+     \setlength{\leftmargin}{1.5em}
+     \setlength{\labelwidth}{1em}
+     \setlength{\labelsep}{0.5em} } }
+\newcommand{\squishend}{
+\end{list}  }
+
+
+%% gantt stuff
+
+% \definecolor{foobarblue}{RGB}{0,153,255}
+% \definecolor{foobaryellow}{RGB}{234,187,0}
+% \newganttchartelement{foobar}{
+%     foobar/.style={
+%         shape=rounded rectangle,
+%         inner sep=0pt,
+%         draw=foobarblue!50!black,
+%         very thick,
+%         top color=white,
+%         bottom color=foobarblue!50
+%     },
+%     foobar incomplete/.style={
+%         /pgfgantt/foobar,
+%         draw=foobaryellow,
+%         bottom color=foobaryellow!50
+%     },
+%     foobar label font=\slshape,
+%     foobar left shift=-.1,
+%     foobar right shift=.1
+% }
+
+%% tikz stuff
+
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+
+\makeatletter
+\tikzset{multicircle/.style  args={#1, #2}{%
+ alias=tmp@name, % 
+  postaction={%
+    insert path={
+     \pgfextra{% 
+     \pgfpointdiff{\pgfpointanchor{\pgf@node@name}{center}}%
+                  {\pgfpointanchor{\pgf@node@name}{east}}%            
+     \pgfmathsetmacro\insiderad{\pgf@x}%
+     %\foreach \c [count=\ci from = 0, evaluate=\ci as \angle using 360 - (\ci) * #1] in {#2}%
+        \fill[white] (\pgf@node@name.center)  circle (\insiderad-\pgflinewidth);%
+        \draw[#2] (\pgf@node@name.center)  circle (\insiderad-\pgflinewidth);%
+        \fill[#2] (\pgf@node@name.center)  -- ++(0:\insiderad-\pgflinewidth) arc (0:#1:\insiderad-\pgflinewidth)--cycle;%
+        }}}}}
+\makeatother
+
+\definecolor{yafaxiscolor}{rgb}{0.3, 0.3, 0.3}
+\definecolor{yafcolor1}{rgb}{0.4, 0.165, 0.553}
+\definecolor{yafcolor2}{rgb}{0.949, 0.482, 0.216}
+\definecolor{yafcolor3}{rgb}{0.47, 0.549, 0.306}
+\definecolor{yafcolor4}{rgb}{0.925, 0.165, 0.224}
+\definecolor{yafcolor5}{rgb}{0.141, 0.345, 0.643}
+\definecolor{yafcolor6}{rgb}{0.965, 0.933, 0.267}
+\definecolor{yafcolor7}{rgb}{0.627, 0.118, 0.165}
+\definecolor{yafcolor8}{rgb}{0.878, 0.475, 0.686}
+\definecolor{yafcolor9}{rgb}{0.965, 0.733, 0.767}
+
+\newlength{\yafaxispad}
+\setlength{\yafaxispad}{-4pt}
+\newlength{\yaftlpad}
+\setlength{\yaftlpad}{\yafaxispad}
+\addtolength{\yaftlpad}{-0pt}
+\newlength{\yaflabelpad}
+\setlength{\yaflabelpad}{-2pt}
+\newlength{\yafaxiswidth}
+\setlength{\yafaxiswidth}{1.2pt}
+\newlength{\yafticklen}
+\setlength{\yafticklen}{2pt}
+
+\makeatletter
+\def\pgfplots@drawtickgridlines@INSTALLCLIP@onorientedsurf#1{}
+\makeatother
+
+\newcommand{\yafdrawxaxis}[2]{
+	\pgfplotstransformcoordinatex{#1}\let\xmincoord=\pgfmathresult 
+	\pgfplotstransformcoordinatex{#2}\let\xmaxcoord=\pgfmathresult 
+	\pgfsetlinewidth{\yafaxiswidth} 
+	\pgfsetcolor{yafaxiscolor}
+	\pgfpathmoveto{\pgfpointadd{\pgfpointadd{\pgfplotspointrelaxisxy{0}{0}}{\pgfqpointxy{\xmincoord}{0}}}{\pgfqpoint{-0.5\yafaxiswidth}{\yafaxispad}}}
+	\pgfpathlineto{\pgfpointadd{\pgfpointadd{\pgfplotspointrelaxisxy{0}{0}}{\pgfqpointxy{\xmaxcoord}{0}}}{\pgfqpoint{0.5\yafaxiswidth}{\yafaxispad}}}
+	\pgfusepath{stroke}
+
+}
+\newcommand{\yafdrawyaxis}[2]{
+	\pgfplotstransformcoordinatey{#1}\let\ymincoord=\pgfmathresult 
+	\pgfplotstransformcoordinatey{#2}\let\ymaxcoord=\pgfmathresult 
+	\pgfsetlinewidth{\yafaxiswidth} 
+	\pgfsetcolor{yafaxiscolor}
+	\pgfpathmoveto{\pgfpointadd{\pgfpointadd{\pgfplotspointrelaxisxy{0}{0}}{\pgfqpointxy{0}{\ymincoord}}}{\pgfqpoint{\yafaxispad}{-0.5\yafaxiswidth}}}
+	\pgfpathlineto{\pgfpointadd{\pgfpointadd{\pgfplotspointrelaxisxy{0}{0}}{\pgfqpointxy{0}{\ymaxcoord}}}{\pgfqpoint{\yafaxispad}{0.5\yafaxiswidth}}}
+	\pgfusepath{stroke}
+}
+
+\newcommand{\yafdrawaxis}[4]{\yafdrawxaxis{#1}{#2}\yafdrawyaxis{#3}{#4}}
+
+\pgfplotscreateplotcyclelist{yaf}{% 
+{yafcolor1,mark options={scale=0.75},mark=o}, 
+{yafcolor2,mark options={scale=0.75},mark=square},
+{yafcolor3,mark options={scale=0.75},mark=triangle},
+{yafcolor4,mark options={scale=0.75},mark=o},
+{yafcolor5,mark options={scale=0.75},mark=o},
+{yafcolor6,mark options={scale=0.75},mark=o},
+{yafcolor7,mark options={scale=0.75},mark=o},
+{yafcolor8,mark options={scale=0.75},mark=o}} 
+
+\pgfplotsset{axis y line=left, axis x line=bottom,
+	tick align=outside,
+	compat = 1.3,
+	tickwidth=\yafticklen,
+	clip = false,
+	every axis title shift = 0pt,
+    x axis line style= {-, line width = 0pt, opacity = 0},
+    y axis line style= {-, line width = 0pt, opacity = 0},
+    x tick style= {line width = \yafaxiswidth, color=yafaxiscolor, yshift = \yafaxispad},
+    y tick style= {line width = \yafaxiswidth, color=yafaxiscolor, xshift = \yafaxispad},
+    x tick label style = {font=\scriptsize, yshift = \yaftlpad},
+    y tick label style = {font=\scriptsize, xshift = \yaftlpad},
+    every axis y label/.style = {at = {(ticklabel cs:0.5)}, rotate=90, anchor=center, font=\scriptsize, yshift = -\yaflabelpad},
+    every axis x label/.style = {at = {(ticklabel cs:0.5)}, anchor=center, font=\scriptsize, yshift = \yaflabelpad},
+    x tick label style = {font=\scriptsize, yshift = 1pt},
+    grid = major,
+    major grid style  = {dash pattern = on 1pt off 3 pt},
+	every axis plot post/.append style= {line width=\yafaxiswidth} ,
+	legend cell align = left,
+	legend style = {inner sep = 1pt, cells = {font=\scriptsize}},
+	legend image code/.code={%
+		\draw[mark repeat=2,mark phase=2,#1] 
+		plot coordinates { (0cm,0cm) (0.15cm,0cm) (0.3cm,0cm) };% 
+	} 
+}
+
