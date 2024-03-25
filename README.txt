@@ -39,11 +39,14 @@ Project description
 
 Describe the project design under the following headings:
 
-    Theory and method: Describe the underlying theory and the methods to be applied in order to reach the project goal.
+    Theory and method: 
+    	Describe the underlying theory and the methods to be applied in order to reach the project goal.
 
-    Time plan and implementation: Describe summarily the time plan for the project during the grant period, and how the project will be implemented. Describe also any crucial risks or obstacles that may impact on the implementation, and your plan for managing these.
+    Time plan and implementation: 
+    	Describe summarily the time plan for the project during the grant period, and how the project will be implemented. Describe also any crucial risks or obstacles that may impact on the implementation, and your plan for managing these.
 
-    Project organisation: Clarify how you and any participating researchers will contribute to the implementation of the project. Explain in particular how the time allocated by you (that is, your activity level) as project leader is suitable for the task, including the relationship with your other research undertakings. Describe and explain the competences and roles of the participating researchers in the project, and also other key persons (including any doctoral students) who are important for the implementation of the project.
+    Project organisation: 
+    	Clarify how you and any participating researchers will contribute to the implementation of the project. Explain in particular how the time allocated by you (that is, your activity level) as project leader is suitable for the task, including the relationship with your other research undertakings. Describe and explain the competences and roles of the participating researchers in the project, and also other key persons (including any doctoral students) who are important for the implementation of the project.
 
 Provide the following information also. If a heading is not relevant to your application, please state this under the heading.
 
