@@ -45,7 +45,7 @@ Describe briefly how the project relates to previous research within the area, a
 Describe briefly your own previous research and pilot studies within the research area that make it probable that the project will be feasible. If no preliminary results exist, please state this too. State also whether the project contributes further to research and scientific results from a grant awarded previously by the Swedish Research Council.
 }
 
-\section{Project description}
+\section{Project description {\color{orange}[$\approx$5 pages]}}
 
 \instructions{
 Describe the project design under the following headings:
@@ -61,36 +61,53 @@ The project is structured along three {\em research themes}:
 
 \begin{description}
 \setlength{\itemsep}{-2pt}
-\item[\newmodels\,:] 
+\item[\rto.~\newmodels\,:] 
 
-\item[\clusterings\,:] 
+\item[\rtw.~\clusterings\,:] 
 
-\item[\labels\,:]
+\item[\rth.~\labels\,:]
 \end{description}
 
 Next we discuss in more detail the three research themes of \acronym.
 
-\subsection*{Research theme 1: \newmodels\ {\color{orange}[$\approx$1 page]}}
+\subsection*{Research theme 1 (\rto): \newmodels\ {\color{orange}[$\approx$1 page]}}
 
 Given a clustering produced by any black-box clustering method, e.g., $k$-means,
 provide explanations of the clustering using models that go beyond axis-aligned decision trees.
 Such models include 
 (i) non-axis aligned decision trees;
-(ii) decision rules;
+(ii) decision rules or decision lists;
 (iii) ??
 Here we can also include work on explaining clusterings using feature importance. 
 
-A challenge here would be that methods that use axis-aligned decision-tree models
-provide quality guarantee. 
-Similarly, we should aim to provide quality guarantees, as well.
+Existing methods that explain clustering results with axis-aligned decision trees
+provide quality guarantees.
+Ensuring that our methods, will provide quality guarantees for the novel models
+we will introduce is a major challenge for this research theme.
+
+\subsection*{Research theme 2 (\rtw): \clusterings\ {\color{orange}[$\approx$1 page]}}
+
+Here we will focus on developing methods providing explanations for clusterings 
+that go beyond centroid-based approaches like $k$-means or $k$-median.
+In particular we will consider the following clustering approaches.
+\begin{itemize}
+\setlength{\itemsep}{-2pt}
+\item kernel-based clustering
+\item density-based clustering; what would be a good model for this case?
+\item subspace clustering \hfill\ag{does this make sense?}
+\item diversity-aware (or fair) clustering \hfill\ag{does this make sense?}
+\end{itemize}
+
+There is strong interaction between \rto and \rtw, 
+due to the fact that providing explanations for clusterings that go beyond centroid-based methods
+will require working with novel models.
+
+\subsection*{Research theme 3 (\rth): \labels\ {\color{orange}[$\approx$1 page]}}
+
+Last, we focus on methods for explaining clusterings using labels as descriptors
 
 
-\subsection*{Research theme 2: \clusterings\ {\color{orange}[$\approx$1 page]}}
-
-\subsection*{Research theme 3: \labels\ {\color{orange}[$\approx$1 page]}}
-
-
-\subsection{Time plan and implementation {\color{orange}[$\approx$1 page]}}
+\subsection{Time plan and implementation {\color{orange}[$\approx$0.75-1 page]}}
 
 \instructions{
 Describe summarily the time plan for the project during the grant period, and how the project will be implemented. Describe also any crucial risks or obstacles that may impact on the implementation, and your plan for managing these.
