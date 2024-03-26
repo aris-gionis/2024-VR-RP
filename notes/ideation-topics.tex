@@ -1,0 +1,118 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{newtx}
+\usepackage{setspace}\setstretch{1.0}
+\usepackage{enumitem}
+\setitemize[enumerate]{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt,leftmargin=*}
+\usepackage{xcolor}
+\newcommand\note[1]{\textcolor{red}{#1}}
+
+
+\title{Ideation for a\\Proposal to Investigate\\ Explainable Clustering}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+Unsupervised machine learning algorithms, particularly clustering methods, play a pivotal part in discovering patterns and structures within data. 
+Clustering is a fundamental task in data analysis, data mining, or machine learning, seeking to partition data points into groups based on their similarity.
+Although hugely popular, traditional clustering methods often lack transparency in explaining why certain data points are grouped together, thus necessitating a manual validation process to make sense of the clustering. 
+With a growing data complexity, it becomes increasingly hard to deeply understanding the reasons behind a clustering.
+Explainable clustering attempts to alleviate the manual labor involved in post-processing, promising an easily interpretable reason behind clusters.
+This often involves additional tools, such as decision trees, that promise to explain the result of a clustering algorithm.
+Given the demand for interpretable results in data analysis, explainable clustering gained recent traction, mostly with a focus on explaining a k-means clustering with decision trees.
+This approach has major limitations: 
+\begin{enumerate}
+\item it fails to integrate with the most common variant of kernelized clustering, thus it fails to yield interpretable clusters on models exploiting non-linear similarities;   
+\item it poorly caters to real-world data challenges where data has special features, labels, or covariates, as it cannot distinguish between special covariate features and data features;
+\item it yields hard-to-interpret explainations for complex data,
+\item it scarcely conveys novel knowledge by explaining clusters in terms of the known signals; and 
+\item it does not describe which are the prominent feature-interactions within clusters.  
+\end{enumerate}
+We propose to address these open questions, laying out particular objects in the following.
+
+\section{Objective 1: Explaining kernalized Clustering}
+
+Among clustering techniques, kernelized clustering methods, such as kernelized k-means, have received attention for their ability to handle non-linear relationships in data by implicitly mapping them into higher-dimensional feature spaces. 
+However, despite their effectiveness, interpreting kernelized clustering decisions remains a challenging due to the inherent loss of semantics due to feature mappings.
+That is, attributing clustering decision made to original features remain an open problem. 
+We seek to fill this research gap, with the development of novel kernelized clustering methods that are inherent interpretability, thus handling non-linear relationships while maintaining explainability and transparency.
+Specifically, we identify the following subobjectives.
+\paragraph{Subobjectives} 
+\begin{enumerate}
+   \item We aim to investigate evaluate existing kernel functions and their underlying feature maps for their potential to deliver explainations.  
+   \item We seek to development new feature maps and kernels which allow for easy interpretability of the clustering while handling non-linearities.
+   \item Our goal is to develop efficient, algorithms for interpretable kernel theory based explainable clustering.
+   \item We plan to undertake empirical evaluations on real-world and synthetic benchmarks to demonstrate the efficacy and interpretability.   
+\end{enumerate}
+
+\section{Objective 2: Explaining Clusters with Covariates}
+
+Covariates are particular features or meta-features used in machine learning models to predict or explain the dependent variable. 
+They represent the attributes of the data points believed to influence the outcome, for example age or sex in medical studies. 
+Covariates are crucial for understanding relationships or to accurately explain clustering decisions.
+On the one hand, explaining covariates in terms of clusters highlights those mechanisms that are responsible for covariate groups.   
+For example in the life science, we seek to explain how antimicrobial resistances as covariates come about from genes that expressed in clusters of similar bacteria. 
+On the other hand, explaining clusters in terms covariates indicates the reasons behind groups in easily-understandable covariate-terms.
+For example, explaining clusters of patients in terms of high-level covariates, would help to rapidly identifying the optimal treatment only using high-level covariates.    
+That means, incorporating covariates into clustering algorithms can not only enhance interpretability but also improve clustering performance by providing additional contextual information.
+However, not much research has been done on joining clustering, covariates, and explainable machine learning.
+We propose to investigate novel algorithms for inherently interpretable clustering for data with covariates. 
+Particularly, we propose the following subobjectives.
+
+\paragraph{Subobjectives} 
+\begin{enumerate}
+	\item We aim to investigate the integration of covariates into existing clustering algorithms to enhance interpretability. This involves explaining the relationship between covariates and clusters, or vice versa, which requires the exploration of inherently interpretable machine learning models.
+	\item Our goal is to develop a set of novel interpretable clustering algorithms for data with covariates while utilizing explanations, thereby balancing clustering performance and explainability.
+	\item We aim to theoretically analyze the prize of interpretability on clustering performance when covariates are involved, to better understand the trade-offs between interpretability and performance.
+	\item Evaluation of the proposed algorithm on synthetic and real-world datasets with covariats, assessing performance in terms of clustering accuracy and explainability. We wish to demonstrate the practical utility across diverse domains where covariates are crucial, such as healthcare or social sciences, showcasing the efficacy of explainable clustering with covariates.
+\end{enumerate}
+
+\section{Objective 3: Explaining Complex Clustering} 
+
+The recent developments in explainable clustering mostly focus on explaining clusters with decision trees.
+Although decision trees are interpretable models, the explainability of the clustering depends on the accuracy of the decision trees.
+With a growing data or cluster complexity, however, the complexity of accurate decision trees grow. 
+That is to a point at which interpreting decision trees become almost as hard as understanding the clustering without explanations, thus necessitating a seemingly-intractable manual analysis.
+We seek to address this shortcoming using more powerful yet interpretable models, such boosting machines or subspace oblique decision trees, while ensuring their interpretability,
+thus balancing the overall explainability with the interpretability of individual rules. 
+
+\paragraph{Subobjectives} 
+
+\begin{enumerate}
+	\item We aim to enhance interpretability of potentially interpretable existing machine learning methods such as oblique decision trees with subspace methods.
+	\item We seek to integrate these enhanced methods directly into clustering, to use explanations to enhance clustering decisions.
+	\item Our goal is to analyze the prize of explainability in terms of a more model of explainability.
+	\item We plan to demonstrate the empirical efficacy in terms of real-world data, synthetic benchmarks, and real-world case-studies on domain-specific problems, thus opening up the potential for collaborations with domain experts.  
+\end{enumerate}
+
+\section{Objective 4: Explaining Clustering with Diverse Decisions}
+Contemporary explainable clustering aims to precisely identify those rules that attribute clusters to a simple sequence of feature-based decisions.
+However, because statistically optimal algorithms pick the most salient signal, 
+they often in practice result in already-known explanations, thus failing to convey novel knowledge,
+thereby limiting the applicability to an important use-case: understanding groups in data. 
+We propose to enhance explainable clustering to become a universally useful tool for data analysis.
+Rather than conveying only the singular statistically most sensible choice,
+we propose to describe aspects of a clustering with a diverse set of inherently-interpretable decision rules that together offer a set of diverse explanations that leads to a clustering. 
+
+\note{\paragraph{Subobjectives} 
+\begin{enumerate}
+	\item 
+\end{enumerate}}
+
+\section{Objective 5: Explaining Clusters by measuring the importance of feature interactions}
+\note{Similar motivation for Objective 4.}
+Interpreting clustering results plays an important role in understanding groups in datasets. 
+Existing explainable clustering methods focus on providing a strict rule that explains as to why a cluster exists, thus hiding information from the analyst.
+A prominent example for a practical solution is assigning an importance values to each features-cluster pair, for example using Shapley values. 
+Relying on simplistic measures of singular feature importance, does not capture the importance of higher-order relationships between features. 
+With the following subobjectives, we aim to develop a new unsupervised and higher-order feature importance measure for in unsupervised learning and clustering.
+
+\paragraph{Subobjectives} 
+\begin{enumerate}
+	\item We seek to generalize unsupervised existing importance measures to higher-order feature interactions.
+   \item We wish to integrate and analyze higher-order feature importance measures into clustering algorithms. 
+   \item Our goal is to experimentally study the feature importance on real-world and synthetic data, as well as comprehensive domain-specific case studies on publicly-available data from \note{life science}, thus enabling potential collaborations with \note{scientists at todo}.
+\end{enumerate}
+
+\end{document}
