@@ -132,10 +132,20 @@ will require working with novel models.
 
 \subsection*{Research theme 3 (\rth): \covariates\ {\color{orange}[$\approx$1 page]} {\color{teal}(Aris)}}
 
-Last, we focus on methods for explaining clusterings using labels as descriptors
+In many application scenarios data can be represented in different ways: 
+Most often, data can be represented in a vector space
+in which appropriate distance functions, or similarity functions, can be defined.
+Such a vector space can be defined using directly data features, 
+or it can be learned using representation-learning techniques~\cite{hamilton2017representation,wang2020survey}.
+Second, data points are associated with covariates, 
+which are discrete (categorical) attributes, 
+representing certain aspects of the data. 
+Such covariates can be labels, tags, or other related information.
+It is typically not easy (nor particularly meaningful)
+to define distance functions using covariate attributes, 
+although sometimes coarse-grained distance functions can be defined.
 
 
-Explaining Clusters with Covariates
 
 
 \subsection{Time plan and implementation {\color{orange}[$\approx$0.75-1 page]} {\color{teal}(Aris)}}
@@ -195,13 +205,11 @@ If you are working or will be working in a larger group, please clarify how your
 }
 
 
-\iffalse
 {\small
 \setlength{\bibsep}{0pt}
 \bibliographystyle{abbrv}
 \bibliography{references}
 }
-\fi
 
 % \newpage
 % \input{rebound}
