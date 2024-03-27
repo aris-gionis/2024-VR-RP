@@ -134,16 +134,39 @@ will require working with novel models.
 
 In many application scenarios data can be represented in different ways: 
 Most often, data can be represented in a vector space
-in which appropriate distance functions, or similarity functions, can be defined.
+in which appropriate distance functions, or similarity functions, are considered.
 Such a vector space can be defined using directly data features, 
 or it can be learned using representation-learning techniques~\cite{hamilton2017representation,wang2020survey}.
 Second, data points are associated with covariates, 
 which are discrete (categorical) attributes, 
 representing certain aspects of the data. 
 Such covariates can be labels, tags, or other related information.
-It is typically not easy (nor particularly meaningful)
-to define distance functions using covariate attributes, 
-although sometimes coarse-grained distance functions can be defined.
+Given the discrete nature of covariates it is typically not easy (or meaningful)
+to define distance functions based on them, 
+although sometimes coarse-grained distance functions can be specified.
+
+For an example illustrating the setting described above, 
+consider a collection of news articles. 
+Each news article can be represented by a vector in a high-dimensional space, 
+e.g., using bag-of-words, \tfidf-type weighting, or deep-learning embedding schemes. 
+Furthermore, for each news article we can associate a small 
+set of tags, or labels, summarizing the topic of the article, 
+e.g., an article reporting on climate change could be labeled by
+`\texttt{\small ClimateCrisis}' and `\texttt{\small ExtremeWeather}.'
+We refer to these labels as covariate~attributes.
+
+When considering the problem of clustering a dataset in which the data points are 
+represented by both Euclidean vectors and covariate attributes, 
+it is immediate clear how to leverage the vectorial information
+with one of the numerous clustering methods, such as $k$-means or spectral clustering. 
+One of the other hand, it is not obvious how to use effectively the 
+covariate attributes in order to improve the clustering results. 
+We propose to use the covariate attributes for explaining the clustering. 
+In particular, we will study the problem of designing clustering methods
+that achieve low cost when considering the vector representation of the data points, 
+while the covariates provide an easy and intuitive way to describe each cluster.
+
+
 
 
 
