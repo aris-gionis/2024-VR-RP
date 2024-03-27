@@ -65,10 +65,36 @@ The project is structured along three {\em research themes}:
 
 \item[\rtw.~\clusterings\,:] 
 
-\item[\rth.~\labels\,:]
+\item[\rth.~\covariates\,:]
+\end{description}
+
+When considering different approaches for explainable clustering we distinguish between 
+two different computational paradigms. 
+\begin{description}
+\setlength{\itemsep}{-2pt}
+\item[\posthoc\,:]
+In the first paradigm, we assume that a clustering of the data is provided 
+from a \emph{black-box clustering method} and the problem objective is to design 
+a \emph{post-hoc} explanation of the input clustering.
+This task is similar to \emph{interpretable machine learning}~\cite{XXX}, 
+where one asks to develop post-hoc interpretable justifications for 
+\emph{black-box classification models}, such as neural networks. 
+The difference is \ldots 
+\item[\joint\,:]
+In the second paradigm, one is given as input a set of data points, 
+and the goal is to find an optimal clustering of the data
+from a family of explainable clustering models.
+That is, one needs to \emph{cluster the data} and \emph{select the explainable clustering model}
+in a \emph{joint fashion}.
+In the general case, the clustering cost incurred by an explainable model 
+will be larger than the cost incurred by an optimal (but non-explainable) model, 
+so our goal will be to bound the cost of the explainable model with respect to the optimal cost.
 \end{description}
 
 Next we discuss in more detail the three research themes of \acronym.
+The two paradigms, \posthoc\ and \joint, are present in all three of our research themes.
+When discussing different explainable-clustering approaches 
+we specify the paradigm for a specific approach.
 
 \subsection*{Research theme 1 (\rto): \newmodels\ {\color{orange}[$\approx$1 page]} {\color{teal}(Sebastian)}}
 
@@ -103,7 +129,7 @@ There is strong interaction between \rto and \rtw,
 due to the fact that providing explanations for clusterings that go beyond centroid-based methods
 will require working with novel models.
 
-\subsection*{Research theme 3 (\rth): \labels\ {\color{orange}[$\approx$1 page]} {\color{teal}(Aris)}}
+\subsection*{Research theme 3 (\rth): \covariates\ {\color{orange}[$\approx$1 page]} {\color{teal}(Aris)}}
 
 Last, we focus on methods for explaining clusterings using labels as descriptors
 
