@@ -3,7 +3,7 @@
 
 % \setcounter{page}{1}
 
-\renewcommand{\baselinestretch}{1.0} 
+\renewcommand{\baselinestretch}{1.02} 
 \begin{document}
 
 
@@ -30,7 +30,7 @@ State the overall purpose and specific aims of the research project.
 \section{State of the art {\color{orange}[$\approx$1 page]} {\color{teal}(Sebastian)}}
 
 \instructions{
-Summarise briefly the current research frontier within the field or area covered by the project. State key references.
+Summarize briefly the current research frontier within the field or area covered by the project. State key references.
 }
 
 \section{Significance and scientific novelty  {\color{orange}[$\approx$0.5 page]} {\color{teal}(Aris)}}
@@ -156,20 +156,91 @@ e.g., an article reporting on climate change could be labeled by
 We refer to these labels as covariate~attributes.
 
 When considering the problem of clustering a dataset in which the data points are 
-represented by both Euclidean vectors and covariate attributes, 
+represented both in vector space and with covariate attributes, 
 it is immediate clear how to leverage the vectorial information
-with one of the numerous clustering methods, such as $k$-means or spectral clustering. 
+using a standard clustering method, such as $k$-means or spectral clustering. 
 One of the other hand, it is not obvious how to use effectively the 
 covariate attributes in order to improve the clustering results. 
-We propose to use the covariate attributes for explaining the clustering. 
-In particular, we will study the problem of designing clustering methods
-that achieve low cost when considering the vector representation of the data points, 
-while the covariates provide an easy and intuitive way to describe each cluster.
 
+In this research theme we propose finding high-quality clusterings of the data
+while using the covariate attributes for explaining the resulting clusterings. 
+In particular, we aim to develop novel clustering methods
+that achieve low-cost solutions with respect to the vector-representation of the data points, 
+while at the same time achieve high expressivity and high specificity of the clusterings
+using the covariate attributes. 
 
+To be more concrete, as one possible problem formulation that we will explore, 
+let us consider a set of $n$ data points $\dataset=\{\vecx_1,\ldots,\vecx_n\}$
+and a set of covariate attributes {\labelset} representing labels for the data points. 
+Each data point $\vecx_i$ is associated with a set of labels $\labels_i\subseteq\labelset$. 
+A set of labels $\labels=\{\alabel_1,\ldots,\alabel_k\}\subseteq\labelset$, 
+henceforth referred to as \emph{descriptor set}, 
+\emph{induces} a subset of the data points $\dataset(\labels)\subseteq\dataset$
+via a \emph{logic grammar}, such as, for example, 
+$\dataset(\labels)$ consists of the data points in \dataset that 
+are associated with at least $s$ labels contained in \labels.
+For the set of points $\dataset(\labels)$ induced by \labels 
+we can then define its \emph{clustering cost} $d(\dataset(\labels))$, 
+using the geometry of the points in the set, 
+e.g., the diameter of the set, or the sum of distances of all points to the median of the set.
+The problem of explainable clustering with covariate attributes that we will study is the following: 
+find a collection of label sets $\labels_1,\ldots,\labels_t$, 
+so that the induced clusters $\dataset(\labels_1),\ldots,\dataset(\labels_t)$
+cover the whole dataset \dataset, 
+and some aggregate function on the cost of the clusters is minimized. 
+Natural choices for the total clustering cost are
+$d_{+}(\labels_1,\ldots,\labels_t) = \sum_{j} d(\dataset(\labels_j))$ and 
+$d_{m}(\labels_1,\ldots,\labels_t) = \max_{j}\! \left\{ d(\dataset(\labels_j)) \right\}$, 
+that is, we will aim to minimize the total cost, or worst-case cost, respectively, 
+among all clusters. 
 
+A few observations are in order for the problem that we define above.
+First we note that the problem belongs in the \joint paradigm, 
+that is, we aim to \emph{simultaneously} find a low-cost clustering, 
+according to vector representation of the data points,
+and an explanation of that clustering using the covariate attributes~(labels).
+%
+Second, notice that we, in fact, define a very large family of problems, 
+depending on the logic grammar used to induce clusters from label sets
+and the distance-based function used to define the clustering cost.
+Notable logic grammars to consider are the disjunctive and conjunctive grammars 
+(i.e., a cluster $\dataset(\labels)$ consists of the points 
+that contains at least one, or all, respectively, labels in \labels).
+Our goal is to systematically study the computational complexity and 
+develop methods with provable guarantees
+for many of these possible~formulations.
+%
+Third, we note that in our discussion above we do not impose any
+\emph{disjointedness constraint} with respect to label sets or 
+memberships of data points to clusters. 
+In fact, such constraints are not necessary as minimizing 
+our distance-based objectives has the consequence of \emph{implicitly favoring}
+disjoint labels and disjoint clusters.
+Nevertheless it would be interesting to study variants
+of our problem with explicitly stated disjointedness constraints
+and understand, theoretically and empirically, 
+the price in the clustering cost due to such constraints.
 
+The covariate-based explainability problem we propose in this theme
+has interesting connections with existing work, yet it poses novel research challenges.
+The most closely-related work is the \emph{cluster descriptor} problem
+proposed by Davidson et al.~\cite{davidson2018cluster} 
+and studied in follow-up recent papers~\citep{sambaturu2020efficient}.
+The main difference is that those earlier works belong in the \posthoc paradigm, 
+that is, the clustering is provided as input. 
+Our \joint-type formulation provides a more holistic approach and a
+significantly better way of leveraging the covariate attributes into the explanation of clustering. 
+It also poses significantly different computational challenges
+and the opportunity to exploit the geometric structure for solving the problem.
 
+Depending on the progress on this topic, further extensions of the problem can be considered. 
+Those include allowing for outliers that can help reducing significantly the clustering cost.
+The benefit of this idea is that covariate attributes can be used in the same manner
+to also explain the outliers, as the clusters.
+Additionally, we can use the same framework analyzing networks and finding 
+explainable communities in networks.
+The PI has relevant experience of developing methods for finding labeled-induced
+(and thus, explainable) densest subgraphs in networks~\cite{galbrun2014overlapping,galbrun2016top}.
 
 \subsection{Time plan and implementation {\color{orange}[$\approx$0.75-1 page]} {\color{teal}(Aris)}}
 
