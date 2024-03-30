@@ -21,10 +21,103 @@ The research plan must include the following headings and information, listed in
 
 \section{Purpose and aims {\color{orange}[$\approx$1.5 pages]} {\color{teal}(Aris)}}
 
-\instructions{
-State the overall purpose and specific aims of the research project.
-}
+% \instructions{
+% State the overall purpose and specific aims of the research project.
+% }
 
+The explosive growth of artificial intelligence (AI) research and wide adoption of machine learning (ML) methods 
+has revolutionized numerous facets of modern knowledge society, 
+playing pivotal roles in decision making, predictive analytics, optimization tasks, and beyond. 
+However, a crucial issue lies in the opacity of many existing algorithms, 
+hindering understanding and accountability of machine-learning methods. 
+As these methods increasingly influence critical decisions in areas such as 
+healthcare, finance, and criminal justice, 
+there is a growing recognition of the need for \emph{transparency}, 
+\emph{interpretability}, and \emph{explainability}.
+Stakeholders rightfully demand explanations for algorithmic decisions, 
+as well as insights into the factors driving those decisions. 
+In response to the imperative for \emph{responsible AI} and the fundamental \emph{right to explanation}, 
+there has been a rising focus on developing transparent and interpretable models.
+
+Research efforts aimed at enhancing the explainability and interpretability 
+of machine-learning models and methods focus on several key directions. 
+First, there is a significant emphasis on developing transparent and interpretable 
+\emph{white-box models}~\cite{loyola2019black}, 
+such as decision trees, rule-based systems, and linear models, 
+which inherently provide insights into their decision-making processes. 
+Second, a significant body of research focuses on exploring \emph{post-hoc explanation techniques}, 
+including feature importance analysis~\cite{lundberg2017unified} and 
+model-agnostic methods~\cite{ribeiro2016model}, 
+which aim to explain predictions of complex \emph{black-box models}, 
+such as deep neural networks or ensemble methods.
+
+% chatGPT text below
+% Additionally, there is a growing interest in integrating domain knowledge and human feedback into the model training process, facilitating the creation of more interpretable and trustworthy models.  Moreover, efforts are directed towards developing evaluation metrics and benchmarks  to assess the quality and reliability of explanations provided by these methods.  Finally, interdisciplinary collaboration between researchers in machine learning, cognitive science, and ethics is crucial for addressing societal concerns and ensuring the responsible deployment of explainable AI systems.
+
+Much of research discussed in the previous paragraph focuses on \emph{supervised machine-learning methods}, 
+e.g., classification, object recognition, and natural-language processing, among other.
+On the other hand, significantly less attention has been given on the 
+topic of explainability and interpretability for \emph{unsupervised machine learning}.
+The most typical tasks in unsupervised machine learning include
+\emph{data clustering}, \emph{outlier detection}, \emph{network analysis}, and more. 
+In this project we will focus on the problem of \emph{explainable clustering}, 
+although some of our ideas can be also extended to other tasks.
+
+Clustering is a fundamental task in data analysis and machine learning, 
+seeking to partition data into groups based on their similarity.
+Clustering algorithms enable data scientists and practitioners
+to uncover hidden patterns, extract meaningful insights, 
+and make informed decisions without the need for labeled data. 
+Clustering plays a pivotal role in various domains
+% , including  document analysis, bioinformatics, and recommendation systems, 
+while it also serves as a preprocessing step for other machine-learning tasks, 
+helping to streamline feature engineering, visualization, and model~building.
+
+Although hugely popular, 
+traditional clustering methods often lack transparency in explaining 
+why certain data points are grouped together, 
+thus necessitating a manual validation process to make sense of the clustering. 
+As the data complexity keeps growing, 
+it becomes increasingly hard to understand the reasons behind a clustering.
+While many clustering methods rely on optimizing simple-to-state objective functions, 
+the resulting clusterings are not always simple to explain. 
+Furthermore, a large number of clustering methods use approaches
+for which explanations are not available. 
+Examples include density-based approaches, spectral methods, agglomerative strategies, and more.
+
+
+Explainable clustering attempts to alleviate the manual labor involved in post-processing, promising an easily interpretable reason behind clusters.
+This often involves additional tools, such as decision trees, that promise to explain the result of a clustering algorithm.
+Given the demand for interpretable results in data analysis, explainable clustering gained recent traction, mostly with a focus on explaining a $k$-means clustering with decision trees.
+This approach has major limitations: 
+
+
+\iffalse
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Sebastian's text START %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Unsupervised machine learning algorithms, particularly clustering methods, play a pivotal part in discovering patterns and structures within data. 
+Clustering is a fundamental task in data analysis, data mining, or machine learning, seeking to partition data points into groups based on their similarity.
+Although hugely popular, traditional clustering methods often lack transparency in explaining why certain data points are grouped together, thus necessitating a manual validation process to make sense of the clustering. 
+With a growing data complexity, it becomes increasingly hard to deeply understanding the reasons behind a clustering.
+Explainable clustering attempts to alleviate the manual labor involved in post-processing, promising an easily interpretable reason behind clusters.
+This often involves additional tools, such as decision trees, that promise to explain the result of a clustering algorithm.
+Given the demand for interpretable results in data analysis, explainable clustering gained recent traction, mostly with a focus on explaining a $k$-means clustering with decision trees.
+This approach has major limitations: 
+\begin{enumerate}
+\item it fails to integrate with the most common variant of kernelized clustering, thus it fails to yield interpretable clusters on models exploiting non-linear similarities;   
+\item it poorly caters to real-world data challenges where data has special features, labels, or covariates, as it cannot distinguish between special covariate features and data features;
+\item it yields hard-to-interpret explainations for complex data,
+\item it scarcely conveys novel knowledge by explaining clusters in terms of the known signals; and 
+\item it does not describe which are the prominent feature-interactions within clusters.  
+\end{enumerate}
+We propose to address these open questions, laying out particular objects in the following.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  Sebastian's text END  %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fi
 
 
 \section{State of the art {\color{orange}[$\approx$1 page]} {\color{teal}(Sebastian)}}
