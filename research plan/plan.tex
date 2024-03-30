@@ -138,9 +138,49 @@ We propose to address these open questions, laying out particular objects in the
 
 \section{State of the art {\color{orange}[$\approx$1 page]} {\color{teal}(Sebastian)}}
 
-\instructions{
-Summarize briefly the current research frontier within the field or area covered by the project. State key references.
-}
+% \instructions{
+% Summarize briefly the current research frontier within the field or area covered by the project. State key references.
+% }
+
+Algorithmically grouping similar data points has a long research history,
+yielding traditional methods (such as $k$-means~\cite{todo}, DBSCAN~\cite{todo}, or Spectral Clustering~\cite{todo}).
+Classical clustering algorithms only insufficiently provide descriptions why data points are deemed similar, 
+for example, by referring to dense data regions or the closeness to a data centroid.
+
+As scientists, data analysts, or companies~\footnote{\note{cite the law that requires companies to explain why algorithms made a user-centric decision}} have to know true reasons beind a clustering, 
+the structures within groups, or how to tell clusters apart; 
+they turn to a comprehensive, manual, subjective, and often visualization-based~\cite{todo} post-hoc analysis.
+However, with the advent of complex, large-scale, and high-dimensional datasets, 
+clustering descriptors increasingly become harder to interpret. 
+Addressing this problem, Explainable Clustering seeks to not only group similar data points but also tells us 
+why there is a cluster in the data,
+why it assigned a data point to a cluster, or 
+how to tell groups apart.
+
+Addressing the complexity interpreting clusterings of high-dimensional data has conventionally been done with \textbf{dimensionality reduction} or subspace techniques, which condense the original data into a lower-dimensional representation, while aiming to preserve relationships between data points. 
+Notable techniques such as Non-negative Matrix Factorization (NMF), t-distributed stochastic neighbor embedding (t-SNE), Uniform Manifold Approximation and Projection (UMAP), Auto-encoders (AE), Principal Component Analysis (PCA), or independent component analysis (ICA) are commonly employed. 
+Dimensionality reduction, is sometimes used as a pre-processing step for clustering to manually enhance interpretability.
+However, using different data representations present challenges in terms of interpretability, as they produce complex models that may not readily elucidate underlying data structures and does not reliably result in explainable clusters.
+Recent advancements directly integrate clustering with dimensional NMF~\cite{}, but notably require a kernelized data representation, thus do not offer any explainability. 
+Retaining the original feature space, thus enhancing the interpretability,
+\textbf{Subspace clusterings} seek to select the most salient subset of features that are solely responsible for a clustering, either as a post-processing step~\cite{todo} or during clustering~\cite{todo}.
+Although improving interpretability, a subspace clustering of complex data often requires numerous features, thus failing to clearly explain the reasons behind clusters~\cite{todo}. 
+
+Keeping all features during clustering, \textbf{feature importance measures} are used to assign an importance to features after the clustering is done, 
+thereby aiding the manual assessments of the clustering,
+aiming to justify the hardly interpretable output of traditional clustering algorithms.   
+Traditional cluster-specific feature importance measures include impurity or Gini coefficients~\cite{todo}, statistical testing~\cite{todo}, or 
+Recent developments include Shapley values via SHapley Additive exPlanations (SHAP) or its variants~\cite{todo}.
+However, they do not exactly describe the mechanisms that ultimately lead to a cluster assignment, 
+thus leaving room for subjective interpretability.
+
+A subset of research on explainable clustering methods aims to identify the reasons behind a clustering through a set of feature-based decisions that almost mechanistically leads to the result. 
+Considerable attention has been given to rule-based explanations using decision trees. 
+Recent advancements have focused on enhancing the theoretically attainable performance~\cite{todo,todo,todo} or improving interpretability by integrating decision trees directly into the clustering algorithm~\cite{}. 
+However, it has been demonstrated that concise explanations with small decision trees are generally unattainable if data complexity increases, 
+thereby necessitating explanations in terms of on more powerful models like oblique decision trees \cite{} or kernelized features spaces \cite{}.
+However, to obtain interpretable rules that explain clusterings with features, decision trees require access to the original feature space, prohibiting kernelized clustering algorithms and their ability to exploit nonlinearities, thus potentially reducing clustering quality.
+Research on explaining clusterings that utilize dimensionality reduction techniques or feature mappings are still in its infancy.
 
 \section{Significance and scientific novelty  {\color{orange}[$\approx$0.5 page]} {\color{teal}(Aris)}}
 
