@@ -14,10 +14,9 @@
 {\Large Aristides Gionis} 
 \end{center}
 
-\instructions{
-The research plan shall be forward-looking and consist of a brief but complete description of the research task. It may cover a maximum of 10 page-numbered A4 pages in Arial, font size 11, single line spacing and 2.5 cm margins, including references and any images.\\
-The research plan must include the following headings and information, listed in the following order:
-}
+% \instructions{
+% The research plan shall be forward-looking and consist of a brief but complete description of the research task. It may cover a maximum of 10 page-numbered A4 pages in Arial, font size 11, single line spacing and 2.5 cm margins, including references and any images. The research plan must include the following headings and information, listed in the following order:
+% }
 
 \section{Purpose and aims {\color{orange}[$\approx$1.5 pages]} {\color{teal}(Aris)}}
 
@@ -81,21 +80,38 @@ As the data complexity keeps growing,
 it becomes increasingly hard to understand the reasons behind a clustering.
 While many clustering methods rely on optimizing simple-to-state objective functions, 
 the resulting clusterings are not always simple to explain. 
-Furthermore, a large number of clustering methods use approaches
+Furthermore, a large number of clustering methods use opaque approaches
 for which explanations are not available. 
-Examples include density-based approaches, spectral methods, agglomerative strategies, and more.
+Examples include density-based approaches, spectral techniques, embedding methods,  
+agglomerative strategies, self-organizing maps, and~more.
 
+Recognizing the need for transparent and explainable clustering methods, 
+researchers have recently proposed ideas and techniques for finding 
+interpretable reasoning behind clusters.
+While a review of those methods is presented in the next section, 
+most notable examples include 
+explaining a black-box clustering using decision trees~\cite{gupta2023price,moshkovitz2020explainable},
+descriptive labels~\cite{davidson2018cluster,sambaturu2020efficient}, 
+\textcolor{red}{or \ldots}.
 
-Explainable clustering attempts to alleviate the manual labor involved in post-processing, promising an easily interpretable reason behind clusters.
-This often involves additional tools, such as decision trees, that promise to explain the result of a clustering algorithm.
-Given the demand for interpretable results in data analysis, explainable clustering gained recent traction, mostly with a focus on explaining a $k$-means clustering with decision trees.
-This approach has major limitations: 
-
+\spara{Challenges and limitations.}
+While these methods present many novel ideas and make significant advances, 
+many challenges remain and there is ample space for fruitful research in this important topic. 
+In particular, existing methods fail to integrate with the most common variants of kernel-based clustering, 
+thus failing to yield explainable clusters on models exploiting non-linear similarities.
+Second, existing methods do not cater to real-world data challenges where data has special features, 
+labels, or covariates, as they cannot distinguish between special covariate features and data features.
+Additionally, out of the large toolbox of explainable machine-learning models,
+decision trees have primarily been used for explanations, 
+while other models could be better suited for certain applications. 
+Last but not least, while the majority of existing methods focus on explaining black-box clusterings, 
+it is often important to \emph{a priori} cluster the data so that the result complies 
+by-design with a family of explainable models.
 
 \iffalse
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Sebastian's text START %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Sebastian's text %%%
+%%%%%%%%%%%%%%%%%%%%%%%%
 
 Unsupervised machine learning algorithms, particularly clustering methods, play a pivotal part in discovering patterns and structures within data. 
 Clustering is a fundamental task in data analysis, data mining, or machine learning, seeking to partition data points into groups based on their similarity.
