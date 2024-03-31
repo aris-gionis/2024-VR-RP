@@ -1,0 +1,67 @@
+\begin{tikzpicture}
+\ganttset{bar height=0.50}
+\begin{ganttchart} [
+	canvas/.style={fill=yafcolor6!03, very thick},
+	x unit=.65cm,
+	y unit chart = 0.52cm, 
+	hgrid = false,
+	vgrid = true, 
+	bar right shift=-.06,
+	bar left shift=.06,
+	milestone/.style={draw=yafcolor3!90,fill=yafcolor3!60, thick}, 
+	milestone height = 0.50
+]{1}{16}
+\gantttitle{\small Year 1}{4} 
+\gantttitle{\small Year 2}{4} 
+\gantttitle{\small Year 3}{4} 
+\gantttitle{\small Year 4}{4} 
+\\
+% year 1
+\gantttitle{\small Q1}{1}
+\gantttitle{\small Q2}{1}
+\gantttitle{\small Q3}{1}
+\gantttitle{\small Q4}{1} 
+% year 2
+\gantttitle{\small Q1}{1}
+\gantttitle{\small Q2}{1}
+\gantttitle{\small Q3}{1}
+\gantttitle{\small Q4}{1} 
+% year 3
+\gantttitle{\small Q1}{1}
+\gantttitle{\small Q2}{1}
+\gantttitle{\small Q3}{1}
+\gantttitle{\small Q4}{1} 
+% year 4
+\gantttitle{\small Q1}{1}
+\gantttitle{\small Q2}{1}
+\gantttitle{\small Q3}{1}
+\gantttitle{\small Q4}{1} 
+\\
+\ganttbar[bar/.style={rounded corners,inner sep=0pt,thick,draw=yafcolor1!80,fill=yafcolor1!30}]
+{\small Novel explainable models (\rto)}{1}{10} \\
+\ganttbar[bar/.style={rounded corners,inner sep=0pt,thick,draw=yafcolor1!80,fill=yafcolor1!30}]
+{\small Explaining complex clusterings (\rtw)}{7}{16} \\
+\ganttbar[bar/.style={rounded corners,inner sep=0pt,thick,draw=yafcolor1!80,fill=yafcolor1!30}]
+{\small Explanations with covariate attributes (\rth)}{3}{12} \\
+
+\ganttbar[bar/.style={rounded corners,inner sep=0pt,thick,draw=yafcolor5!80,fill=yafcolor5!30}]
+{\small Doctoral student (VR funded)}{1}{16} \\
+\ganttbar[bar/.style={rounded corners,inner sep=0pt,thick,draw=yafcolor5!80,fill=yafcolor5!30}]
+{\small Postdoc 1 (WASP funded)}{1}{4} \\
+\ganttbar[bar/.style={rounded corners,inner sep=0pt,thick,draw=yafcolor5!80,fill=yafcolor5!30}]
+{\small Postdoc 2 (WASP funded)}{5}{12} \\
+\end{ganttchart}
+\end{tikzpicture}
+
+
+% \begin{ganttchart}[
+% 	vgrid,
+% 	progress=today,
+% 	progress label text=\relax,
+% 	today=6
+% ]{1}{12}
+% \gantttitlecalendar{day} \\[grid]
+% \ganttfoobar{Foobar 1}{1}{2} \\
+% \ganttfoobar{Foobar 2}{3}{7} \\
+% \ganttlinkedfoobar{Foobar 3}{9}{12}
+% \end{ganttchart}
