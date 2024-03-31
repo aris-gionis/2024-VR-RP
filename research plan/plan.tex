@@ -18,7 +18,7 @@
 % The research plan shall be forward-looking and consist of a brief but complete description of the research task. It may cover a maximum of 10 page-numbered A4 pages in Arial, font size 11, single line spacing and 2.5 cm margins, including references and any images. The research plan must include the following headings and information, listed in the following order:
 % }
 
-\section{Purpose and aims {\color{orange}[$\approx$1.5 pages]} {\color{teal}(Aris)}}
+\section{Purpose and aims {\color{orange}[$\approx$1.5 pages]} {\color{teal}(@Sebastian: please make a pass)}}
 
 % \instructions{
 % State the overall purpose and specific aims of the research project.
@@ -107,34 +107,64 @@ while other models could be better suited for certain applications.
 Last but not least, while the majority of existing methods focus on explaining black-box clusterings, 
 it is often important to \emph{a priori} cluster the data so that the result complies 
 by-design with a family of explainable models.
+Our objective in this project is to address many of these challenges
+and make significance advances in the topic of explainable clustering.
 
-\iffalse
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%% Sebastian's text %%%
-%%%%%%%%%%%%%%%%%%%%%%%%
+\medskip
+\noindent
+\hspace{-3mm}\colorbox{verylightmagenta}{
+\begin{minipage}{\textwidth}
+{\bf High-level goal of \acronym:} 
+We will develop novel theoretical frameworks for 
+introducing transparency and explainablity into the task of data clustering. 
+We will develop explainable clustering methods that employ novel white-box models, 
+and we will devise methods for providing explanations to clusterings produced by complex clustering models.
+Furthermore, we will study formulations that leverage special features of the data,
+such as labels and covariates.
+\end{minipage}}
 
-Unsupervised machine learning algorithms, particularly clustering methods, play a pivotal part in discovering patterns and structures within data. 
-Clustering is a fundamental task in data analysis, data mining, or machine learning, seeking to partition data points into groups based on their similarity.
-Although hugely popular, traditional clustering methods often lack transparency in explaining why certain data points are grouped together, thus necessitating a manual validation process to make sense of the clustering. 
-With a growing data complexity, it becomes increasingly hard to deeply understanding the reasons behind a clustering.
-Explainable clustering attempts to alleviate the manual labor involved in post-processing, promising an easily interpretable reason behind clusters.
-This often involves additional tools, such as decision trees, that promise to explain the result of a clustering algorithm.
-Given the demand for interpretable results in data analysis, explainable clustering gained recent traction, mostly with a focus on explaining a $k$-means clustering with decision trees.
-This approach has major limitations: 
-\begin{enumerate}
-\item it fails to integrate with the most common variant of kernelized clustering, thus it fails to yield interpretable clusters on models exploiting non-linear similarities;   
-\item it poorly caters to real-world data challenges where data has special features, labels, or covariates, as it cannot distinguish between special covariate features and data features;
-\item it yields hard-to-interpret explainations for complex data,
-\item it scarcely conveys novel knowledge by explaining clusters in terms of the known signals; and 
-\item it does not describe which are the prominent feature-interactions within clusters.  
-\end{enumerate}
-We propose to address these open questions, laying out particular objects in the following.
+\mpara{Research objectives.}
+To achieve our objective of advancing the state of the art in explainable clustering
+we aim to consolidate existing approaches,  including our own work,  
+introduce novel abstractions, 
+develope rigorous computational methods, and 
+perform evaluations on real-world datasets.
+In particular, {\acronym} has the following research objectives. 
+%
+\begin{description}
+\setlength{\itemsep}{-4pt}
+\item[{Models and problems:}]
+Develop novel models and novel problem formulations that enable 
+obtaining a deeper understanding of the problem of explainable clustering.
+Focus on three themes: 
+\emph{novel explainable models}, 
+\emph{explainability beyond centroid-based clustering}, and 
+\emph{explaining clustering with covariates}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%  Sebastian's text END  %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fi
+\item[{Algorithms:}]
+Develop computational methods for the problems that will be formulated.
+Our methods will rely on different techniques
+including combinatorial optimization, approximation algorithms, and linear algebra.
+The proposed algorithms should be efficient and should offer theoretical guarantees.
 
+\item[{Empirical evaluation and outreach:}]
+Implement the proposed methods and evaluate them on 
+real-world benchmark datasets from different application areas.
+Collaborate with experts in other areas for applying the methods in their domain.
+% Validate proof-of-concept by showcasing findings of the methods on different use cases. 
+Make the implementation of our methods available to the scientific community.
+
+\item[{Education in KTH:}]
+Support a new doctoral student in KTH, 
+educate them on algorithmic data analysis and responsible AI. 
+Create an environment of collaboration for the new doctoral student 
+with postdocs in the group of the PI, working on the same topic, 
+as well as with other researchers in the international collaboration network of the PI.
+\end{description}
+
+\noindent
+We next discuss briefly the state of the art in the area, 
+before presenting our own approach.
 
 \section{State of the art {\color{orange}[$\approx$1 page]} {\color{teal}(Sebastian)}}
 
@@ -279,7 +309,7 @@ There is strong interaction between \rto and \rtw,
 due to the fact that providing explanations for clusterings that go beyond centroid-based methods
 will require working with novel models.
 
-\subsection*{Research theme 3 (\rth): \covariates\ {\color{orange}[$\approx$1 page]} {\color{teal}(Aris)}}
+\subsection*{Research theme 3 (\rth): \covariates\ {\color{orange}[$\approx$1 page]} {\color{teal}(@Sebastian: please make a pass)}}
 
 In many application scenarios data can be represented in different ways: 
 Most often, data can be represented in a vector space
