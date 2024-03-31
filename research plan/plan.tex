@@ -278,19 +278,46 @@ When discussing different explainable-clustering approaches
 we specify the paradigm for a specific approach.
 
 \subsection*{Research theme 1 (\rto): \newmodels\ {\color{orange}[$\approx$1 page]} {\color{teal}(Sebastian)}}
+At the core of many research problems not only lies the task of discovering groups in data but also 
+the question which mechanisms are responsible for groups.
+We not only want to know that there are groups but also why there are groups, what are their characteristics, and how to tell them apart.  
+A scientist, for example, needs to determine those factors that tell-apart high-risk groups from low-risk groups or seeks to highlight those characteristics that are specific for a disease group.  
+How can we explain clusters with sets of specific features with particularly observed values?
 
-Given a clustering produced by any black-box clustering method, e.g., $k$-means,
-provide explanations of the clustering using models that go beyond axis-aligned decision trees.
-Such models include 
-(i) non-axis aligned decision trees;
-(ii) decision rules or decision lists;
-(iii) ??
-Here we can also include work on explaining clusterings using feature importance. 
+A broadly-used approach in explaining pre-existing clusters uses axis-aligned decision trees. 
+That is, to attribute data to clusters, we only have to mechanistically follow a sequence of yes-no answers that have been algorithmically derived from features in the data, thereby describing a clustering with easily understandable and inherently interpretable rules.
+Recent developments in the field of explainable clustering have shown significant advancements on the quality guarantees of axis-aligned decision tree explanations. 
+Although the prize of explainability might be low, a recent investigation shows that the cost lies elsewhere and explaining clusters with axis-aligned decision trees has its limits.
+Simply put, one requires numerous rules to explain complex clusters well.
+With a growing data complexity we expect deeper trees, more rules, and ever shrinking interpretability, thereby diminishing the  
+gains over directly analyzing raw clusters.  
+The bottom line is: there is more to explainability than guaranteeing a clustering quality.
 
-Existing methods that explain clustering results with axis-aligned decision trees
-provide quality guarantees.
-Ensuring that our methods, will provide quality guarantees for the novel models
-we will introduce is a major challenge for this research theme.
+We propose to holistically explore new kinds of explanations to advance explainable clustering.
+One avenue is to go beyond axis-aligned decision trees. 
+\note{interpretable models, guarantees, implications, diversity, feature importance measures}
+
+% We aim to to go far and beyond quality guarantees
+% We propose to explore novel explanations for clustering, to understand the mechanisms to attribute data points to a cluster or to tell-apart clusters in terms of their characteristics. 
+% For this, we seek to investigate different 
+
+% Second, decision tree models use the most salient signal to make statistically reasonable estimates.
+% However, the most salient singles might have been so obvious that they are already known to the analyst.
+% Even though this is sensible choice for making accurate predictions,
+% an explanation should convey knowledge.  
+
+% Given a clustering produced by any black-box clustering method, e.g., $k$-means,
+% provide explanations of the clustering using models that go beyond axis-aligned decision trees.
+% Such models include 
+% (i) non-axis aligned decision trees;
+% (ii) decision rules or decision lists;
+% (iii) ??
+% Here we can also include work on explaining clusterings using feature importance. 
+
+% Existing methods that explain clustering results with axis-aligned decision trees
+% provide quality guarantees.
+% Ensuring that our methods, will provide quality guarantees for the novel models
+% we will introduce is a major challenge for this research theme.
 
 \subsection*{Research theme 2 (\rtw): \clusterings\ {\color{orange}[$\approx$1 page]} {\color{teal}(Sebastian)}}
 
