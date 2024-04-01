@@ -339,18 +339,18 @@ In other words, we wish to strike the balance between rule complexity, tree comp
 requiring the investigation of new theoretical guarantees for the prize of explainability, the achievable tree complexity under enforced rule interpretability.
 
 A different avenue is to go beyond decision trees, by exploring other models which enjoy a wide adaptation in interpretable machine learning, such as \emph{decision forests}~\cite{}, (Bayesian) \emph{decision rules}~\cite{}, \emph{cascading rule lists}~\cite{}, boosting~\cite{}, or \emph{generalized linear models}~\cite{}.
-So far, it remains unclear how high the prize of explainability in the context of those models.
-Like in the case of decision trees, we strove to investigate theoretically-achievable quality guarantees for new models, while we aim to retain sufficiently simple models that enhance explainability.
+So far, the prizes of explainability under those models remain unclear. 
+Like in the case of decision trees, we strive to investigate theoretically-achievable quality guarantees for new models, while we aim to retain sufficiently simple models while enhancing explainability.
 
-Next, we plan to investigate explainable clustering in the context of \emph{knowledge-seeking applications}, where a commonly-overlooked problem is that (rule-based) explanations often repeat already known most salient signals, thus failing to convey knowledge.
-To address this issue, we wish to research algorithms that directly provide a diverse set of explanations that together provide multiple diverse perspectives and reasons for clusters in datasets, by building on research on diverse rule sets~\cite{}.
-Specifically in this context, we further like to explore the importance of features in groups, highlighting informative feature-values that are characteristic, contrastive, or common in groups of the data.
-There is a rich body of research on measuring the importance of individual features, such as Shapley values~\cite{} or impurity~\cite{}.
-We hypothesize that sets of \emph{interactions between features} are highly relevant reasons behind clusters.
+Next, we plan to investigate explainable clustering in the context of \emph{knowledge-seeking applications}, where an under-researched problem is that (rule-based) explanations often repeat already known most salient signals, thus failing to convey knowledge.
+To address this problem, we plan to research and develop novel algorithms that directly provide a diverse set of explanations that together provide multiple different and diverse perspectives and reasons behind clusters, building on our research on diverse rule sets~\cite{}.
+To enhance knowledge discovery properties further, we like to explore and measure the importance of features for groups in data, aiming to highlight informative feature-values that are characteristic, contrastive, or common in groups of the data.
+Although there is a rich body of research on measuring the importance of individual features, such as Shapley values~\cite{} or impurity~\cite{}; we hypothesize that \emph{interactions between features} are highly relevant reasons behind clusters.
 %, evidenced by our research on explainable data decompositions. 
-However, research on the importance of higher-order feature interactions for data groups is still lacking.
-The reason for this is clear: there are exponentially many interactions between features and each interaction is in itself a multi-variate and non-linear, thus providing significant algorithmic and statistical challenges.  
-We hope to explore novel measures to judge the importance of higher-order feature interactions, leveraging ideas from information theory, statistics, and statistical learning. 
+However, research on the importance of higher-order feature interactions for data groups is still lacking, 
+as this poses significant algorithmic and statistical challenges, as there are exponentially many interactions each necessitating non-linear and multi-variate analytics.  
+We plan to explore novel measures to judge the importance of higher-order feature interactions, leveraging ideas from information theory, statistics, and statistical learning,
+thus highlighting sets of important feature-interactions that are relevant for clusters.
 % We have the necessary skills for this.
 
 % Given a clustering produced by any black-box clustering method, e.g., $k$-means,
