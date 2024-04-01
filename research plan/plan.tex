@@ -179,7 +179,7 @@ yielding traditional methods (such as $k$-means~\cite{todo}, DBSCAN~\cite{todo},
 Classical clustering algorithms only insufficiently provide descriptions why data points are deemed similar, 
 for example, by referring to dense data regions or the closeness to a data centroid.
 
-As scientists, data analysts, or companies~\footnote{\note{cite the law that requires companies to explain why algorithms made a user-centric decision}} have to know true reasons beind a clustering, 
+As scientists, data analysts, or companies~\footnote{\note{cite the law that requires companies to explain why algorithms made a user-centric decision}} have to know true reasons behind a clustering, 
 the structures within groups, or how to tell clusters apart; 
 they turn to a comprehensive, manual, subjective, and often visualization-based~\cite{todo} post-hoc analysis.
 However, with the advent of complex, large-scale, and high-dimensional datasets, 
@@ -261,7 +261,9 @@ will be very relevant to the third research theme of this project.
 A member of the research team of the PI is postdoctoral researcher Sebastian Dalleiger, 
 who will contribute to this project by supervising the recruited PhD student.
 Dr.\ Dalleiger has expertise on many aspects of theoretical machine learning, 
-including highly relevant work on \emph{explainable data decompositions}~\cite{dalleiger2020explainable}.
+including highly relevant work on \emph{explainable data decompositions}~\cite{dalleiger2020explainable},
+statistically \emph{significant feature interactions}~\cite{}, or
+\emph{matrix factorization}~\cite{}.
 
 \section{Project description {\color{orange}[$\approx$5 pages]}}
 
@@ -316,7 +318,7 @@ we specify the paradigm for a specific approach.
 
 \subsection*{Research theme 1 (\rto): \newmodels\ {\color{orange}[$\approx$1 page]} {\color{teal}(Sebastian)}}
 At the core of many research problems not only lies the task of discovering groups in data but also 
-the question which mechanisms are responsible for groups.
+the question of which mechanisms are responsible for groups.
 We not only want to know that there are groups but also why there are groups, what are their characteristics, and how to tell them apart.  
 A scientist, for example, needs to determine those factors that tell-apart high-risk groups from low-risk groups or seeks to highlight those characteristics that are specific for a disease group.  
 How can we explain clusters with sets of specific features with particularly observed values?
@@ -331,17 +333,25 @@ gains over directly analyzing raw clusters.
 The bottom line is: there is more to explainability than guaranteeing a clustering quality.
 
 We propose to holistically explore new kinds of explanations to advance explainable clustering.
-One avenue is to go beyond axis-aligned decision trees. 
-\note{interpretable models, guarantees, implications, diversity, feature importance measures}
+One avenue is to enhance the power of axis aligned decision tree models, thereby enabling more complex decision rules by which we aim to guarantee a concise explanation even when considering complex data.
+For that, we plan to investigate oblique decision trees whose rules are not axis-aligned but general hyperplanes~\cite{}, while enforcing interpretability of individual rules by integrating subspace~\cite{} or feature selection principles~\cite{}. 
+In other words, we wish to strike the balance between rule complexity, tree complexity, and clustering performance,
+requiring the investigation of new theoretical guarantees for the prize of explainability, the achievable tree complexity under enforced rule interpretability.
 
-% We aim to to go far and beyond quality guarantees
-% We propose to explore novel explanations for clustering, to understand the mechanisms to attribute data points to a cluster or to tell-apart clusters in terms of their characteristics. 
-% For this, we seek to investigate different 
+A different avenue is to go beyond decision trees, by exploring other models which enjoy a wide adaptation in interpretable machine learning, such as \emph{decision forests}~\cite{}, (Bayesian) \emph{decision rules}~\cite{}, \emph{cascading rule lists}~\cite{}, boosting~\cite{}, or \emph{generalized linear models}~\cite{}.
+So far, it remains unclear how high the prize of explainability in the context of those models.
+Like in the case of decision trees, we strove to investigate theoretically-achievable quality guarantees for new models, while we aim to retain sufficiently simple models that enhance explainability.
 
-% Second, decision tree models use the most salient signal to make statistically reasonable estimates.
-% However, the most salient singles might have been so obvious that they are already known to the analyst.
-% Even though this is sensible choice for making accurate predictions,
-% an explanation should convey knowledge.  
+Next, we plan to investigate explainable clustering in the context of \emph{knowledge-seeking applications}, where a commonly-overlooked problem is that (rule-based) explanations often repeat already known most salient signals, thus failing to convey knowledge.
+To address this issue, we wish to research algorithms that directly provide a diverse set of explanations that together provide multiple diverse perspectives and reasons for clusters in datasets, by building on research on diverse rule sets~\cite{}.
+Specifically in this context, we further like to explore the importance of features in groups, highlighting informative feature-values that are characteristic, contrastive, or common in groups of the data.
+There is a rich body of research on measuring the importance of individual features, such as Shapley values~\cite{} or impurity~\cite{}.
+We hypothesize that sets of \emph{interactions between features} are highly relevant reasons behind clusters.
+%, evidenced by our research on explainable data decompositions. 
+However, research on the importance of higher-order feature interactions for data groups is still lacking.
+The reason for this is clear: there are exponentially many interactions between features and each interaction is in itself a multi-variate and non-linear, thus providing significant algorithmic and statistical challenges.  
+We hope to explore novel measures to judge the importance of higher-order feature interactions, leveraging ideas from information theory, statistics, and statistical learning. 
+% We have the necessary skills for this.
 
 % Given a clustering produced by any black-box clustering method, e.g., $k$-means,
 % provide explanations of the clustering using models that go beyond axis-aligned decision trees.
