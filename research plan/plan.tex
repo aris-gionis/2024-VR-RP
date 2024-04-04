@@ -206,14 +206,16 @@ Recent developments include Shapley values via SHapley Additive exPlanations (SH
 However, they do not exactly describe the mechanisms that ultimately lead to a cluster assignment, 
 thus leaving room for subjective interpretability.
 
-A subset of research on explainable clustering methods aims to identify the reasons behind a clustering through a set of feature-based decisions that almost mechanistically leads to the result. 
-Considerable attention has been given to rule-based explanations using decision trees. 
-Recent advancements have focused on enhancing the theoretically attainable performance~\cite{todo,todo,todo} or improving interpretability by integrating decision trees directly into the clustering algorithm~\cite{}. 
+A subset of research on \textbf{explainable clustering} methods aims to identify the reasons behind a clustering through a set of simple feature-based decisions that almost mechanistically leads to the cluster. 
+Considerable attention has been given to explaining clusters with decision trees, 
+in which explanations are sequences of simple yes-no questions based on the data features,
+such as \texttt{if} $0 \leq x \leq 2$ \texttt{then} test left branch \texttt{else} test right branch \texttt{end}, that lead to a cluster in a leaf of the decision tree.  
+\textcolor{red}{Recent advancements have improved the theoretically attainable worst-case quality~\cite{todo,todo,todo} under axis-aligned decisions or improving interpretability by integrating decision trees directly into the clustering algorithm~\cite{}. 
 However, it has been demonstrated that concise explanations with small decision trees are generally unattainable if data complexity increases, 
 thereby necessitating explanations in terms of on more powerful models like oblique decision trees \cite{} or kernelized features spaces \cite{}.
 However, to obtain interpretable rules that explain clusterings with features, decision trees require access to the original feature space, prohibiting kernelized clustering algorithms and their ability to exploit nonlinearities, thus potentially reducing clustering quality.
 Research on explaining clusterings that utilize dimensionality reduction techniques or feature mappings are still in its infancy.
-
+}
 \section{Significance and scientific novelty  {\color{orange}[$\approx$0.5 page]} {\color{teal}(Aris)}}
 
 \instructions{
@@ -317,41 +319,66 @@ When discussing different explainable-clustering approaches
 we specify the paradigm for a specific approach.
 
 \subsection*{Research theme 1 (\rto): \newmodels\ {\color{orange}[$\approx$1 page]} {\color{teal}(Sebastian)}}
-At the core of many research problems not only lies the task of discovering groups in data but also 
-the question of which mechanisms are responsible for groups.
-We not only want to know that there are groups but also why there are groups, what are their characteristics, and how to tell them apart.  
-A scientist, for example, needs to determine those factors that tell-apart high-risk groups from low-risk groups or seeks to highlight those characteristics that are specific for a disease group.  
+At the core of many research problems not only lies the task of discovering clusters in data but also 
+the question of which mechanisms are responsible for clusters.
+We not only want to know that there are clusters but also why there are clusters, what are their characteristics, and how to tell them apart.  
+A scientist, for example, needs to determine those factors that tell-apart high-risk clusters from low-risk clusters or seeks to highlight those characteristics that are specific for a disease cluster.  
 How can we explain clusters with sets of specific features with particularly observed values?
 
-A broadly-used approach in explaining pre-existing clusters uses axis-aligned decision trees. 
-That is, to attribute data to clusters, we only have to mechanistically answer a sequence of yes-no questions that have been algorithmically derived from features in the data, thereby describing a clustering with easily understandable and inherently interpretable rules.
-Recent developments in the field of explainable clustering have shown significant advancements on the quality guarantees of axis-aligned decision tree explanations. 
-Although the prize of explainability might be low, a recent investigation shows that the cost lies elsewhere and explaining clusters with axis-aligned decision trees has its limits.
-Simply put, one requires numerous rules to explain complex clusters well.
-With a growing data complexity we expect deeper trees, more rules, and ever shrinking interpretability, thereby diminishing the  
-gains over directly analyzing raw clusters.  
-The bottom line is: there is more to explainability than guaranteeing a clustering quality.
+A broadly-used \posthoc approach in explaining \emph{pre-existing} $k$-means clusters uses axis-aligned decision trees. 
+That is, to attribute data to clusters, we only have to mechanistically answer a sequence of yes-no questions that have been algorithmically derived from data features, thereby describing clusters with easily understandable and inherently interpretable axis-aligned rules (cuts), such as \texttt{if} $x_i \in [\textnormal{lb}, \textnormal{ub}]$ \texttt{then} proceed with left subtree \texttt{else} proceed with right subtree \texttt{end} until a cluster at a leaf is reached.
+Reaching clusters by means of such an interpretable model has approximation cost, which is called the prize of explainability.
+Central to our research is the question of how large the prize to pay becomes, i.e., what is the worst-case-achievable approximation guarantee of expressing a clustering in terms of a specific interpretable machine learning model. 
 
-We propose to holistically explore new kinds of explanations to advance explainable clustering.
-One avenue is to enhance the power of axis aligned decision tree models, thereby enabling more complex decision rules by which we aim to guarantee a concise explanation even when considering complex data.
-For that, we plan to investigate oblique decision trees whose rules are not axis-aligned but general hyperplanes~\cite{}, while enforcing interpretability of individual rules by integrating subspace~\cite{} or feature selection principles~\cite{}. 
-In other words, we wish to strike the balance between rule complexity, tree complexity, and clustering performance,
-requiring the investigation of new theoretical guarantees for the prize of explainability, the achievable tree complexity under enforced rule interpretability.
+Although the prize for explaining $k$-means with axis-aligned decision tree might be low~\cite{}, a recent investigation~\cite{} shows that the cost lies in the size of the tree.
+Simply put, a precise explanation requires large trees.
+The larger the clustering complexity, the larger the explainations, thereby shrinking interpretability to a point where the benefits of having an explanation over analyzing raw data diminishes.
+The bottom line is: there is more to explainability than guaranteeing a clustering quality under interpretable rules.
+A core challenge of explainable clustering is to identify how to properly quantify explainability,
+what are good explanations, and how well do they address real-world circumstances in theory and practice.
+We propose to holistically explore new kinds of explanations to enhance explainable clustering,
+by advancing decision trees, exploring rule-based explainations, and by investigating important features for clusters.
 
-A different avenue is to go beyond decision trees, by exploring other models which enjoy a wide adaptation in interpretable machine learning, such as \emph{decision forests}~\cite{}, (Bayesian) \emph{decision rules}~\cite{}, \emph{cascading rule lists}~\cite{}, boosting~\cite{}, or \emph{generalized linear models}~\cite{}.
-So far, the prizes of explainability under those models remain unclear. 
-Like in the case of decision trees, we strive to investigate theoretically-achievable quality guarantees for new models, while we aim to retain sufficiently simple models while enhancing explainability.
+First, we plan to explore advanced decision tree models with more expressive individual decision function per node, aiming to guarantee concise explanations even when considering complex data.
+The principle is simple: the more expressive individual decision functions are, the fewer decisions we need to make. 
+One avenue leads to oblique decision trees, whose decision functions generalize simple axis-aligned decision-making to hyperplane-based decision-making, akin to $a_i^{\!\top} x^{\vphantom{\top}}_{\vphantom{i}} + b_i$. % < 0
+The danger of employing expressive decision functions, however, lies in the increased complexity of each individual decisions functions, thus negatively impacting individual interpretability.
+Therefore, a core challenge of this research theme is the question of how to find expressive functions that balance individual interpretability, overall explainability, and accuracy.
+In the context of hyperplanes $a_i^{\!\top} x^{\vphantom{\top}}_{\vphantom{i}} + b_i < c_i$, for example, we seek to reduce the complexity of individual hyperplanes using non-negativity constraints $a \in \mathbb{R}^m_{\geq 0}$ and sparsity \emph{constraints} $\|a\|_0 \leq q$, by employing combinatorial optimization techniques for small problems or (greedy) subspace algorithms such as orthogonal matching pursuit, sequential lasso, or top-$q$ important feature selection for large problems.
 
-Next, we plan to investigate explainable clustering in the context of \emph{knowledge-seeking applications}, where an under-researched problem is that (rule-based) explanations often repeat already known most salient signals, thus failing to convey knowledge.
-To address this problem, we plan to research and develop novel algorithms that directly provide a diverse set of explanations that together provide multiple different and diverse perspectives and reasons behind clusters, building on our research on diverse rule sets~\cite{}.
-To enhance knowledge discovery properties further, we like to explore and measure the importance of features for groups in data, aiming to highlight informative feature-values that are characteristic, contrastive, or common in groups of the data.
-Although there is a rich body of research on measuring the importance of individual features, such as Shapely values~\cite{} or impurity~\cite{}; we hypothesize that \emph{interactions between features} are highly relevant reasons behind clusters.
-%, evidenced by our research on explainable data decompositions. 
-However, research on the importance of higher-order feature interactions for data groups is still lacking, 
-as this poses significant algorithmic and statistical challenges, as there are exponentially many interactions each necessitating non-linear and multi-variate analytics.  
-We plan to explore novel measures to judge the importance of higher-order feature interactions, leveraging ideas from information theory, statistics, and statistical learning,
-thus highlighting sets of important feature-interactions that are relevant for clusters.
-% We have the necessary skills for this.
+An alternative approach is to go beyond decision trees to explore other models capable of explaining clusters. 
+Machine learning models such as Bayesian decision rules~\cite{}, cascading rule lists~\cite{}, and generalized linear models~\cite{} are prime candidates to explore, given their widespread adoption and inherent interpretability. 
+One concrete goal is study how we can explain clusters with concise decision rule lists~\cite{}, of the form \texttt{if} $\bigwedge_i \llbracket x_i \in [\textnormal{lb}, \textnormal{ub}] \rrbracket$ \texttt{then} cluster$_a$ \texttt{else} proceed to the next rule \texttt{end}. 
+Exploiting the additional modeling flexibility, we specifically aim to investigate explainable clustering for \emph{knowledge-seeking applications}, where an under-researched problem is that (rule-based) explanations often repeat already-known most-salient signals, thus failing to convey knowledge.
+For example, if the algorithm accurately explains a cluster `\texttt{\small ClimateCrisis}' in terms of a high concentration of `\texttt{\small CO\textsubscript{2}}', it would fail to tell us about `\texttt{\small methane}'; or if we explain `\texttt{\small Diabetes}' with a highly-expressed but known-to-be-relevant gene `\texttt{\small TCF7L2}', it might hide an almost equally relevant `\texttt{\small ZNT8}'.  
+As the algorithm does not know in advance which explanations are most informative to the user, we aim to provide sets of explanations that offer \emph{diverse perspectives} on the clustering.
+In the context of rule sets $\mathcal{R} = \{r_1, \dots, r_n\}$, we seek to explain a clustering $Y$ of data points $X = \{x_1, \dots, x_n\}$ by minimizing the loss between explained clustering and the estimated clustering $\ell(\mathcal{R}) + \lambda \operatorname{d}(\mathcal{R})$ penalized by the rule diversity $d$~\cite{}.
+\ag{Do you want to include more details, e.g., about \textsc{MaxSum} diversification?}
+So far, diverse explanations for clustering is an understudied subject, and quality, conciseness, and empirical performance are unknown. 
+We aspire to change this by studying the theoretical underpinning, the prize of diversity for explainability clustering, its practical implication on clustering accuracy, and the ability to convey knowledge. 
+
+A core challenge of finding interpretable explanations is in judging the importance of data features per cluster.
+Having an importance measure allows us to explain clusters in terms of importance `spectra' such as $\{\slifI,\slifII,\slifIII\}$, thereby highlighting informative feature-values that are characteristic, contrastive, or common in clusters.
+% In this example, we notice that feature $1$ and $2$ are significantly more important to cluster $b$ than $a$ or $c$.
+Although importance measures such as Shapely values~\cite{} or impurity~\cite{} typically consider features independently, in reality, features often interact with each other.
+We hypothesize that features interact differently per cluster and that differences in those interactions are relevant reasons for specific clusters, as evidenced in our prior work~\cite{}.
+We plan to investigate novel higher-order importance measures to highlight the characteristics or contrastive per-cluster feature-interactions, leveraging ideas from information theory, statistics, and statistical learning.
+However, research on the importance of higher-order feature interactions for data clusters is still lacking, 
+as this poses significant algorithmic and statistical challenges, by involving exponentially many potential interactions for which non-linear or multi-variate analytics is necessary to compute importance.  
+We plan to explore novel measures to judge the importance of higher-order feature interactions, leveraging ideas from information theory, statistics, and statistical learning, thus highlighting sets of important feature-interactions that are relevant for clusters.
+\note{Solution details? Removing this section?}
+
+Regardless of expressivity, any \posthoc explanation has to explain \emph{pre-existing} clusters of almost arbitrary complexity.
+Colloquially speaking, that is because the clustering algorithm does not know that we want explainability.
+How can we make clustering aware of the explainability of its result?
+An important aspect of \rto is the question of how to incorporate explanations into clustering as a \joint problem.
+For classical $k$-means, for example, one obvious objective $\arg\;\min_{e, w, c} \sum_j \sum_i P_{ki}(e) w_{ki} \| x_i - c_j \|$ augments the $k$-means objective with a probability or weight $P_{ki}$ that our explanation $e$ concludes that data point $x_i$ is in cluster $j$. 
+In case that $E$ is an oblique decision tree, for example, the probability $P_{ki}$ stems from a sequence of hyperplane-derived probabilities.
+We hope to explore the cost that joining explanations with clustering would inflicts on the clustering performance, computational complexity, and explainability of the results.
+
+% \note{
+
+% Central to our research is the concept of the prize of explainability, as the worst-case achievable approximation guarantee of expressing a clustering in terms of a different interpretable machine learning model.
 
 % Given a clustering produced by any black-box clustering method, e.g., $k$-means,
 % provide explanations of the clustering using models that go beyond axis-aligned decision trees.
@@ -368,22 +395,41 @@ thus highlighting sets of important feature-interactions that are relevant for c
 
 \subsection*{Research theme 2 (\rtw): \clusterings\ {\color{orange}[$\approx$1 page]} {\color{teal}(Sebastian)}}
 
-Here we will focus on developing methods providing explanations for clusterings 
-that go beyond centroid-based approaches like $k$-means or $k$-median.
-In particular we will consider the following clustering approaches.
-\begin{itemize}
-\setlength{\itemsep}{-2pt}
-\item kernel-based clustering
-\item density-based clustering; what would be a good model for this case?
-\item subspace clustering \hfill\ag{does this make sense?}
-\item diversity-aware (or fair) clustering \hfill\ag{does this make sense?}
-\item what if want the explanation be fair, instead of the clustering?
-\item clusterings with embeddings
-\end{itemize}
+Most related recent research on explainable clustering has focussed on only classical $k$-means
+thereby resulting in algorithms that approximate $k$-means clusters with axis-aligned decision trees.
+However, the classical $k$-means algorithm has limited applicability in practice, as it is often not flexible enough to handle complex datasets that contain complicated cluster shapes.
+So far, the prize of explainability in the context of other algorithms is understudied and questions such as ``how well axis-aligned decision trees could explain DBSCAN in the worst-case?'' or ``how well do oblique decision trees approximate spectral clustering or hierarchical clustering results?'', remain unanswered.
+Here, we go beyond classical $k$-means towards developing explaining clustering algorithms for complex clusters.
 
-There is strong interaction between \rto and \rtw, 
-due to the fact that providing explanations for clusterings that go beyond centroid-based methods
-will require working with novel models.
+Arguably one of the most inhibiting factors is $k$-means inability to exploit non-linearities in the relationship between data, which is often addressed by kernelized $k$-means algorithms.
+Explaining kernel $k$-means, however, poses significant challenges, as clusters are harder to cut with simple axis-aligned decision trees. 
+In fact, a very recent advancement has discovered that the worst-case prize of explaining quadratic-kernel based clustering with axis-aligned trees is theoretically unbounded~\cite{}. 
+This raises some of our core challenges in \rtw:
+\textbf{(1)} Is there a different explainable clustering algorithm that achieves tighter bounds under kernels such as the quadratic kernel for example by incorporating explanations into the algorithm?;
+\textbf{(2)} What are inherently interpretable kernels for explainable clustering?;
+\textbf{(3)} How would more expressive explanation improve this bound (cf., \rto)?;
+\textbf{(4)} Going beyond worst-case analysis, what are the \emph{expected} or the \emph{lower bound} to the prize of explainability?; and
+\textbf{(5)} Can we judge approximation guarantees considering the geometries of explanations and clusterings?
+We plan to explore suitable transparent kernels $\langle \phi(x), \phi(y) \rangle$ that allows for attributing cluster-decisions to features, by identifying inherently-interpretable kernel feature maps $\phi(x)$. 
+\note{todo (\joint): it remains unclear how to join explanations with kernelized clustering.} 
+
+
+% Here we will focus on developing methods providing explanations for clusterings 
+% that go beyond centroid-based approaches like $k$-means or $k$-median.
+% In particular we will consider the following clustering approaches.
+% \begin{itemize}
+% \setlength{\itemsep}{-2pt}
+% \item kernel-based clustering
+% \item density-based clustering; what would be a good model for this case?
+% \item subspace clustering \hfill\ag{does this make sense?}
+% \item diversity-aware (or fair) clustering \hfill\ag{does this make sense?}
+% \item what if want the explanation be fair, instead of the clustering?
+% \item clusterings with embeddings
+% \end{itemize}
+
+% There is strong interaction between \rto and \rtw, 
+% due to the fact that providing explanations for clusterings that go beyond centroid-based methods
+% will require working with novel models.
 
 \subsection*{Research theme 3 (\rth): \covariates\ {\color{orange}[$\approx$1 page]} {\color{teal}(@Sebastian: please make a pass)}}
 

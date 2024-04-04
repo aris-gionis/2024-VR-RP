@@ -25,6 +25,10 @@
 \usepackage[official]{eurosym}
 \usepackage[bottom]{footmisc}
 
+\usepackage{sparklines}
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+
 \usepackage{lipsum}% http://ctan.org/pkg/{graphicx,lipsum}
 \newcommand{\PRLsep}{\noindent\makebox[\linewidth]{\resizebox{0.3333\linewidth}{1pt}{$\bullet$}}\bigskip}
 
@@ -218,3 +222,31 @@
 	} 
 }
 
+
+\newcommand{\slifI}{
+\begin{sparkline}{5}
+    \sparkspike .083 .18
+    \sparkspike .25 .55
+    \sparkspike .417 1
+    \sparkspike .583 .62
+    \sparkspike .75 .42
+    \sparkspike .917 .5
+\end{sparkline}}
+\newcommand{\slifII}{
+\begin{sparkline}{5}
+    \sparkspike .083 1
+    \sparkspike .25 .8
+    \sparkspike .417 0.2
+    \sparkspike .583 .2
+    \sparkspike .75 .42
+    \sparkspike .917 .5
+\end{sparkline}}
+\newcommand{\slifIII}{
+\begin{sparkline}{5}
+    \sparkspike .083 .3
+    \sparkspike .25 .2
+    \sparkspike .417 0.2
+    \sparkspike .583 .2
+    \sparkspike .75 .1
+    \sparkspike .917 .8
+\end{sparkline}}
