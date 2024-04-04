@@ -176,63 +176,43 @@ before presenting the proposed approach.
 
 Algorithmically grouping similar data points has a long research history,
 yielding traditional methods (such as $k$-means~\cite{todo}, DBSCAN~\cite{todo}, or Spectral Clustering~\cite{todo}).
-Classical clustering algorithms only insufficiently provide descriptions why data points are deemed similar, 
-for example, by referring to dense data regions or the closeness to a data centroid.
-
-As scientists, data analysts, or companies~\footnote{\note{cite the law that requires companies to explain why algorithms made a user-centric decision}} have to know true reasons behind a clustering, 
-the structures within groups, or how to tell clusters apart; 
-they turn to a comprehensive, manual, subjective, and often visualization-based~\cite{todo} post-hoc analysis.
-However, with the advent of complex, large-scale, and high-dimensional datasets, 
-clustering descriptors increasingly become harder to interpret. 
-Addressing this problem, Explainable Clustering seeks to not only group similar data points but also tells us 
-why there is a cluster in the data,
-why it assigned a data point to a cluster, or 
-how to tell groups apart.
-
-Addressing the complexity interpreting clusterings of high-dimensional data has conventionally been done with \textbf{dimensionality reduction} or subspace techniques, which condense the original data into a lower-dimensional representation, while aiming to preserve relationships between data points. 
-Notable techniques such as Non-negative Matrix Factorization (NMF), t-distributed stochastic neighbor embedding (t-SNE), Uniform Manifold Approximation and Projection (UMAP), Auto-encoders (AE), Principal Component Analysis (PCA), or independent component analysis (ICA) are commonly employed. 
-Dimensionality reduction, is sometimes used as a pre-processing step for clustering to manually enhance interpretability.
-However, using different data representations present challenges in terms of interpretability, as they produce complex models that may not readily elucidate underlying data structures and does not reliably result in explainable clusters.
-Recent advancements directly integrate clustering with dimensional NMF~\cite{}, but notably require a kernelized data representation, thus do not offer any explainability. 
-Retaining the original feature space, thus enhancing the interpretability,
-\textbf{Subspace clusterings} seek to select the most salient subset of features that are solely responsible for a clustering, either as a post-processing step~\cite{todo} or during clustering~\cite{todo}.
-Although improving interpretability, a subspace clustering of complex data often requires numerous features, thus failing to clearly explain the reasons behind clusters~\cite{todo}. 
-
-Keeping all features during clustering, \textbf{feature importance measures} are used to assign an importance to features after the clustering is done, 
-thereby aiding the manual assessments of the clustering,
-aiming to justify the hardly interpretable output of traditional clustering algorithms.   
-Traditional cluster-specific feature importance measures include impurity coefficients~\cite{todo}, statistical testing~\cite{todo}, or 
-Recent developments include Shapley values via SHapley Additive exPlanations (SHAP) or its variants~\cite{todo}.
-However, they do not exactly describe the mechanisms that ultimately lead to a cluster assignment, 
-thus leaving room for subjective interpretability.
+Likewise using methods to explain clusters or enhance interpretability of clustering have a long tradition,
+including explainable clustering, subspace clustering, or dimensionality reduction methods. 
 
 Considerable attention has been given to \textbf{explaining clusters} with decision trees, including explaining using similarity-based prototypes for each cluster \cite{carrizosa2022interpreting}, or by fitting oblique trees to describe clusters \cite{gabidolla2022optimal}.
-% Rece propose enhancements to the original IMM algorithm \cite{moshkovitz2020explainable}. 
-% In the seminal work \citet{moshkovitz2020explainable} explained $k$-means and $k$-median with axis-aligned decision trees and derived a worst-case approximaton gauarantee, coined by the name price of explainability, which has been inspired by the price of interpretability \cite{bersimas2019} for axis-aligned decision tree classification. 
-% The recent surge in research on explainable clustering can be traced back to
 In the seminal work by \citet{moshkovitz2020explainable}, the authors explained $k$-means and $k$-medians with axis-aligned decision trees using the IIM algorithm and derived a worst-case approximation guarantee, termed as ``price of explainability'', inspired by the ``price of interpretability'' \cite{bertsimas2019price} for axis-aligned decision tree classification. 
 Recent developments focus on improving worst-case bounds on explainability for $k$-means, by using random threshold cuts for axis-aligned decisions \cite{makarychev2022explainable, esfandiari2022almost, makarychev2023random}. 
 The best known upper bound on the price of explainability for $k$-means is $O(k \log \log k)$ \cite{gupta2023price}, with a known lower bound of $\Omega(k)$ \cite{gamlath2021explainable}.
+
 As narrow the gap already is, it can further be improved for low dimensional problems \cite{laber2021price, charikar2022near}. 
 Aiming for a slight generalization, the restriction that decision trees have to have $k$ leaves has been removed, improving the worst-case guarantees \cite{makarychev2022explainable} and practical performance \cite{frost2020exkmc}. 
 Now free of this restriction trees can grow larger.
 As this inhibits interpretability, \citet{laber2023nearly} explores shallow decision trees for explainable clustering, while \citet{deng2023impossibility} demonstrate that shallow trees for explainable $k$-means and $k$-medians is impossible to achieve in general. 
-% There is research for $k$-centers \cite{laber2021} or clustering under $\|\cdot\|_p$-norms \cite{gamlath2021}. 
+Further research includes explainability for $k$-centers \cite{laber2021} or explainable clustering under $\|\cdot\|_p$-norms \cite{gamlath2021explainable}. 
 Research on explaining kernel $k$-means has only recently been started, showing that axis-aligned trees lead to approximation guarantees for a limited set of interpretable kernels, while they discovered an \emph{unbounded} ``price of explainability'' for explaining the widely-used quadratic kernel \cite{fleissner2024explaining}.
-Other research on explainable clustering employ combinatorial optimization to describe polyhedral descriptions of the boundaries of clusters \cite{lawless2023polyhedral}. 
+
 Research has been focussed on explaining (mostly) $k$-means clusters with (mostly) axis-aligned trees. 
 Research on more expressive explanation like oblique decision trees or `complex' clustering like kernel $k$-means is still in its infancy.
 
-% A subset of research on \textbf{explainable clustering} methods aims to identify the reasons behind a clustering through a set of simple feature-based decisions that almost mechanistically leads to the cluster. 
-% Considerable attention has been given to explaining clusters with decision trees, 
-% in which explanations are sequences of simple yes-no questions based on the data features,
-% such as \texttt{if} $0 \leq x \leq 2$ \texttt{then} test left branch \texttt{else} test right branch \texttt{end}, that lead to a cluster in a leaf of the decision tree.  
-\textcolor{red}{Recent advancements have improved the theoretically attainable worst-case quality~\cite{todo,todo,todo} under axis-aligned decisions or improving interpretability by integrating decision trees directly into the clustering algorithm~\cite{}. 
-However, it has been demonstrated that concise explanations with small decision trees are generally unattainable if data complexity increases, 
-thereby necessitating explanations in terms of on more powerful models like oblique decision trees \cite{} or kernelized features spaces \cite{}.
-However, to obtain interpretable rules that explain clusterings with features, decision trees require access to the original feature space, prohibiting kernelized clustering algorithms and their ability to exploit nonlinearities, thus potentially reducing clustering quality.
-Research on explaining clusterings that utilize dimensionality reduction techniques or feature mappings are still in its infancy.
-}
+Closely related is research on \textbf{interpretable clustering},
+seeking to return inherently interpretable clusters directly from the clustering algorithm.
+Recent research has focuses on integrating decision tree explanations into the clustering:
+One approach leverages Mixed Integer Optimization to for interpretable tree-based clustering, by approximating the globally-optimal solution~\cite{bertsimas2021interpretable}. 
+A different approach increases the expressivity while decreasing interpretability, by leveraging soft decision trees~\cite{cohen2023interpretable}. 
+Other research on explainable or interpretable clustering employs combinatorial optimization to describe polyhedral descriptions of the boundaries of clusters \cite{lawless2023polyhedral}. 
+
+% Some clustering algorithms aim to find interpretability fro embeddings via \textbf{dimensionality reduction} algorithms such as nonnegative matrix factorization \cite{} or tensor decompositions \cite{}.    
+% Related to our research themes are inherently \textbf{interpretable machine learning} methods,
+% employable as substitutes for the decision tree models, for example 
+
+% Classic approaches that are related to explainable clustering include \textbf{subspace clustering} which aims at discovering clusters in high-dimensional data by assuming that data points only belong to certain lower-dimensional subspace clusters rather than being globally clustered, thus enhancing interpretability.
+% While many subspace methods such as $k$-SVD~\cite{} focus on subspace selection, explanations emphasizes understanding the rationale behind clusters, which often in practice is elucidated with feature importance analysis.
+% While selecting the top most important features for clustering  
+% An important research area lies in measuring and ranking \textbf{feature importance} for clusters.   
+% In the context of explainable clustering, measuring the feature importance falls into two categories:
+% \emph{unsupervised} if no clusters are given (\joint) and \emph{supervised} if clusters are given (\posthoc).
+
+
 \section{Significance and scientific novelty  {\color{orange}[$\approx$0.5 page]} {\color{teal}(Aris)}}
 
 \instructions{
@@ -424,7 +404,6 @@ Explaining kernel $k$-means, however, poses significant challenges, as clusters 
 In fact, a very recent advancement has discovered that the worst-case price of explaining quadratic-kernel-based clusterings with axis-aligned trees is \emph{theoretically unbounded}~\cite{}. 
 This raises some of our core challenges in \rtw:
 \textbf{(1)} Is there a different explainable clustering algorithm that achieves tighter bounds under kernels such as the quadratic kernel for example by incorporating explanations into the algorithm?;
-
 \textbf{(2)} What are inherently interpretable kernels for explainable clustering?;
 \textbf{(3)} How would more expressive explanation improve this bound (cf., \rto)?;
 \textbf{(4)} Going beyond worst-case analysis, what are the \emph{expected} or the \emph{lower bound} to the price of explainability?; and
@@ -622,7 +601,7 @@ Target conferences are NeurIPS, ICML, SIGMOD, SIGKDD, WebConf, WSDM, etc.
 \spara{Materials.}
 Our publications will be available via open access in {\small\url{arxiv.org}}. 
 The software and the other outputs of the project 
-will become freely available to the scientific community via {\small\url{github.com}}.
+will become freely available to the scientific community via {\small\url{github.com}}. % and archived in {\small\url{zenoodo.org}}.
 
 \spara{Risks and mitigation.}
 Devising efficient algorithms with provable quality guarantees is a challenging task
