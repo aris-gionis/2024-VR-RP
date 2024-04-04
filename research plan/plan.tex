@@ -206,20 +206,20 @@ Recent developments include Shapley values via SHapley Additive exPlanations (SH
 However, they do not exactly describe the mechanisms that ultimately lead to a cluster assignment, 
 thus leaving room for subjective interpretability.
 
-Considerable attention has been given to \textbf{explaining clusters} with decision trees, including explaining using similarity-based prototypes for each cluster \cite{carrizosa2022}, or by fitting oblique trees to describe clusters \cite{gabidolla2022}.
-% Rece propose enhancements to the original IMM algorithm \cite{moshkovitz2020}. 
-% In the seminal work \citet{moshkovitz2020} explained $k$-means and $k$-median with axis-aligned decision trees and derived a worst-case approximaton gauarantee, coined by the name price of explainability, which has been inspired by the price of interpretability \cite{bersimas2019} for axis-aligned decision tree classification. 
+Considerable attention has been given to \textbf{explaining clusters} with decision trees, including explaining using similarity-based prototypes for each cluster \cite{carrizosa2022interpreting}, or by fitting oblique trees to describe clusters \cite{gabidolla2022optimal}.
+% Rece propose enhancements to the original IMM algorithm \cite{moshkovitz2020explainable}. 
+% In the seminal work \citet{moshkovitz2020explainable} explained $k$-means and $k$-median with axis-aligned decision trees and derived a worst-case approximaton gauarantee, coined by the name price of explainability, which has been inspired by the price of interpretability \cite{bersimas2019} for axis-aligned decision tree classification. 
 % The recent surge in research on explainable clustering can be traced back to
-In the seminal work by \citet{moshkovitz2020}, the authors explained $k$-means and $k$-medians with axis-aligned decision trees using the IIM algorithm and derived a worst-case approximation guarantee, termed as ``price of explainability'', inspired by the ``price of interpretability'' \cite{bersimas2019} for axis-aligned decision tree classification. 
-Recent developments focus on improving worst-case bounds on explainability for $k$-means, by using random threshold cuts for axis-aligned decisions \cite{makarychev2022, esfandiari2022, makarychev2023}. 
-The best known upper bound on the price of explainability for $k$-means is $O(k \log \log k)$ \cite{gupta2023}, with a known lower bound of $\Omega(k)$ \cite{gamlath2021}.
-As narrow the gap already is, it can further be improved for low dimensional problems \cite{laber2021, charikar2022}. 
-Aiming for a slight generalization, the restriction that decision trees have to have $k$ leaves has been removed, improving the worst-case guarantees \cite{makarychev2022} and practical performance \cite{frost2020}. 
+In the seminal work by \citet{moshkovitz2020explainable}, the authors explained $k$-means and $k$-medians with axis-aligned decision trees using the IIM algorithm and derived a worst-case approximation guarantee, termed as ``price of explainability'', inspired by the ``price of interpretability'' \cite{bertsimas2019price} for axis-aligned decision tree classification. 
+Recent developments focus on improving worst-case bounds on explainability for $k$-means, by using random threshold cuts for axis-aligned decisions \cite{makarychev2022explainable, esfandiari2022almost, makarychev2023random}. 
+The best known upper bound on the price of explainability for $k$-means is $O(k \log \log k)$ \cite{gupta2023price}, with a known lower bound of $\Omega(k)$ \cite{gamlath2021explainable}.
+As narrow the gap already is, it can further be improved for low dimensional problems \cite{laber2021price, charikar2022near}. 
+Aiming for a slight generalization, the restriction that decision trees have to have $k$ leaves has been removed, improving the worst-case guarantees \cite{makarychev2022explainable} and practical performance \cite{frost2020exkmc}. 
 Now free of this restriction trees can grow larger.
-As this inhibits interpretability, \citet{laber2023} explores shallow decision trees for explainable clustering, while \citet{deng2023} demonstrate that shallow trees for explainable $k$-means and $k$-medians is impossible to achieve in general. 
+As this inhibits interpretability, \citet{laber2023nearly} explores shallow decision trees for explainable clustering, while \citet{deng2023impossibility} demonstrate that shallow trees for explainable $k$-means and $k$-medians is impossible to achieve in general. 
 % There is research for $k$-centers \cite{laber2021} or clustering under $\|\cdot\|_p$-norms \cite{gamlath2021}. 
-Research on explaining kernel $k$-means has only recently been started, showing that axis-aligned trees lead to approximation guarantees for a limited set of interpretable kernels, while they discovered an \emph{unbounded} ``price of explainability'' for explaining the widely-used quadratic kernel \cite{fleissner2024}.
-Other research on explainable clustering employ combinatorial optimization to describe polyhedral descriptions of the boundaries of clusters \cite{lawless2023}. 
+Research on explaining kernel $k$-means has only recently been started, showing that axis-aligned trees lead to approximation guarantees for a limited set of interpretable kernels, while they discovered an \emph{unbounded} ``price of explainability'' for explaining the widely-used quadratic kernel \cite{fleissner2024explaining}.
+Other research on explainable clustering employ combinatorial optimization to describe polyhedral descriptions of the boundaries of clusters \cite{lawless2023polyhedral}. 
 Research has been focussed on explaining (mostly) $k$-means clusters with (mostly) axis-aligned trees. 
 Research on more expressive explanation like oblique decision trees or `complex' clustering like kernel $k$-means is still in its infancy.
 
