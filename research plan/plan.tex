@@ -344,7 +344,7 @@ The principle is simple: the more expressive individual decision functions are, 
 One avenue leads to oblique decision trees, whose decision functions generalize simple axis-aligned decision-making to hyperplane-based decision-making, akin to $a_i^{\!\top} x^{\vphantom{\top}}_{\vphantom{i}} + b_i$. % < 0
 The danger of employing expressive decision functions, however, lies in the increased complexity of each individual decisions functions, thus negatively impacting individual interpretability.
 Therefore, a core challenge of this research theme is the question of how to find expressive functions that balance individual interpretability, overall explainability, and accuracy.
-In the context of hyperplanes $a_i^{\!\top} x^{\vphantom{\top}}_{\vphantom{i}} + b_i < c_i$, for example, we seek to reduce the complexity of individual hyperplanes using non-negativity constraints $a \in \mathbb{R}^m_{\geq 0}$ and sparsity \emph{constraints} $\|a\|_0 \leq q$, by employing combinatorial optimization techniques for small problems or (greedy) subspace algorithms such as orthogonal matching pursuit, sequential lasso, or top-$q$ important feature selection for large problems.
+In the context of hyperplanes $a_i^{\!\top} x^{\vphantom{\top}}_{\vphantom{i}} + b_i < c_i$, for example, we seek to reduce the complexity of individual hyperplanes using non-negativity constraints $a \in \mathbb{R}^m_{\geq 0}$ and sparsity \emph{constraints} $\|a\|_0 \leq q$, by employing combinatorial optimization techniques for small problems or (greedy) subspace algorithms such as orthogonal matching pursuit, sequential lasso, or top-$q$ important feature forward selection for large problems.
 
 An alternative approach is to go beyond decision trees to explore other models capable of explaining clusters. 
 Machine learning models such as Bayesian decision rules~\cite{}, cascading rule lists~\cite{}, and generalized linear models~\cite{} are prime candidates to explore, given their widespread adoption and inherent interpretability. 
@@ -362,11 +362,12 @@ Having an importance measure allows us to explain clusters in terms of importanc
 % In this example, we notice that feature $1$ and $2$ are significantly more important to cluster $b$ than $a$ or $c$.
 Although importance measures such as Shapely values~\cite{} or impurity~\cite{} typically consider features independently, in reality, features often interact with each other.
 We hypothesize that features interact differently per cluster and that differences in those interactions are relevant reasons for specific clusters, as evidenced in our prior work~\cite{}.
+\note{I just found out that kernel
 We plan to investigate novel higher-order importance measures to highlight the characteristics or contrastive per-cluster feature-interactions, leveraging ideas from information theory, statistics, and statistical learning.
 However, research on the importance of higher-order feature interactions for data clusters is still lacking, 
 as this poses significant algorithmic and statistical challenges, by involving exponentially many potential interactions for which non-linear or multi-variate analytics is necessary to compute importance.  
 We plan to explore novel measures to judge the importance of higher-order feature interactions, leveraging ideas from information theory, statistics, and statistical learning, thus highlighting sets of important feature-interactions that are relevant for clusters.
-\note{Solution details? Removing this section?}
+\note{Solution details? Should we remove this section?}
 
 Regardless of expressivity, any \posthoc explanation has to explain \emph{pre-existing} clusters of almost arbitrary complexity.
 Colloquially speaking, that is because the clustering algorithm does not know that we want explainability.
@@ -374,7 +375,7 @@ How can we make clustering aware of the explainability of its result?
 An important aspect of \rto is the question of how to incorporate explanations into clustering as a \joint problem.
 For classical $k$-means, for example, one obvious objective $\arg\;\min_{e, w, c} \sum_j \sum_i P_{ki}(e) w_{ki} \| x_i - c_j \|$ augments the $k$-means objective with a probability or weight $P_{ki}$ that our explanation $e$ concludes that data point $x_i$ is in cluster $j$. 
 In case that $E$ is an oblique decision tree, for example, the probability $P_{ki}$ stems from a sequence of hyperplane-derived probabilities.
-We hope to explore the cost that joining explanations with clustering would inflicts on the clustering performance, computational complexity, and explainability of the results.
+We hope to explore the cost that joining explanations with clustering would inflict on the clustering performance, computational complexity, and explainability of the results.
 
 % \note{
 
