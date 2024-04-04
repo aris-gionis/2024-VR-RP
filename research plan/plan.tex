@@ -206,10 +206,28 @@ Recent developments include Shapley values via SHapley Additive exPlanations (SH
 However, they do not exactly describe the mechanisms that ultimately lead to a cluster assignment, 
 thus leaving room for subjective interpretability.
 
-A subset of research on \textbf{explainable clustering} methods aims to identify the reasons behind a clustering through a set of simple feature-based decisions that almost mechanistically leads to the cluster. 
-Considerable attention has been given to explaining clusters with decision trees, 
-in which explanations are sequences of simple yes-no questions based on the data features,
-such as \texttt{if} $0 \leq x \leq 2$ \texttt{then} test left branch \texttt{else} test right branch \texttt{end}, that lead to a cluster in a leaf of the decision tree.  
+Considerable attention has been given to \textbf{explaining clusters} with decision trees, including explaining using similarity-based prototypes for each cluster \cite{carrizosa2022}, or by fitting oblique trees to describe clusters \cite{gabidolla2022}.
+Rece propose enhancements to the original IMM algorithm \cite{moshkovitz2020}. 
+
+% In the seminal work \citet{moshkovitz2020} explained $k$-means and $k$-median with axis-aligned decision trees and derived a worst-case approximaton gauarantee, coined by the name price of explainability, which has been inspired by the price of interpretability \cite{bersimas2019} for axis-aligned decision tree classification. 
+% The recent surge in research on explainable clustering can be traced back to
+In the seminal work by \citet{moshkovitz2020}, the authors explained $k$-means and $k$-medians with axis-aligned decision trees using the IIM algorithm and derived a worst-case approximation guarantee, termed as ``price of explainability'', inspired by the ``price of interpretability'' \cite{bersimas2019} for axis-aligned decision tree classification. 
+Recent developments focus on improving worst-case bounds on explainability for $k$-means, by using random threshold cuts for axis-aligned decisions \cite{makarychev2022, esfandiari2022, makarychev2023}. 
+The best known upper bound on the price of explainability for $k$-means is $O(k \log \log k)$ \cite{gupta2023}, with a known lower bound of $\Omega(k)$ \cite{gamlath2021}.
+As narrow the gap already is, it can further be improved for low dimensional problems \cite{laber2021, charikar2022}. 
+Aiming for a slight generalization, the restriction that decision trees have to have $k$ leaves has been removed, improving the worst-case guarantees \cite{makarychev2022} and practical performance \cite{frost2020}. 
+Now free of this restriction trees can grow larger.
+As this inhibits interpretability, \citet{laber2023} explores shallow decision trees for explainable clustering, while \citet{deng2023} demonstrate that shallow trees for explainable $k$-means and $k$-medians is impossible to achieve in general. 
+% There is research for $k$-centers \cite{laber2021} or clustering under $\|\cdot\|_p$-norms \cite{gamlath2021}. 
+Research on explaining kernel $k$-means has only recently been started, showing that axis-aligned trees lead to approximation guarantees for a limited set of interpretable kernels, while they discovered an \emph{unbounded} ``price of explainability'' for explaining the widely-used quadratic kernel \cite{fleissner2024}.
+Other research on explainable clustering employ combinatorial optimization to describe polyhedral descriptions of the boundaries of clusters \cite{lawless2023}. 
+Research has been focussed on explaining (mostly) $k$-means clusters with (mostly) axis-aligned trees. 
+Research on more expressive explanation like oblique decision trees or `complex' clustering like kernel $k$-means is still in its infancy.
+
+% A subset of research on \textbf{explainable clustering} methods aims to identify the reasons behind a clustering through a set of simple feature-based decisions that almost mechanistically leads to the cluster. 
+% Considerable attention has been given to explaining clusters with decision trees, 
+% in which explanations are sequences of simple yes-no questions based on the data features,
+% such as \texttt{if} $0 \leq x \leq 2$ \texttt{then} test left branch \texttt{else} test right branch \texttt{end}, that lead to a cluster in a leaf of the decision tree.  
 \textcolor{red}{Recent advancements have improved the theoretically attainable worst-case quality~\cite{todo,todo,todo} under axis-aligned decisions or improving interpretability by integrating decision trees directly into the clustering algorithm~\cite{}. 
 However, it has been demonstrated that concise explanations with small decision trees are generally unattainable if data complexity increases, 
 thereby necessitating explanations in terms of on more powerful models like oblique decision trees \cite{} or kernelized features spaces \cite{}.
@@ -327,10 +345,10 @@ How can we explain clusters with sets of specific features with particularly obs
 
 A broadly-used \posthoc approach in explaining \emph{pre-existing} $k$-means clusters uses axis-aligned decision trees. 
 That is, to attribute data to clusters, we only have to mechanistically answer a sequence of yes-no questions that have been algorithmically derived from data features, thereby describing clusters with easily understandable and inherently interpretable axis-aligned rules (cuts), such as \texttt{if} $x_i \in [\textnormal{lb}, \textnormal{ub}]$ \texttt{then} proceed with left subtree \texttt{else} proceed with right subtree \texttt{end} until a cluster at a leaf is reached.
-Reaching clusters by means of such an interpretable model has approximation cost, which is called the prize of explainability.
-Central to our research is the question of how large the prize to pay becomes, i.e., what is the worst-case-achievable approximation guarantee of expressing a clustering in terms of a specific interpretable machine learning model. 
+Reaching clusters by means of such an interpretable model has approximation cost, which is called the price of explainability.
+Central to our research is the question of how large the price to pay becomes, i.e., what is the worst-case-achievable approximation guarantee of expressing a clustering in terms of a specific interpretable machine learning model. 
 
-Although the prize for explaining $k$-means with axis-aligned decision tree might be low~\cite{}, a recent investigation~\cite{} shows that the cost lies in the size of the tree.
+Although the price for explaining $k$-means with axis-aligned decision tree might be low~\cite{}, a recent investigation~\cite{} shows that the cost lies in the size of the tree.
 Simply put, a precise explanation requires large trees.
 The larger the clustering complexity, the larger the explanations, thereby shrinking interpretability to a point where the benefits of having an explanation over analyzing raw data diminishes.
 The bottom line is: there is more to explainability than guaranteeing a clustering quality under interpretable rules.
@@ -348,14 +366,14 @@ In the context of hyperplanes $a_i^{\!\top} x^{\vphantom{\top}}_{\vphantom{i}} +
 
 An alternative approach is to go beyond decision trees to explore other models capable of explaining clusters. 
 Machine learning models such as Bayesian decision rules~\cite{}, cascading rule lists~\cite{}, and generalized linear models~\cite{} are prime candidates to explore, given their widespread adoption and inherent interpretability. 
-One concrete goal is study how we can explain clusters with concise decision rule lists~\cite{}, of the form \texttt{if} $\bigwedge_i \llbracket x_i \in [\textnormal{lb}, \textnormal{ub}] \rrbracket$ \texttt{then} cluster$_a$ \texttt{else} proceed to the next rule \texttt{end}. 
+One concrete goal is study how we can explain clusters with concise decision rule lists~\cite{} of the form \texttt{if} $\bigwedge_i \llbracket x_i \in [\textnormal{lb}, \textnormal{ub}] \rrbracket$ \texttt{then} cluster$_a$ \texttt{else} proceed with the next rule \texttt{end}. 
 Exploiting the additional modeling flexibility, we specifically aim to investigate explainable clustering for \emph{knowledge-seeking applications}, where an under-researched problem is that (rule-based) explanations often repeat already-known most-salient signals, thus failing to convey knowledge.
 For example, if the algorithm accurately explains a cluster `\texttt{\small ClimateCrisis}' in terms of a high concentration of `\texttt{\small CO\textsubscript{2}}', it would fail to tell us about `\texttt{\small methane}'; or if we explain `\texttt{\small Diabetes}' with a highly-expressed but known-to-be-relevant gene `\texttt{\small TCF7L2}', it might hide an almost equally relevant `\texttt{\small ZNT8}'.  
 As the algorithm does not know in advance which explanations are most informative to the user, we aim to provide sets of explanations that offer \emph{diverse perspectives} on the clustering.
 In the context of rule sets $\mathcal{R} = \{r_1, \dots, r_n\}$, we seek to explain a clustering $Y$ of data points $X = \{x_1, \dots, x_n\}$ by minimizing the loss between explained clustering and the estimated clustering $\ell(\mathcal{R}) + \lambda \operatorname{d}(\mathcal{R})$ penalized by the rule diversity $d$~\cite{}.
 \ag{Do you want to include more details, e.g., about \textsc{MaxSum} diversification?}
 So far, diverse explanations for clustering is an understudied subject, and quality, conciseness, and empirical performance are unknown. 
-We aspire to change this by studying the theoretical underpinning, the prize of diversity for explainability clustering, its practical implication on clustering accuracy, and the ability to convey knowledge. 
+We aspire to change this by studying the theoretical underpinning, the price of diversity for explainability clustering, its practical implication on clustering accuracy, and the ability to convey knowledge. 
 
 A core challenge of finding interpretable explanations is in judging the importance of data features per cluster.
 Having an importance measure allows us to explain clusters in terms of importance `spectra' such as $\{\slifI,\slifII,\slifIII\}$, thereby highlighting informative feature-values that are characteristic, contrastive, or common in clusters.
@@ -379,7 +397,7 @@ We hope to explore the cost that joining explanations with clustering would infl
 
 % \note{
 
-% Central to our research is the concept of the prize of explainability, as the worst-case achievable approximation guarantee of expressing a clustering in terms of a different interpretable machine learning model.
+% Central to our research is the concept of the price of explainability, as the worst-case achievable approximation guarantee of expressing a clustering in terms of a different interpretable machine learning model.
 
 % Given a clustering produced by any black-box clustering method, e.g., $k$-means,
 % provide explanations of the clustering using models that go beyond axis-aligned decision trees.
@@ -396,21 +414,22 @@ We hope to explore the cost that joining explanations with clustering would infl
 
 \subsection*{Research theme 2 (\rtw): \clusterings\ {\color{orange}[$\approx$1 page]} {\color{teal}(Sebastian)}}
 
-Most related recent research on explainable clustering has focussed on only classical $k$-means
+Most related recent research on explainable clustering has focussed on classical $k$-means
 thereby resulting in algorithms that approximate $k$-means clusters with axis-aligned decision trees.
 However, the classical $k$-means algorithm has limited applicability in practice, as it is often not flexible enough to handle complex datasets that contain complicated cluster shapes.
-So far, the prize of explainability in the context of other algorithms is understudied and questions such as ``how well axis-aligned decision trees could explain DBSCAN in the worst-case?'' or ``how well do oblique decision trees approximate spectral clustering or hierarchical clustering results?'', remain unanswered.
+So far, the price of explainability in the context of other algorithms is understudied and questions such as ``how well axis-aligned decision trees could explain DBSCAN in the worst case?'' or ``how well do oblique decision trees approximate spectral clustering or hierarchical clustering results?'', remain unanswered.
 Here, we go beyond classical $k$-means towards developing explaining clustering algorithms for complex clusters.
 
 Arguably one of the most inhibiting factors is $k$-means inability to exploit non-linearities in the relationship between data, which is often addressed by kernelized $k$-means algorithms.
 Explaining kernel $k$-means, however, poses significant challenges, as clusters are harder to cut with simple axis-aligned decision trees. 
-In fact, a very recent advancement has discovered that the worst-case prize of explaining quadratic-kernel based clustering with axis-aligned trees is theoretically unbounded~\cite{}. 
+In fact, a very recent advancement has discovered that the worst-case price of explaining quadratic-kernel-based clusterings with axis-aligned trees is \emph{theoretically unbounded}~\cite{}. 
 This raises some of our core challenges in \rtw:
 \textbf{(1)} Is there a different explainable clustering algorithm that achieves tighter bounds under kernels such as the quadratic kernel for example by incorporating explanations into the algorithm?;
+
 \textbf{(2)} What are inherently interpretable kernels for explainable clustering?;
 \textbf{(3)} How would more expressive explanation improve this bound (cf., \rto)?;
-\textbf{(4)} Going beyond worst-case analysis, what are the \emph{expected} or the \emph{lower bound} to the prize of explainability?; and
-\textbf{(5)} Can we judge approximation guarantees considering the geometries of explanations and clusterings?
+\textbf{(4)} Going beyond worst-case analysis, what are the \emph{expected} or the \emph{lower bound} to the price of explainability?; and
+\textbf{(5)} Can we align approximation guarantees to the geometries of explanations and clusterings?
 We plan to explore suitable transparent kernels $\langle \phi(x), \phi(y) \rangle$ that allows for attributing cluster-decisions to features, by identifying inherently-interpretable kernel feature maps $\phi(x)$. 
 \note{todo (\joint): it remains unclear how to join explanations with kernelized clustering.} 
 
