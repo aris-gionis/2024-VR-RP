@@ -18,7 +18,7 @@
 % The research plan shall be forward-looking and consist of a brief but complete description of the research task. It may cover a maximum of 10 page-numbered A4 pages in Arial, font size 11, single line spacing and 2.5 cm margins, including references and any images. The research plan must include the following headings and information, listed in the following order:
 % }
 
-\section{Purpose and aims {\color{orange}[$\approx$1.5 pages]} {\color{teal}(@Sebastian: please make a pass)}}
+\section{Purpose and aims}
 
 % \instructions{
 % State the overall purpose and specific aims of the research project.
@@ -168,7 +168,7 @@ as well as with other researchers in the international collaboration network of 
 We next discuss briefly the state of the art
 before presenting the proposed approach.
 
-\section{State of the art {\color{orange}[$\approx$1 page]} {\color{teal}(Sebastian)}}
+\section{State of the art {\color{orange}(@Sebastian: please fill in missing references)}}
 
 % \instructions{
 % Summarize briefly the current research frontier within the field or area covered by the project. State key references.
@@ -213,13 +213,14 @@ A different take on explainability or interpretability for clusterings moves awa
 % In the context of explainable clustering, measuring the feature importance falls into two categories:
 % \emph{unsupervised} if no clusters are given (\joint) and \emph{supervised} if clusters are given (\posthoc).
 
-\section{Significance and scientific novelty  {\color{orange}[$\approx$0.5 page]} {\color{teal}(Aris)}}
+
+\section{Significance and scientific novelty {\color{teal}(Aris)}}
 
 \instructions{
 Describe briefly how the project relates to previous research within the area, and the impact the project may have in the short and long term. Describe also how the project moves forward or innovates the current research frontier.
 }
 
-\section{Preliminary and previous results  {\color{orange}[$\approx$0.5 page]} {\color{teal}(@Sebastian: please make a pass)}}
+\section{Preliminary and previous results}
 
 % \instructions{
 % Describe briefly your own previous research and pilot studies within the research area that make it probable that the project will be feasible. If no preliminary results exist, please state this too. State also whether the project contributes further to research and scientific results from a grant awarded previously by the Swedish Research Council.
@@ -260,17 +261,17 @@ will be very relevant to the third research theme of this project.
 A member of the research team of the PI is postdoctoral researcher Sebastian Dalleiger, 
 who will contribute to this project by supervising the recruited PhD student.
 Dr.\ Dalleiger has expertise on many aspects of theoretical machine learning, 
-including highly relevant work on \emph{explainable data decompositions}~\cite{dalleiger2020explainable},
-statistically \emph{significant feature interactions}~\cite{}, or
-\emph{matrix factorization}~\cite{}.
+including highly relevant work on \emph{explainable data decompositions}~\cite{dalleiger2020explainable}
+statistically \emph{significant feature interactions}~\cite{XXX}, 
+or \emph{matrix factorization}~\cite{dalleiger2022efficiently}.
 
-\section{Project description {\color{orange}[$\approx$5 pages]}}
+\section{Project description}
 
 \instructions{
 Describe the project design under the following headings:
 }
 
-\subsection{Theory and methods {\color{orange}[$\approx$3-4 pages]} {\color{teal}(Sebastian)}}
+\subsection{Theory and methods {\color{teal}(Sebastian)}}
 
 \instructions{
 Describe the underlying theory and the methods to be applied in order to reach the project goal.
@@ -315,21 +316,39 @@ The two paradigms, \posthoc\ and \joint, are present in all three of our researc
 When discussing different explainable-clustering approaches 
 we specify the paradigm for a specific approach.
 
-\subsection*{Research theme 1 (\rto): \newmodels\ {\color{orange}[$\approx$1 page]} {\color{teal}(Sebastian)}}
-At the core of many research problems not only lies the task of discovering clusters in data but also 
-the question of which mechanisms are responsible for clusters.
-We not only want to know that there are clusters but also why there are clusters, what are their characteristics, and how to tell them apart.  
-A scientist, for example, needs to determine those factors that tell-apart high-risk clusters from low-risk clusters or seeks to highlight those characteristics that are specific for a disease cluster.  
-How can we explain clusters with sets of specific features with particularly observed values?
+\subsection*{Research theme 1 (\rto): \newmodels\ {\color{orange}(@Sebastian: please fill in missing references)}}
 
-A broadly-used \posthoc approach in explaining \emph{pre-existing} $k$-means clusters uses axis-aligned decision trees. 
-That is, to attribute data to clusters, we only have to mechanistically answer a sequence of yes-no questions that have been algorithmically derived from data features, thereby describing clusters with easily understandable and inherently interpretable axis-aligned rules (cuts), such as \texttt{if} $x_i \in [\textnormal{lb}, \textnormal{ub}]$ \texttt{then} proceed with left subtree \texttt{else} proceed with right subtree \texttt{end} until a cluster at a leaf is reached.
-Reaching clusters by means of such an interpretable model has approximation cost, which is called the price of explainability.
-Central to our research is the question of how large the price to pay becomes, i.e., what is the worst-case-achievable approximation guarantee of expressing a clustering in terms of a specific interpretable machine learning model. 
+At the core of many data-analysis questions lies the task of discovering clusters in data. 
+In many case we are interested not only in what are the prominent clusters, 
+but also which mechanisms are responsible for them,  
+what are their characteristics, and how to tell them apart.  
+A medical scientist, for example, may want to determine the factors that tell apart 
+high-risk from low-risk clusters, 
+or may seek to highlight the characteristics that are specific to a disease cluster.  
+% How can we explain clusters with sets of specific features with particularly observed values?
 
-Although the price for explaining $k$-means with axis-aligned decision tree might be low~\cite{}, a recent investigation~\cite{} shows that the cost lies in the size of the tree.
+A broadly-used \posthoc approach in explaining \emph{pre-existing} $k$-means clusters uses 
+\emph{axis-aligned decision trees}. 
+That is, to attribute data to clusters, 
+we only have to mechanistically answer a sequence of yes-no questions, 
+which have been algorithmically derived from data features, 
+thereby describing clusters with easily understandable and inherently interpretable axis-aligned rules (cuts), 
+such as 
+``\texttt{if} $x_i \in [\textnormal{lb}, \textnormal{ub}]$ \texttt{then} 
+proceed with left subtree \texttt{else} proceed with right subtree \texttt{end} until a cluster at a leaf is reached.''
+Reaching clusters by means of such an interpretable model incurs 
+a cost in addition to the original $k$-means clustering cost, 
+which is called \emph{the price of explainability}.
+Central to our research is the question of how large the price to pay becomes, i.e., 
+what is the worst-case achievable approximation guarantee of expressing a clustering 
+in terms of a specific interpretable machine-learning model. 
+
+Although the price for explaining $k$-means with axis-aligned decision tree might be low~\cite{XXX}, 
+a recent investigation~\cite{XXX} shows that the cost lies in the size of the tree.
 Simply put, a precise explanation requires large trees.
-The larger the clustering complexity, the larger the explanations, thereby shrinking interpretability to a point where the benefits of having an explanation over analyzing raw data diminishes.
+The larger the clustering complexity, the larger the explanations, thereby 
+% shrinking interpretability to a point where 
+the benefits of having an explanation over analyzing raw data diminishes.
 The bottom line is: there is more to explainability than guaranteeing a clustering quality under interpretable rules.
 A core challenge of explainable clustering is to identify how to properly quantify explainability,
 what are good explanations, and how well do they address real-world circumstances in theory and practice.
@@ -338,32 +357,50 @@ by advancing decision trees, exploring rule-based explanations, and by investiga
 
 First, we plan to explore advanced decision tree models with more expressive individual decision function per node, aiming to guarantee concise explanations even when considering complex data.
 The principle is simple: the more expressive individual decision functions are, the fewer decisions we need to make. 
-One avenue leads to oblique decision trees, whose decision functions generalize simple axis-aligned decision-making to hyperplane-based decision-making, akin to $a_i^{\!\top} x^{\vphantom{\top}}_{\vphantom{i}} + b_i$. % < 0
+One avenue leads to oblique decision trees, whose decision functions generalize simple axis-aligned decision-making to hyperplane-based decision-making, akin to $\mathbf{a}_i^{\!\top} \mathbf{x}^{\vphantom{\top}}_{\vphantom{i}} + b_i$. % < 0
 The danger of employing expressive decision functions, however, lies in the increased complexity of each individual decisions functions, thus negatively impacting individual interpretability.
 Therefore, a core challenge of this research theme is the question of how to find expressive functions that balance individual interpretability, overall explainability, and accuracy.
-In the context of hyperplanes $a_i^{\!\top} x^{\vphantom{\top}}_{\vphantom{i}} + b_i < c_i$, for example, we seek to reduce the complexity of individual hyperplanes using non-negativity constraints $a \in \mathbb{R}^m_{\geq 0}$ and sparsity \emph{constraints} $\|a\|_0 \leq q$, by employing combinatorial optimization techniques for small problems or (greedy) subspace algorithms such as orthogonal matching pursuit, sequential lasso, or top-$q$ important feature forward selection for large problems.
+In the context of hyperplanes $\mathbf{a}_i^{\!\top} \mathbf{x}^{\vphantom{\top}}_{\vphantom{i}} + b_i < c_i$, for example, we seek to reduce the complexity of individual hyperplanes using non-negativity constraints $\mathbf{a} \in \mathbb{R}^m_{\geq 0}$ and sparsity \emph{constraints} $\|\mathbf{a}\|_0 \leq q$, by employing combinatorial optimization techniques for small problems or (greedy) subspace algorithms such as orthogonal matching pursuit, sequential lasso, or top-$q$ important feature forward selection for large problems.
 
 An alternative approach is to go beyond decision trees to explore other models capable of explaining clusters. 
-Machine learning models such as Bayesian decision rules~\cite{}, cascading rule lists~\cite{}, and generalized linear models~\cite{} are prime candidates to explore, given their widespread adoption and inherent interpretability. 
-One concrete goal is study how we can explain clusters with concise decision rule lists~\cite{} of the form \texttt{if} $\bigwedge_i \llbracket x_i \in [\textnormal{lb}, \textnormal{ub}] \rrbracket$ \texttt{then} cluster$_a$ \texttt{else} proceed with the next rule \texttt{end}. 
-Exploiting the additional modeling flexibility, we specifically aim to investigate explainable clustering for \emph{knowledge-seeking applications}, where an under-researched problem is that (rule-based) explanations often repeat already-known most-salient signals, thus failing to convey knowledge.
-For example, if the algorithm accurately explains a cluster `\texttt{\small ClimateCrisis}' in terms of a high concentration of `\texttt{\small CO\textsubscript{2}}', it would fail to tell us about `\texttt{\small methane}'; or if we explain `\texttt{\small Diabetes}' with a highly-expressed but known-to-be-relevant gene `\texttt{\small TCF7L2}', it might hide an almost equally relevant `\texttt{\small ZNT8}'.  
-As the algorithm does not know in advance which explanations are most informative to the user, we aim to provide sets of explanations that offer \emph{diverse perspectives} on the clustering.
-In the context of rule sets $\mathcal{R} = \{r_1, \dots, r_n\}$, we seek to explain a clustering $Y$ of data points $X = \{x_1, \dots, x_n\}$ by minimizing the loss between explained clustering and the estimated clustering $\ell(\mathcal{R}) + \lambda \operatorname{d}(\mathcal{R})$ penalized by the rule diversity $d$~\cite{}.
-\ag{Do you want to include more details, e.g., about \textsc{MaxSum} diversification?}
+Machine-learning models such as Bayesian decision rules, cascading rule lists, and generalized linear models 
+are prime candidates to explore, given their widespread adoption and inherent interpretability. 
+One concrete goal is to study how we can explain clusters with concise decision rule lists 
+of the form ``\texttt{if} $\bigwedge_i \llbracket x_i \in [\textnormal{lb}, \textnormal{ub}] \rrbracket$ 
+\texttt{then} cluster$_a$ \texttt{else} proceed with the next rule \texttt{end}.'' 
+By exploiting the additional modeling flexibility, 
+we specifically aim to investigate explainable clustering for \emph{knowledge-seeking applications}, 
+where an under-researched problem is that (rule-based) explanations 
+often repeat already-known salient signals, thus failing to convey new knowledge.
+For example, 
+% if the algorithm accurately explains a cluster `\texttt{\small ClimateCrisis}' in terms of a high concentration of `\texttt{\small CO\textsubscript{2}}', it would fail to tell us about `\texttt{\small methane}'; or 
+an explanation of `\texttt{\small Diabetes}' with a highly-expressed 
+but known-to-be-relevant gene `\texttt{\small TCF7L2}', 
+might hide an almost equally relevant gene `\texttt{\small ZNT8}'.  
+As the algorithm does not know in advance which explanations are most informative to the user, 
+we aim to provide sets of explanations that offer \emph{diverse perspectives} on the clustering.
+In the context of rule sets $\mathcal{R} = \{r_1, \dots, r_n\}$, 
+we seek to explain a clustering $Y$ of data points $X$ 
+by minimizing the loss $\ell(\mathcal{R},Y;X)$ between explained clustering and the estimated clustering 
+penalized by the rule diversity~$d(\mathcal{R})$, 
+that is, minimizing $\ell(\mathcal{R},Y;X) + \lambda \operatorname{d}(\mathcal{R})$~\cite{zhang2020diverse}.
+% \ag{Do you want to include more details, e.g., about \textsc{MaxSum} diversification?}
 So far, diverse explanations for clustering is an understudied subject, and quality, conciseness, and empirical performance are unknown. 
-We aspire to change this by studying the theoretical underpinning, the price of diversity for explainability clustering, its practical implication on clustering accuracy, and the ability to convey knowledge. 
+We aspire to change this by studying the theoretical underpinning, the price of diversity for explainability clustering, its practical implication on clustering accuracy, and the ability to acquire new knowledge. 
 
-A core challenge of finding interpretable explanations is in judging the importance of data features per cluster.
+A major challenge of finding interpretable explanations is in judging the importance of data features per cluster.
 Having an importance measure allows us to explain clusters in terms of importance `spectra' such as $\{\slifI,\slifII,\slifIII\}$, thereby highlighting informative feature-values that are characteristic, contrastive, or common in clusters.
 % In this example, we notice that feature $1$ and $2$ are significantly more important to cluster $b$ than $a$ or $c$.
-Although importance measures such as Shapely values~\cite{} or impurity~\cite{} typically consider features independently, in reality, features often interact with each other.
-We hypothesize that features interact differently per cluster and that differences in those interactions are relevant reasons for specific clusters, as evidenced in our prior work~\cite{}.
+Although importance measures such as Shapely values or impurity typically consider features independently, 
+in reality, features often interact with each other.
+We hypothesize that features interact differently per cluster and that differences in those interactions are relevant reasons for specific clusters, as evidenced in our prior work~\cite{XXX}.
 
 We plan to investigate novel higher-order importance measures to highlight the characteristics or contrastive per-cluster feature-interactions, leveraging ideas from information theory, statistics, and statistical learning.
 However, research on the importance of higher-order feature interactions for data clusters is still lacking, 
 as this poses significant algorithmic and statistical challenges, by involving exponentially many potential interactions for which non-linear or multi-variate analytics is necessary to compute importance.  
 We plan to explore novel measures to judge the importance of higher-order feature interactions, leveraging ideas from information theory, statistics, and statistical learning, thus highlighting sets of important feature-interactions that are relevant for clusters.
+
+\iffalse
 \note{Solution details? Should we remove this section?}
 
 Regardless of expressivity, any \posthoc explanation has to explain \emph{pre-existing} clusters of almost arbitrary complexity.
@@ -373,6 +410,7 @@ An important aspect of \rto is the question of how to incorporate explanations i
 For classical $k$-means, for example, one obvious objective $\arg\;\min_{e, w, c} \sum_j \sum_i P_{ki}(e) w_{ki} \| x_i - c_j \|$ augments the $k$-means objective with a probability or weight $P_{ki}$ that our explanation $e$ concludes that data point $x_i$ is in cluster $j$. 
 In case that $E$ is an oblique decision tree, for example, the probability $P_{ki}$ stems from a sequence of hyperplane-derived probabilities.
 We hope to explore the cost that joining explanations with clustering would inflict on the clustering performance, computational complexity, and explainability of the results.
+\fi 
 
 % \note{
 
@@ -391,7 +429,7 @@ We hope to explore the cost that joining explanations with clustering would infl
 % Ensuring that our methods, will provide quality guarantees for the novel models
 % we will introduce is a major challenge for this research theme.
 
-\subsection*{Research theme 2 (\rtw): \clusterings\ {\color{orange}[$\approx$1 page]} {\color{teal}(Sebastian)}}
+\subsection*{Research theme 2 (\rtw): \clusterings\ {\color{teal}(Sebastian)}}
 
 Most related recent research on explainable clustering has focussed on classical $k$-means
 thereby resulting in algorithms that approximate $k$-means clusters with axis-aligned decision trees.
@@ -460,7 +498,7 @@ We additionally plan to investigate approximation guarantees for complex kernel 
 % due to the fact that providing explanations for clusterings that go beyond centroid-based methods
 % will require working with novel models.
 
-\subsection*{Research theme 3 (\rth): \covariates\ {\color{orange}[$\approx$1 page]} {\color{teal}(@Sebastian: please make a pass)}}
+\subsection*{Research theme 3 (\rth): \covariates}
 
 In many application scenarios data can be represented in different ways: 
 Most often, data can be represented in a vector space
@@ -572,7 +610,7 @@ explainable communities in networks.
 The PI has relevant experience of developing methods for finding labeled-induced
 (and thus, explainable) densest subgraphs in networks~\cite{galbrun2014overlapping,galbrun2016top}.
 
-\subsection{Time plan and implementation {\color{orange}[$\approx$0.75-1 page]} {\color{teal}(Aris)}}
+\subsection{Time plan and implementation}
 
 % \instructions{
 % Describe summarily the time plan for the project during the grant period, and how the project will be implemented. Describe also any crucial risks or obstacles that may impact on the implementation, and your plan for managing these.
@@ -650,13 +688,13 @@ which will provide further incentive for recruitment and opportunities
 for network and collaborations during the project.
 
 
-\subsection{Project organization {\color{orange}[$\approx$0.5 page]} {\color{teal}(Aris)}}
+\subsection{Project organization}
 
 % \instructions{
 % Clarify how you and any participating researchers will contribute to the implementation of the project. Explain in particular how the time allocated by you (that is, your activity level) as project leader is suitable for the task, including the relationship with your other research undertakings. Describe and explain the competences and roles of the participating researchers in the project, and also other key persons (including any doctoral students) who are important for the implementation of the project.
 % }
 
-The PI will devote 10\% of his time in the project. 
+The PI will devote 11\% of his time in the project. 
 He will supervise the doctoral student and two postdocs, 
 be responsible for scientific lead, 
 and will allocate time to work on mathematical and algorithmic problems.
@@ -685,7 +723,7 @@ Currently the PI supervises 6 doctoral students and the gender ratio is 3:3.
 % Describe the basic equipment you and your team have at your disposal for the project.
 % }
 
-\section{Equipment and need for research infrastructure {\color{orange}[$\approx$0.2 page]} {\color{teal}(Aris)}}
+\section{Equipment and need for research infrastructure}
 
 % \instructions{
 % Specify the project’s need for international and national research infrastructure. If you choose to use other infrastructure than those supported by the Swedish Research Council External link.and that are thereby open to all, you must justify this (also applies to local research infrastructure).
@@ -700,7 +738,7 @@ The team has also access to the Berzelius supercomputer,
 available to WASP-affiliated faculty, 
 which is among the world's 100 fastest AI supercomputers.
 
-\section{International and national collaboration {\color{orange}[$\approx$0.2 page]} {\color{teal}(Aris)}}
+\section{International and national collaboration}
 
 % \instructions{
 % Describe your own and the team’s collaboration with foreign and Swedish researchers and research teams. State whether you contribute to or refer to international collaboration in your research.
@@ -720,12 +758,16 @@ We will seek to strengthen and further expand this collaboration network.
 We will encourage the research team to be actively involved in national and international collaborations
 and make research visits and internships in other institutes.
 
-\section{Independent line of research {\color{orange}[$\approx$0.2 page]} {\color{teal}(Aris)}}
+\section{Independent line of research}
 
-\instructions{
-If you are working or will be working in a larger group, please clarify how your project relates to the other projects in the group. If you are (continuing) working in the same team as your doctoral or postdoc supervisor, or if you are continuing a project that wholly or partly started during your doctoral or postdoc studies, you must also describe the relationship between your project and the research of your former supervisor.
-}
+% \instructions{
+% If you are working or will be working in a larger group, please clarify how your project relates to the other projects in the group. If you are (continuing) working in the same team as your doctoral or postdoc supervisor, or if you are continuing a project that wholly or partly started during your doctoral or postdoc studies, you must also describe the relationship between your project and the research of your former supervisor.
+% }
 
+This is a new line of research in our group. 
+We have recently worked on data clustering~\cite{spoerhase2023constant,thejaswi2021diversity}
+and on explainable supervised-learning~\cite{ciaperoni2023concise,zhang2020diverse,zhang2023regularized}, 
+but research in explainable unspuervised learning is novel.
 
 
 {\small
