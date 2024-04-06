@@ -175,32 +175,65 @@ before presenting the proposed approach.
 % }
 
 Algorithmically grouping similar data points has a long research history,
-yielding traditional methods (such as $k$-means~\cite{macqueen1967some}, DBSCAN~\cite{ester1996ada}, or Spectral Clustering~\cite{ng2001Ospectral}).
-Methods to enhance cluster interpretability have long been focussed on subspace clustering (such as $k$-SVD~\cite{rubinstein2010dict}), feature importance measures (such as via Shapley values \cite{lundberg2017unified}), or dimensionality reduction techniques (such as t-SNE~\cite{hinton2002tsne}, UMAP~\cite{mcinnes2018umap}, or NMF~\cite{lee2000algorithms}).
+yielding traditional methods, 
+such as $k$-means~\cite{macqueen1967some}, 
+DBSCAN~\cite{ester1996ada}, or spectral clustering~\cite{ng2001spectral}.
+Methods to enhance cluster interpretability have long been focused on subspace clustering~\cite{rubinstein2010dict}, 
+% (such as $k$-SVD~\cite{rubinstein2010dict}), 
+feature importance measures, such as Shapley values \cite{lundberg2017unified}, 
+or dimensionality-reduction techniques~\cite{hinton2002tsne,lee2000algorithms,mcinnes2018umap}.
+% (such as $t$-SNE~\cite{hinton2002tsne}, UMAP~\cite{mcinnes2018umap}, or NMF~\cite{lee2000algorithms}).
 From the sprawling explainable machine-learning research, the area of explainable or interpretable clustering has emerged, aiming to rationalize the underlying reasons for clusters. 
 Our proposed research may be seen as being situated in this dynamic and active research area, whose state-of-the-art we will sketch in the following. 
 
-Considerable attention has been given to \textbf{explaining clusters} with decision trees, including explaining using similarity-based prototypes for each cluster \cite{carrizosa2022interpreting}, or by fitting oblique trees to describe clusters \cite{gabidolla2022optimal}.
-In the seminal work by \citet{moshkovitz2020explainable}, the authors explained $k$-means and $k$-medians with axis-aligned decision trees using the IIM algorithm and derived a worst-case approximation guarantee, termed as ``price of explainability'', inspired by the ``price of interpretability'' \cite{bertsimas2019price} for axis-aligned decision tree classification. 
-Recent developments focus on improving worst-case bounds on explainability for $k$-means, by using random threshold cuts for axis-aligned decisions \cite{makarychev2022explainable, esfandiari2022almost, makarychev2023random}. 
-The best known upper bound on the price of explainability for $k$-means is $O(k \log \log k)$ \cite{gupta2023price}, with a known lower bound of $\Omega(k)$ \cite{gamlath2021explainable}.
+Considerable attention has been given to \emph{explaining clusters} with decision trees, 
+including explaining using similarity-based prototypes for each cluster \cite{carrizosa2022interpreting}, 
+or by fitting oblique trees to describe clusters \cite{gabidolla2022optimal}.
+In the seminal work, Moshkovitz et al.~\cite{moshkovitz2020explainable} 
+explain $k$-means and $k$-medians with axis-aligned decision trees, 
+deriving a worst-case approximation guarantee, termed as ``price of explainability,'' 
+inspired by the ``price of interpretability'' \cite{bertsimas2019price} for axis-aligned decision tree classification. 
+Recent developments focus on improving worst-case bounds on explainability for $k$-means, 
+by using random threshold cuts for axis-aligned decisions 
+\cite{makarychev2022explainable, esfandiari2022almost, makarychev2023random}. 
+The best known upper bound on the price of explainability for $k$-means is 
+$\mathcal{O}(k \log \log k)$ \cite{gupta2023price}, 
+with a known lower bound of $\Omega(k)$ \cite{gamlath2021explainable}.
 
-As narrow the gap already is, it can further be improved for low dimensional problems \cite{laber2021price, charikar2022near}. 
-Aiming for a slight generalization, the restriction that decision trees have to have $k$ leaves has been removed, improving the worst-case guarantees \cite{makarychev2022explainable} and practical performance \cite{frost2020exkmc}. 
+As narrow the gap already is, 
+it can further be improved for low-dimensional problems \cite{charikar2022near,laber2021price}. 
+Aiming for a slight generalization, the restriction that decision trees have to have $k$ leaves has been removed, improving the worst-case guarantees \cite{makarychev2022explainable} and 
+showing good performance in practice \cite{frost2020exkmc}. 
 Now free of this restriction trees can grow larger.
-As this inhibits interpretability, \citet{laber2023nearly} explores shallow decision trees for explainable clustering, while \citet{deng2023impossibility} demonstrate that shallow trees for explainable $k$-means and $k$-medians is impossible to achieve in general. 
-Further research includes explainability for $k$-centers \cite{laber2021} or explainable clustering under $\|\cdot\|_p$-norms \cite{gamlath2021explainable}. 
-Research on explaining kernel $k$-means has only recently been started, showing that axis-aligned trees lead to approximation guarantees for a limited set of interpretable kernels, while they discovered an \emph{unbounded} ``price of explainability'' for explaining the widely-used quadratic kernel \cite{fleissner2024explaining}.
+As such growth inhibits interpretability, 
+Laber et al.~\cite{laber2023nearly} explore shallow decision trees for explainable clustering, 
+while Deng et al.~\cite{deng2023impossibility} demonstrate 
+that shallow trees for explainable $k$-means and $k$-medians is impossible to achieve in general. 
+Further research includes explainability for $k$-centers~\cite{laber2021price} or 
+explainable clustering under $\|\cdot\|_p$-norms \cite{gamlath2021explainable}. 
+Research on explaining kernel $k$-means has only recently been started, 
+showing that axis-aligned trees lead to approximation guarantees for a limited set of interpretable kernels, 
+while showing an \emph{unbounded} ``price of explainability'' 
+for explaining the widely-used quadratic kernel \cite{fleissner2024explaining}.
 
-Recent advancements focus on explaining (mostly) $k$-means clusters with (mostly) axis-aligned trees. 
-Research on more expressive explanation like oblique decision trees or `complex' clustering like kernel $k$-means is still in its infancy.
+In summary, recent advances focus on explaining (mostly) $k$-means clusters with (mostly) axis-aligned trees. 
+Research on more expressive explanation like oblique decision trees or complex clustering 
+like kernel $k$-means is still in its infancy.
 
-Closely related to our proposal is research in the area of \textbf{interpretable clustering},
-seeking to compute inherently interpretable clusters \emph{without} needing \posthoc explanations.
-Recent research has focussed on aiding clustering towards interpretable solutions by directly integrating decision tree explanations into the clustering algorithm,
-One approach leverages Mixed Integer Linear Programming to derive an interpretable tree-based clustering algorithm by approximating the globally-optimal solution~\cite{bertsimas2021interpretable}. 
-Also building on combinatorial optimization, a different approach increases the expressivity while decreasing interpretability, by leveraging soft decision trees~\cite{cohen2023interpretable} as a guide for $k$-means. 
-A different take on explainability or interpretability for clusterings moves away from explaining centroids or data points but describes clusters boundaries with polyhedra, again using combinatorial optimization~\cite{lawless2023polyhedral}. 
+Closely related to our proposal is research in the area of \emph{interpretable clustering},
+seeking to compute inherently interpretable clusters \emph{without} resorting to post-hoc explanations.
+Recent research has focused on aiding clustering towards interpretable solutions by directly integrating 
+decision-tree explanations into the clustering algorithm,
+One approach leverages \emph{mixed integer linear programming} 
+to derive an interpretable tree-based clustering algorithm 
+by approximating the globally-optimal solution~\cite{bertsimas2021interpretable}. 
+Also building on combinatorial optimization, a different approach increases the expressivity 
+while decreasing interpretability, 
+by leveraging soft decision trees~\cite{cohen2023interpretable} as a guide for $k$-means. 
+A different take on explainability or interpretability for clusterings 
+moves away from explaining centroids or data points 
+but describes clusters boundaries with polyhedra, 
+again using combinatorial optimization~\cite{lawless2023polyhedral}. 
 
 % Some clustering algorithms aim to find interpretability fro embeddings via \textbf{dimensionality reduction} algorithms such as nonnegative matrix factorization \cite{} or tensor decompositions \cite{}.    
 % Related to our research themes are inherently \textbf{interpretable machine learning} methods,
@@ -298,54 +331,78 @@ or \emph{matrix factorization}~\cite{dalleiger2022efficiently}.
 
 \section{Project description}
 
-\instructions{
-Describe the project design under the following headings:
-}
+%\instructions{
+%Describe the project design under the following headings:
+%}
 
-\subsection{Theory and methods {\color{teal}(Sebastian)}}
+\subsection{Theory and methods}
 
-\instructions{
-Describe the underlying theory and the methods to be applied in order to reach the project goal.
-}
+%\instructions{
+%Describe the underlying theory and the methods to be applied in order to reach the project goal.
+%}
 
 The project is structured along three {\em research themes}:
 
+\vspace{-2mm}
 \begin{description}
 \setlength{\itemsep}{-2pt}
 \item[\rto.~\newmodels\,:] 
+Explain clustering using a richer family of interpretable machine-learning models, 
+including oblique decision trees, Bayesian decision rules, cascading rule lists, and 
+generalized linear models. 
+Develop methods to finding interpretable cluster explanations 
+via highlighting the importance of features and the feature interactions for each cluster.
 
 \item[\rtw.~\clusterings\,:] 
+Develop methods to explain more complex clustering structure than centroid-based methods,
+for example, clustering that have resulted by kernel $k$-means or density-based formulations.
 
 \item[\rth.~\covariates\,:]
+Develop methods for obtaining high-quality clusterings of data 
+while using the covariate attributes for explaining the resulting clusterings. 
+In this theme we aim to minimize clustering cost, based on vector-based representations, 
+while achieving high expressivity and high specificity of the clusterings, 
+based on covariate attributes.
+
 \end{description}
 
+\vspace{-2mm}
 When considering different approaches for explainable clustering we distinguish between 
 two different computational paradigms. 
-\begin{description}
-\setlength{\itemsep}{-2pt}
-\item[\posthoc\,:]
+
+% \vspace{-2mm}
+% \begin{description}
+% \setlength{\itemsep}{-2pt}
+
+\smallskip
+% \noindent
+{\posthoc\,:}
 In the first paradigm, we assume that a clustering of the data is provided 
-from a \emph{black-box clustering method} and the problem objective is to design 
+by a \emph{black-box clustering method} and the problem objective is to design 
 a \emph{post-hoc} explanation of the input clustering.
-This task is similar to \emph{explainable machine learning}~\cite{}, 
+This task is similar to \emph{explainable machine learning}, 
 where one asks to develop post-hoc interpretable justifications for 
 \emph{black-box classification models}, such as neural networks. 
-The difference is \ldots 
-\item[\joint\,:]
-In the second paradigm, one is given as input a set of data points, 
-and the goal is to find an optimal clustering of the data
+
+\smallskip
+% \noindent
+{\joint\,:}
+In the second paradigm the goal is to find an optimal clustering of the data
 from a family of explainable clustering models.
 That is, one needs to \emph{cluster the data} and \emph{select the explainable clustering model}
-in a \emph{joint fashion}.
+in a \emph{joint manner}.
 In the general case, the clustering cost incurred by an inherently interpretable model 
 will be larger than the cost incurred by an optimal (but non-explainable) model, 
 so our goal will be to bound the cost of the interpretable model with respect to the optimal cost.
-\end{description}
+% \end{description}
 
+\smallskip
 Next we discuss in more detail the three research themes of \acronym.
-The two paradigms, \posthoc\ and \joint, are present in all three of our research themes.
-When discussing different explainable-clustering approaches 
-we specify the paradigm for a specific approach.
+We present formulations both in \posthoc\ and \joint paradigms.
+
+% The two paradigms, \posthoc\ and \joint, are present in all three of our research themes.
+% When discussing different explainable-clustering approaches 
+% we specify the paradigm for a specific approach.
 
 \subsection*{Research theme 1 (\rto): \newmodels}
 
@@ -821,13 +878,11 @@ and on explainable supervised-learning~\cite{ciaperoni2023concise,zhang2020diver
 but research in explainable unsupervised learning is novel.
 
 
-{\small
+{\footnotesize
 \setlength{\bibsep}{0pt}
 \bibliographystyle{abbrv}
 \bibliography{references}
 }
-
-{\color{orange}References 1 page maximum} 
 
 % \newpage
 % \input{rebound}
