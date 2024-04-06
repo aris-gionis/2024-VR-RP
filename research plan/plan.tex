@@ -177,7 +177,7 @@ before presenting the proposed approach.
 Algorithmically grouping similar data points has a long research history,
 yielding traditional methods (such as $k$-means~\cite{macqueen1967some}, DBSCAN~\cite{ester1996ada}, or Spectral Clustering~\cite{ng2001Ospectral}).
 Methods to enhance cluster interpretability have long been focussed on subspace clustering (such as $k$-SVD~\cite{rubinstein2010dict}), feature importance measures (such as via Shapley values \cite{}), or dimensionality reduction techniques (such as t-SNE~\cite{hinton2002tsne}, UMAP~\cite{mcinnes2018umap}, or NMF~\cite{lee2000algorithms}).
-From the sprawling explainable machine learning research, the area of explainable or interpretable clustering has emerged, aiming to rationalize the underlying reasons for clusters. 
+From the sprawling explainable machine-learning research, the area of explainable or interpretable clustering has emerged, aiming to rationalize the underlying reasons for clusters. 
 Our proposed research may be seen as being situated in this dynamic and active research area, whose state-of-the-art we will sketch in the following. 
 
 Considerable attention has been given to \textbf{explaining clusters} with decision trees, including explaining using similarity-based prototypes for each cluster \cite{carrizosa2022interpreting}, or by fitting oblique trees to describe clusters \cite{gabidolla2022optimal}.
@@ -214,7 +214,7 @@ A different take on explainability or interpretability for clusterings moves awa
 % \emph{unsupervised} if no clusters are given (\joint) and \emph{supervised} if clusters are given (\posthoc).
 
 
-\section{Significance and scientific novelty {\color{teal}(Aris)}}
+\section{Significance and scientific novelty}
 
 % \instructions{
 % Describe briefly how the project relates to previous research within the area, and the impact the project may have in the short and long term. Describe also how the project moves forward or innovates the current research frontier.
@@ -222,17 +222,34 @@ A different take on explainability or interpretability for clusterings moves awa
 
 \para{Significance.} Our project lies in the intersection of the areas of  
 algorithms design, knowledge discovery, and explainable machine learning.
+The problem domain we propose to study, 
+explainability in unsupervised machine learning and data clustering, 
+will enable scientists and practitioners in  different application areas to 
+make better sense of their data. 
+It will do so by not only allowing them to find meaningful clusters
+but also by helping the to understand the fundamental mechanisms in the creation of clusters, 
+the importance and contribution of features, and ways to explain the clusters
+with covariate attributes.
 
-XXX 
-
-Due to the fast development of machine learning algorithms and adoption of AI in a wide range of applications, 
-and the pressing need for transparent and explainable methods
-The topic of explainable machine learning has recently gained  importance
- While many of the themes have been studied previously in different contexts, in this project we will push forward the state of the art by studying diversity and fairness in new settings. Our methods will contribute to creating platforms that foster a more equitable and informed society, and mitigate the propagation of harmful biases online.
-
-\spara{Scientific novelty.} The project will make contributions in several different directions. First, we will design novel frameworks that model faithfully system entities and their interactions, while capturing notions of diversity and fairness and their inter-play with relevance. We will seek to establish a unified framework and common methodologies for studying diversity and fairness in the different settings. As it is common in fairness ML literature, we will rely on social-justice theories, such as distributive justice and equitable treatment of individuals, as well as in social-welfare objectives. In terms of methods, emphasis will be given to combinatorial algorithms, building on the previous work of the PI. In particular, we will consider techniques such as combinatorial optimization, optimization of submodular functions, local-search meth- ods, greedy algorithms, semidefinite-programming relaxations, and convex optimization. Finally, we will investigate novel approaches based on reinforcement learning and algorithms with predictions [23].
-
-
+\spara{Scientific novelty.} 
+The project will make contributions in several different directions. 
+The area of trustworthy, transparent, and explainable machine learning 
+has gained a lot of traction in recent years, but most of the attention
+has been given in the area of supervised machine learning. 
+The topic of explainability in unsupervised machine learning, 
+and in particular in data clustering, 
+is not completely unexplored, 
+but overall, the area is mostly at its infancy and 
+most of the works fall within a small number of frameworks. 
+Here we propose to significantly enlarge the scope of research in this particular domain, 
+and we propose many novel directions, 
+such as using other interpretable machine-learning models to explain a given clustering result, 
+providing explainability for complex, beyond centroid-based clustering, 
+and finding optimal clusterings in conjunction with short explanations using covariate attributes. 
+Our work will be foundational in nature, 
+focusing on methods that provide formal guarantees, 
+and leveraging ideas from combinatorial optimization, 
+information theory, probabilistic algorithms, and statistical learning theory.
 
 \section{Preliminary and previous results}
 
@@ -480,7 +497,7 @@ In a similar spirit is the idea of using multiple kernels in which clustering is
 
 One potential avenue towards explainable kernelized clustering involves inherently interpretable `surrogates'.
 That is, can we approximate potentially hardly-interpretable projections with simpler estimations.
-Inspired by interpretable machine learning, we like to explore explainable machine learning models that \emph{learn to predict how distant} data points are to another, leveraging research from explainable regression (e.g., via regression tree variants) and pairwise comparison problems.
+Inspired by interpretable machine learning, we like to explore explainable machine-learning models that \emph{learn to predict how distant} data points are to another, leveraging research from explainable regression (e.g., via regression tree variants) and pairwise comparison problems.
 In a similar vain, we are interested in approximating kernel feature maps with interpretable embeddings to. 
 A core challenge involves the definition, estimation, or learning of novel explainable surrogate functions or maps to achieve a distance measure allowing for complex clusters while being strictly interpretable.
 In the area of \emph{algorithms with predictions}, we then plan to derive an algorithm for explainable clustering with predicted distances, thereby building on the interpretability of the distance matrices.
