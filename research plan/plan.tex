@@ -327,7 +327,7 @@ two different computational paradigms.
 In the first paradigm, we assume that a clustering of the data is provided 
 from a \emph{black-box clustering method} and the problem objective is to design 
 a \emph{post-hoc} explanation of the input clustering.
-This task is similar to \emph{interpretable machine learning}~\cite{XXX}, 
+This task is similar to \emph{explainable machine learning}~\cite{}, 
 where one asks to develop post-hoc interpretable justifications for 
 \emph{black-box classification models}, such as neural networks. 
 The difference is \ldots 
@@ -337,9 +337,9 @@ and the goal is to find an optimal clustering of the data
 from a family of explainable clustering models.
 That is, one needs to \emph{cluster the data} and \emph{select the explainable clustering model}
 in a \emph{joint fashion}.
-In the general case, the clustering cost incurred by an explainable model 
+In the general case, the clustering cost incurred by an inherently interpretable model 
 will be larger than the cost incurred by an optimal (but non-explainable) model, 
-so our goal will be to bound the cost of the explainable model with respect to the optimal cost.
+so our goal will be to bound the cost of the interpretable model with respect to the optimal cost.
 \end{description}
 
 Next we discuss in more detail the three research themes of \acronym.
@@ -374,8 +374,8 @@ Central to our research is the question of how large the price to pay becomes, i
 what is the worst-case achievable approximation guarantee of expressing a clustering 
 in terms of a specific interpretable machine-learning model. 
 
-Although the price for explaining $k$-means with axis-aligned decision tree might be low~\cite{XXX}, 
-a recent investigation~\cite{XXX} shows that the cost lies in the size of the tree.
+Although the price for explaining $k$-means with axis-aligned decision tree might be low~\cite{gupta2023price}, 
+a recent investigation~\cite{deng2023impossibility} shows that the cost lies in the size of the tree.
 Simply put, a precise explanation requires large trees.
 The larger the clustering complexity, the larger the explanations, thereby 
 % shrinking interpretability to a point where 
@@ -424,7 +424,7 @@ Having an importance measure allows us to explain clusters in terms of importanc
 % In this example, we notice that feature $1$ and $2$ are significantly more important to cluster $b$ than $a$ or $c$.
 Although importance measures such as Shapely values or impurity typically consider features independently, 
 in reality, features often interact with each other.
-We hypothesize that features interact differently per cluster and that differences in those interactions are relevant reasons for specific clusters, as evidenced in our prior work~\cite{XXX}.
+We hypothesize that features interact differently per cluster and that differences in those interactions are relevant reasons for specific clusters, as evidenced in our prior work~\cite{dalleiger2020explainable}.
 
 We plan to investigate novel higher-order importance measures to highlight the characteristics or contrastive per-cluster feature-interactions, leveraging ideas from information theory, statistics, and statistical learning.
 However, research on the importance of higher-order feature interactions for data clusters is still lacking, 
@@ -470,7 +470,7 @@ Here, we go beyond classical $k$-means towards developing explaining clustering 
 
 Arguably one of the most inhibiting factors is $k$-means inability to exploit non-linearities in the relationship between data, which is often addressed by kernelized $k$-means algorithms.
 Explaining kernel $k$-means, however, poses significant challenges, as clusters are harder to cut with simple axis-aligned decision trees. 
-In fact, a very recent advancement has discovered that the worst-case price of explaining quadratic-kernel-based clusterings with axis-aligned trees is \emph{theoretically unbounded}~\cite{}, i.e., explanations can be arbitrarily bad. 
+In fact, a very recent advancement has discovered that the worst-case price of explaining quadratic-kernel-based clusterings with axis-aligned trees is \emph{theoretically unbounded}~\cite{fleissner2024explaining}, i.e., explanations can be arbitrarily bad. 
 This raises some of our core challenges in \rtw:
 \textbf{(1)} Is there a different explainable clustering algorithm that achieves tighter bounds under kernels such as the quadratic kernel for example by incorporating explanations into the algorithm?;
 \textbf{(2)} What are inherently interpretable kernels for explainable clustering?;
