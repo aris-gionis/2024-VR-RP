@@ -1,0 +1,68 @@
+% \usepackage{fullpage}
+\usepackage[top=2.5cm, bottom=2.5cm, left=2.1cm, right=2.1cm]{geometry}
+% \usepackage[margin=2.5cm]{geometry}
+\usepackage[charter]{mathdesign}
+\usepackage{epsfig}
+\usepackage{graphicx}
+% \usepackage{amssymb}
+% \usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\usepackage[rgb]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{matrix,positioning,fit,shapes,arrows,shadows,calc,backgrounds}
+\usepackage{pgfplots}
+\usepackage{natbib}
+\usepackage{enumitem}
+\usepackage{pgfgantt}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{xspace}
+\usepackage{wrapfig}
+\usepackage[show]{chato-notes}
+\usepackage{multirow}
+\usepackage[official]{eurosym}
+\usepackage[bottom]{footmisc}
+
+\usepackage{lipsum}% http://ctan.org/pkg/{graphicx,lipsum}
+\newcommand{\PRLsep}{\noindent\makebox[\linewidth]{\resizebox{0.3333\linewidth}{1pt}{$\bullet$}}\bigskip}
+
+\definecolor{verylightmagenta}{rgb}{0.95,0.96,1.0}
+\definecolor{brightred}{rgb}{0.90,0.2,0.2}
+
+\newcommand{\ag}[1]{\vspace{1mm}\noindent{\color{orange}{\textbf{Comment:} #1}}}
+% \newcommand{\ag}[1]{}
+\newcommand{\instructions}[1]{\vspace{1mm}\noindent{\color{blue}{#1}}}
+% \newcommand{\instructions}[1]{}
+
+\newcommand{\textbibspace}{{\vspace{1mm}}}
+
+\newcommand{\acronym}{{\sf\small E\ensuremath{x}CLUS}\xspace}
+\newcommand{\acronymtitle}{{\sf\large E\ensuremath{x}CLUS}\xspace}
+\newcommand{\proposaltitle}{{Advances in explainable clustering}}
+\newcommand{\proposalabstitle}{{Advances in explainable clustering}}
+
+%% biblist
+\newcommand{\biblist}{\begin{list}{$\bullet$}
+  {  \setlength{\itemsep}{2pt}
+     \setlength{\parsep}{2pt}
+     \setlength{\topsep}{2pt}
+     \setlength{\partopsep}{0pt}
+     \setlength{\leftmargin}{1.5em}
+     \setlength{\labelwidth}{1em}
+     \setlength{\labelsep}{1em} } }
+\newcommand{\biblistend}{
+\end{list}  }
+
+%% biblistnumbered
+\newcommand{\biblistn}{\begin{list}{$\bullet$}
+  {  \setlength{\itemsep}{2pt}
+     \setlength{\parsep}{2pt}
+     \setlength{\topsep}{2pt}
+     \setlength{\partopsep}{0pt}
+     \setlength{\leftmargin}{2em}
+     \setlength{\labelwidth}{1em}
+     \setlength{\labelsep}{1em} } }
+\newcommand{\biblistnend}{
+\end{list}  }
