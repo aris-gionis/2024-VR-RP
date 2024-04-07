@@ -1,0 +1,17 @@
+In total, we plan to recruit one PhD student for 5 years, at 80% research activity and 20% teaching assistantship, as it is a common practice in the CS department of KTH. The fifth year of the student, after the completion of the project, will be covered by KTH's basic funding allocation to the PI, or other external funding source. 
+
+The PI will allocate 12% of his time on this project, and he will be responsible for supervision, research lead, and research ideas. 
+
+In addition, two postdoctoral researchers in the research team of the PI will work on the project at 50% of their time. The time of the postdocs will be funded by the WASP recruitment package of the PI, and thus, not allocated in this project. 
+
+The break down of the project costs is as follows: 
+
+Salary of the PI to lead the project: 991 ksek
+Salary of the doctoral student working on RT1 and RT2: 2056 k sek
+Travel costs for attending conferences, summer schools, or research visits: 100 k sek / year
+Materials, e.g., computer for doctoral student and books: 80 k sek
+Other costs, e.g., software licenses or other services: 40 k sek
+Premise costs, according to KTH funding model: 484 k sek
+Indirect costs, according to KTH funding model: 1149 k sek
+
+Total: 5,2 million sek

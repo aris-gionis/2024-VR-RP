@@ -1,0 +1,15 @@
+ENG 
+
+Clustering is a fundamental task in data analysis, seeking to partition data into groups based on their similarity. Clustering algorithms enable scientists and practioners to extract meaningful insights from data and make informed decisions. Although largely popular, traditional clustering methods often lack transparency in explaining why certain data points are grouped together. The situation is exacerbated by opaque methods for clustering, such as spectral techniques, self-organizing maps, etc.
+
+With the explosive growth of AI and the wide adoption of machine learning methods, there is strong demand for algorithms that provide explanations on their decisions, or employ easy-to-interpret models, and rightfully, the machine-learning research community has focused on developing transparent and interpretable models. Much of research has been devoted on explainable and interpretable supervised machine-learning methods, while significantly less attention has been given on the topic of explainability in unsupervised machine learning, such as data clustering. 
+
+In this project we will advance the area of explainable clustering. We will develop novel theoretical frameworks for introducing transparency and explainability into the data-clustering task. We will develop explainable clustering methods that employ novel white-box models, we will devise methods for providing explanations to clusterings produced by complex models, and we will study formulations that leverage covariates.
+
+SWE
+
+Klustring är en grundläggande uppgift i dataanalys, där man försöker dela upp data i grupper baserat på deras likhet. Klustringsalgoritmer gör det möjligt för forskare och praktiker att extrahera meningsfulla insikter från data och fatta välgrundade beslut. Även om de är till stor del populära, saknar traditionella klustringsmetoder ofta transparens när det gäller att förklara varför vissa datapunkter grupperas tillsammans. Situationen förvärras av ogenomskinliga metoder för klustring, såsom spektraltekniker, självorganiserande kartor etc.
+
+Med den explosiva tillväxten av AI och det breda antagandet av metoder för maskininlärning finns det en stor efterfrågan på algoritmer som ger förklaringar till sina beslut, eller använder lätttolkade modeller, och med rätta har forskarsamhället för maskininlärning fokuserat på att utveckla transparenta och tolkningsbara modeller. Mycket av forskningen har ägnats åt förklarabara och tolkbara övervakade maskininlärningsmetoder, medan betydligt mindre uppmärksamhet har ägnats ämnet förklarbarhet vid oövervakad maskininlärning, såsom datakluster.
+
+I det här projektet kommer vi att utveckla området för förklarlig klustring. Vi kommer att utveckla nya teoretiska ramverk för att introducera transparens och förklaringsbarhet i uppgiften att klustra data. Vi kommer att utveckla förklarliga klustringsmetoder som använder nya white-box-modeller, vi kommer att ta fram metoder för att ge förklaringar till klustringar producerade av komplexa modeller, och vi kommer att studera formuleringar som utnyttjar kovariater.

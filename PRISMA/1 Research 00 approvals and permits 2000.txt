@@ -1,0 +1,5 @@
+The proposed research is of theoretical nature in the areas of algorithmic design, optimization, and statistical learning theory. 
+
+The research does not involve experiments on animals, nor studies involving humans. The research does not involve handling of personal data.
+
+For evaluating our methods we will use benchmark datasets that have been collected and curated by other research teams and have become publicly available to the research community. One example is the UC Irvine machine learning repository, which currently maintains 664 datasets as a service to the machine learning community. Datasets involving personal information or medical information have been thoroughly anonymized, and have already been used in thousands of publications.
