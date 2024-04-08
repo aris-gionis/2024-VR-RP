@@ -534,9 +534,9 @@ with simple axis-aligned decision trees.
 In fact, a very recent advancement has discovered that the worst-case price of explaining quadratic-kernel-based clusterings with axis-aligned trees is \emph{theoretically unbounded}~\cite{fleissner2024explaining}, 
 i.e., explanations can be arbitrarily bad. 
 This raises some of our core challenges in \rtw:
-\textbf{(1)} Are there different explainable clustering algorithms that achieves tighter bounds hard-to-explain kernels?;
-\textbf{(2)} What are inherently interpretable kernels for explainable clustering?; and
-\textbf{(3)} Would more expressivity reduce the price of explaining complex clusters(cf., \rto)?
+\textbf{(1)} are there different explainable clustering algorithms that achieves tighter bounds hard-to-explain kernels?;
+\textbf{(2)} what are inherently interpretable kernels for explainable clustering?; and
+\textbf{(3)} would more expressivity reduce the price of explaining complex clusters (cf., \rto)?
 % \textbf{(4)} Going beyond worst-case analysis, what are the \emph{expected} or the \emph{lower bound} to the price of explainability?; and
 % \textbf{(5)} Can we align approximation guarantees to the geometries of explanations and clusterings?
 
@@ -544,7 +544,7 @@ We like to explore the limits of simple explanations for complex clusters.
 Although post-hoc explanations might become arbitrarily bad for complex clusters, we do not yet know how well jointly explaining and clustering performs.
 That is, we want to raise the awareness of clustering algorithms for simple explanations, thus steering-away from hard-to-explain complex clusters towards simpler cases.
 This involves balancing clustering performance, explainability, and interpretability as a unified objective function for explainability and clustering.
-Solving for optimal clustering and optimal explanations (e.g., via trees) naively, however, requires joining two likely-to-be NP-hard problems into one.
+Solving for optimal clustering and optimal explanations (e.g., via trees) naively, however, requires joining two likely-to-be \NP-hard problems into one.
 As this is not practical for real-world problems, we propose to develop novel efficient algorithms, aiming for relaxations of the joint mathematical optimization problem.
 So far, even for $k$-means there is only limited research on jointly clustering and explaining. 
 It remains unclear how to combine $k$-means with different explanations, such as decision rule lists or characteristic importance measures. 
@@ -557,9 +557,9 @@ During optimization, we need to explain why data points are close in one represe
 allowing for interpretable explanations in principle.
 Even if we postulate rules from the original features during optimization, we cannot directly derive the true reasons why data points are clustered.  
 One challenge of this research theme is to explore how to align different representations during optimization so that we can achieve inherently interpretable explainable clustering algorithms.
-However, The mathematical properties that allow to project data into a different representation that enables explainability and separability, are mostly unknown.
+However, the mathematical properties that allow to project data into a different representation that enables explainability and separability, are mostly unknown.
 In recent research~\cite{fleissner2024explaining} on explainable kernel $k$-means, interpretable kernels using interpretable feature maps, where each component in the kernel depends on exactly a single data feature, has been introduced.  
-This severe limitation rules out commonly-used kernels, such as the Gaussian kernel, and is a significant obstacle for using and advancing explainable kernel $k$-means and explainable Spectral Clustering.
+This severe limitation rules out commonly-used kernels, such as the Gaussian kernel, and is a significant obstacle for using and advancing explainable kernel $k$-means and explainable spectral clustering.
 To overcome this issue, we propose to explore a less limited framework for interpretable kernel feature maps, allowing to attribute distances or clustering decisions to the original feature representation. 
 % It might, however, require to relax on the axis-aligned descriptions by considering richer and more expressive explanations.   
 
