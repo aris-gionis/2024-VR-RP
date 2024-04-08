@@ -167,6 +167,7 @@ as well as with other researchers in the international collaboration network of 
     \centering
     \includegraphics[height=1.8in]{iris-exclus.pdf}
     \caption{\small Explaining $k$-means clusters through axis-aligned decision trees. First clustering the iris dataset with $k$-means, we then employ an axis-aligned decision tree as explanation, yielding interpretable description of clusters while resulting in a minimal quality loss. Left: Visualization of the decision boundaries. Right: Representation of the decision tree explanation.}
+    \label{fig:iris}
 \end{figure}
 
 \vspace{-2mm}
@@ -193,7 +194,7 @@ From the sprawling explainable machine-learning research, the area of explainabl
 Our proposal is situated in this dynamic and active research area. 
 % whose state-of-the-art we will sketch in the following. 
 
-Considerable attention has been given to \emph{explaining clusters} with decision trees, 
+Considerable attention has been given to \emph{explaining clusters} with decision trees---as depicted in Figure~\ref{fig:iris}, 
 including explaining using similarity-based prototypes for each cluster \cite{carrizosa2022interpreting}, 
 or by fitting oblique trees to describe clusters \cite{gabidolla2022optimal}.
 In their seminal work, Moshkovitz et al.~\cite{moshkovitz2020explainable} 
@@ -749,7 +750,7 @@ memberships of data points to clusters.
 In fact, such constraints are not necessary as minimizing 
 our distance-based objectives has the consequence of \emph{implicitly favoring}
 disjoint labels and disjoint clusters.
-Nevertheless it would be interesting to study variants
+Nevertheless, it would be interesting to study variants
 of our problem with explicitly stated disjointedness constraints
 and understand, theoretically and empirically, 
 the price in the clustering cost due to such constraints.
@@ -767,12 +768,12 @@ It also poses significantly different computational challenges
 and the opportunity to exploit the geometric structure for solving the problem.
 
 Depending on the progress on this topic, further extensions of the problem can be considered. 
-Those include allowing for outliers that can help reducing significantly the clustering cost.
+Those include allowing for outliers that can help to significantly reduce the clustering cost.
 The benefit of this idea is that covariate attributes can be used in the same manner
 to also explain the outliers, as the clusters.
 Additionally, we can use the same framework analyzing networks and finding 
 explainable communities in networks.
-The PI has relevant experience of developing methods for finding labeled-induced
+The PI has relevant experience of developing methods for finding the labeled-induced
 (and thus, explainable) densest subgraphs in networks~\cite{galbrun2014overlapping}.
 
 \subsection*{5.2~~~Time plan and implementation}
@@ -879,7 +880,7 @@ we will encourage an environment of openness and collaboration,
 while ensuring that each team member leads their own project.
 %
 During the hiring process we will support diversity and consider actions to achieve gender balance. 
-Currently the PI supervises 6 doctoral students and the gender ratio is 3:3.
+Currently, the PI supervises 6 doctoral students and the gender ratio is 3:3.
 
 
 % \subsection*{Equipment {\color{orange}[$\approx$0.2 page]} {\color{teal}(Aris)}}
