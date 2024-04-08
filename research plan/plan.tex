@@ -145,7 +145,7 @@ Focus on three themes:
 \item[{Algorithms:}]
 Develop computational methods for the problems that will be formulated.
 Our methods will rely on different techniques
-including optimization and statistical learning theory.
+including combinatorial optimization and statistical learning theory.
 The proposed algorithms should be efficient and should offer theoretical guarantees.
 
 \item[{Empirical evaluation and outreach:}]
@@ -174,7 +174,7 @@ before presenting the proposed approach.
 % Summarize briefly the current research frontier within the field or area covered by the project. State key references.
 % }
 
-Algorithmically grouping similar data points has a long research history,
+Designing algorithmic methods for grouping similar data points has a long research history,
 yielding traditional methods, 
 such as $k$-means~\cite{macqueen1967some}, 
 DBSCAN~\cite{ester1996ada}, or spectral clustering~\cite{ng2001spectral}.
@@ -184,12 +184,13 @@ feature importance measures, such as Shapley values \cite{lundberg2017unified},
 or dimensionality-reduction techniques~\cite{hinton2002tsne,lee2000algorithms,mcinnes2018umap}.
 % (such as $t$-SNE~\cite{hinton2002tsne}, UMAP~\cite{mcinnes2018umap}, or NMF~\cite{lee2000algorithms}).
 From the sprawling explainable machine-learning research, the area of explainable or interpretable clustering has emerged, aiming to rationalize the underlying reasons for clusters. 
-Our proposed research may be seen as being situated in this dynamic and active research area, whose state-of-the-art we will sketch in the following. 
+Our proposal is situated in this dynamic and active research area. 
+% whose state-of-the-art we will sketch in the following. 
 
 Considerable attention has been given to \emph{explaining clusters} with decision trees, 
 including explaining using similarity-based prototypes for each cluster \cite{carrizosa2022interpreting}, 
 or by fitting oblique trees to describe clusters \cite{gabidolla2022optimal}.
-In the seminal work, Moshkovitz et al.~\cite{moshkovitz2020explainable} 
+In their seminal work, Moshkovitz et al.~\cite{moshkovitz2020explainable} 
 explain $k$-means and $k$-medians with axis-aligned decision trees, 
 deriving a worst-case approximation guarantee, termed as ``price of explainability,'' 
 inspired by the ``price of interpretability'' \cite{bertsimas2019price} for axis-aligned decision tree classification. 
@@ -208,7 +209,7 @@ Now free of this restriction trees can grow larger.
 As such growth inhibits interpretability, 
 Laber et al.~\cite{laber2023nearly} explore shallow decision trees for explainable clustering, 
 while Deng et al.~\cite{deng2023impossibility} demonstrate 
-that shallow trees for explainable $k$-means and $k$-medians is impossible to achieve in general. 
+that shallow trees for explainable $k$-means and $k$-medians are impossible to achieve in general. 
 Further research includes explainability for $k$-centers~\cite{laber2021price} or 
 explainable clustering under $\|\cdot\|_p$-norms \cite{gamlath2021explainable}. 
 Research on explaining kernel $k$-means has only recently been started, 
@@ -276,7 +277,7 @@ but overall, the area is mostly at its infancy and
 most of the works fall within a few frameworks. 
 Here we propose to significantly enlarge the scope of research in this particular domain, 
 and we propose many novel directions, 
-such as using other interpretable machine-learning models to explain a given clustering result, 
+such as using different interpretable machine-learning models to explain a given clustering result, 
 providing explainability for complex, beyond centroid-based clustering, 
 and finding optimal clusterings in conjunction with short explanations using covariate attributes. 
 Our work will be foundational in nature, 
@@ -318,7 +319,7 @@ the PI has published papers on
 and 
 \emph{explainable decision-tree models}~\cite{zhang2023regularized}. 
 Related to this project is also the work
-finding dense subgraphs with covariate explanations~\cite{galbrun2014overlapping,galbrun2016top}.
+finding dense subgraphs with covariate explanations~\cite{galbrun2014overlapping}.
 We believe that ideas and techniques from that line of work
 will be very relevant to the third research theme of this project.
 
@@ -716,7 +717,7 @@ to also explain the outliers, as the clusters.
 Additionally, we can use the same framework analyzing networks and finding 
 explainable communities in networks.
 The PI has relevant experience of developing methods for finding labeled-induced
-(and thus, explainable) densest subgraphs in networks~\cite{galbrun2014overlapping,galbrun2016top}.
+(and thus, explainable) densest subgraphs in networks~\cite{galbrun2014overlapping}.
 
 \subsection*{5.2~~~Time plan and implementation}
 
