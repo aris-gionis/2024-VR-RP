@@ -450,7 +450,8 @@ The principle is simple: the more expressive individual decision functions are, 
 One avenue leads to oblique decision trees, whose decision functions generalize simple axis-aligned decision-making to hyperplane-based decision-making, akin to $\mathbf{a}_i^{\!\top} \mathbf{x}^{\vphantom{\top}}_{\vphantom{i}} + b_i$. % < 0
 The danger of employing expressive decision functions, however, lies in the increased complexity of each individual decisions functions, thus negatively impacting individual interpretability.
 Therefore, a core challenge of this research theme is the question of how to find expressive functions that balance individual interpretability, overall explainability, and accuracy.
-In the context of hyperplanes $\mathbf{a}_i^{\!\top} \mathbf{x}^{\vphantom{\top}}_{\vphantom{i}} + b_i < c_i$, for example, we seek to reduce the complexity of individual hyperplanes using non-negativity constraints $\mathbf{a} \in \mathbb{R}^m_{\geq 0}$ and sparsity \emph{constraints} $\|\mathbf{a}\|_0 \leq q$, by employing combinatorial optimization techniques for small problems or (greedy) subspace algorithms such as orthogonal matching pursuit, sequential lasso, or top-$q$ important feature forward selection for large problems.
+In the context of hyperplanes $\mathbf{a}_i^{\!\top} \mathbf{x}^{\vphantom{\top}}_{\vphantom{i}} + b_i < c_i$, for example, we seek to reduce the complexity of individual hyperplanes using non-negativity constraints $\mathbf{a} \in \mathbb{R}^m_{\geq 0}$ and sparsity \emph{constraints} $\|\mathbf{a}\|_0 \leq q$, by employing combinatorial optimization techniques for small problems or (greedy) subspace algorithms such as orthogonal matching pursuit or sequential lasso.
+%  or top-$q$ important feature forward selection for large problems.
 
 An alternative approach is to go beyond decision trees to explore other models capable of explaining clusters. 
 Machine-learning models such as Bayesian decision rules, cascading rule lists, and generalized linear models 
@@ -488,7 +489,7 @@ We hypothesize that features interact differently per cluster and that differenc
 We plan to investigate novel higher-order importance measures to highlight the characteristics or contrastive per-cluster feature-interactions, leveraging ideas from information theory, statistics, and statistical learning.
 However, research on the importance of higher-order feature interactions for data clusters is still lacking, 
 as this poses significant algorithmic and statistical challenges, by involving exponentially many potential interactions for which non-linear or multi-variate analytics is necessary to compute importance.  
-We plan to explore novel measures to judge the importance of higher-order feature interactions, leveraging ideas from information theory, statistics, and statistical learning, thus highlighting sets of important feature-interactions that are relevant for clusters.
+% We plan to explore novel measures to judge the importance of higher-order feature interactions, leveraging ideas from information theory, statistics, and statistical learning, thus highlighting sets of important feature-interactions that are relevant for clusters.
 
 \iffalse
 \note{Solution details? Should we remove this section?}
