@@ -234,7 +234,7 @@ Another approach increases the expressivity while decreasing interpretability,
 by leveraging soft decision trees~\cite{cohen2023interpretable} as a guide for $k$-means. 
 A different take on explainability or interpretability for clusterings 
 moves away from explaining centroids or data points 
-but describes clusters boundaries with polyhedra, 
+but describes clusters boundaries with poly\-hedra, 
 again using combinatorial optimization~\cite{lawless2023polyhedral}. 
 
 % Some clustering algorithms aim to find interpretability fro embeddings via \textbf{dimensionality reduction} algorithms such as nonnegative matrix factorization \cite{} or tensor decompositions \cite{}.    
@@ -309,7 +309,7 @@ Most recent work includes papers on
 which is a formulation asking for cluster centers being diverse with respect to covariate attributes, and
 \emph{reconciliation clustering}~\cite{spoerhase2023constant}, 
 which is a formulation asking to avoid selecting cluster centers that are far away to each other.
-None of these problems provides an explainable clustering, 
+None of these approaches provides an explainable clustering, 
 thus, it would be interesting to study whether we can introduce explainability
 into these formulations.
 %
@@ -356,7 +356,7 @@ Develop methods to finding interpretable cluster explanations
 via highlighting the importance of features and the feature interactions for each cluster.
 
 \item[\rtw.~\clusterings\,:] 
-Develop methods to explain more complex clustering structure than centroid-based methods,
+Develop methods to explain more complex clustering structure than centroid-based approaches,
 for example, clustering that have resulted by kernel $k$-means or density-based formulations.
 
 \item[\rth.~\covariates\,:]
@@ -382,9 +382,9 @@ two different computational paradigms.
 In the first paradigm, we assume that a clustering of the data is provided 
 by a \emph{black-box clustering method} and the problem objective is to design 
 a \emph{post-hoc} explanation of the input clustering.
-This task is similar to \emph{explainable machine learning}, 
-where one asks to develop post-hoc interpretable justifications for 
-\emph{black-box classification models}, such as neural networks. 
+This task is similar to \emph{interpretable machine learning}, 
+where one asks to develop post-hoc justifications for 
+\emph{black-box classification models}, such as self-organizing maps. 
 
 \smallskip
 % \noindent
