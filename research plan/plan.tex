@@ -181,7 +181,7 @@ DBSCAN~\cite{ester1996ada}, or spectral clustering~\cite{ng2001spectral}.
 Methods to enhance cluster interpretability have long been focused on subspace clustering~\cite{rubinstein2010dict}, 
 % (such as $k$-SVD~\cite{rubinstein2010dict}), 
 feature importance measures, such as Shapley values \cite{lundberg2017unified}, 
-or dimensionality-reduction techniques~\cite{hinton2002tsne,lee2000algorithms,mcinnes2018umap}.
+or dimensionality reduction~\cite{hinton2002tsne,mcinnes2018umap}.
 % (such as $t$-SNE~\cite{hinton2002tsne}, UMAP~\cite{mcinnes2018umap}, or NMF~\cite{lee2000algorithms}).
 From the sprawling explainable machine-learning research, the area of explainable or interpretable clustering has emerged, aiming to rationalize the underlying reasons for clusters. 
 Our proposal is situated in this dynamic and active research area. 
@@ -196,7 +196,8 @@ deriving a worst-case approximation guarantee, termed as ``price of explainabili
 inspired by the ``price of interpretability'' \cite{bertsimas2019price} for axis-aligned decision tree classification. 
 Recent developments focus on improving worst-case bounds on explainability for $k$-means, 
 by using random threshold cuts for axis-aligned decisions 
-\cite{makarychev2022explainable, esfandiari2022almost, makarychev2023random}. 
+% \cite{makarychev2022explainable, esfandiari2022almost, makarychev2023random}. 
+\cite{esfandiari2022almost, makarychev2022explainable}. 
 The best known upper bound on the price of explainability for $k$-means is 
 $\mathcal{O}(k \log \log k)$ \cite{gupta2023price}, 
 with a known lower bound of $\Omega(k)$ \cite{gamlath2021explainable}.
@@ -224,12 +225,12 @@ like kernel $k$-means is still in its infancy.
 Closely related to our proposal is research in the area of \emph{interpretable clustering},
 seeking to compute inherently interpretable clusters \emph{without} resorting to post-hoc explanations.
 Recent research has focused on aiding clustering towards interpretable solutions by directly integrating 
-decision-tree explanations into the clustering algorithm,
+decision-tree explanations into the clustering algorithm.
 One approach leverages \emph{mixed integer linear programming} 
-to derive an interpretable tree-based clustering algorithm 
-by approximating the globally-optimal solution~\cite{bertsimas2021interpretable}. 
-Also building on combinatorial optimization, a different approach increases the expressivity 
-while decreasing interpretability, 
+to derive an interpretable tree-based clustering algorithm~\cite{bertsimas2021interpretable}. 
+% by approximating the globally-optimal solution~\cite{bertsimas2021interpretable}. 
+% Also building on combinatorial optimization, 
+Another approach increases the expressivity while decreasing interpretability, 
 by leveraging soft decision trees~\cite{cohen2023interpretable} as a guide for $k$-means. 
 A different take on explainability or interpretability for clusterings 
 moves away from explaining centroids or data points 
