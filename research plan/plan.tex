@@ -524,7 +524,8 @@ Most related recent research on explainable clustering has focused on classical 
 thereby resulting in algorithms that approximate $k$-means clusters with axis-aligned decision trees.
 However, the classical $k$-means algorithm has limited applicability in practice, as it is often not flexible enough to handle complex datasets that contain complicated cluster shapes.
 So far, the price of explainability in the context of other algorithms is understudied and questions such as ``how well axis-aligned decision trees could explain DBSCAN in the worst case?'' or ``how well do oblique decision trees approximate spectral clustering or hierarchical clustering results?'' remain unanswered.
-Here, we go beyond classical $k$-means towards developing explaining clustering algorithms for complex clusters.
+We are interested in complex clusters that are neither identifiable with axis-aligned cuts nor cluster that are linearly separable,
+therefore we want we go beyond classical $k$-means towards developing explaining clustering algorithms for complex clusters.
 
 Arguably one of the most inhibiting factors is $k$-means inability to exploit non-linearities in the relationship between data, which is often addressed by kernelized $k$-means algorithms.
 Explaining kernel $k$-means, however, poses significant challenges, as clusters are harder to split apart 
@@ -532,18 +533,76 @@ with simple axis-aligned decision trees.
 In fact, a very recent advancement has discovered that the worst-case price of explaining quadratic-kernel-based clusterings with axis-aligned trees is \emph{theoretically unbounded}~\cite{fleissner2024explaining}, 
 i.e., explanations can be arbitrarily bad. 
 This raises some of our core challenges in \rtw:
-\textbf{(1)} Is there a different explainable clustering algorithm that achieves tighter bounds under kernels,
-such as the quadratic kernel for example, by incorporating explanations into the algorithm?;
-\textbf{(2)} What are inherently interpretable kernels for explainable clustering?;
-\textbf{(3)} How would more expressive explanations improve this bound (cf., \rto)?;
-\textbf{(4)} Going beyond worst-case analysis, what are the \emph{expected} or the \emph{lower bound} to the price of explainability?; and
-\textbf{(5)} Can we align approximation guarantees to the geometries of explanations and clusterings?
+\textbf{(1)} Are there different explainable clustering algorithms that achieves tighter bounds hard-to-explain kernels?;
+\textbf{(2)} What are inherently interpretable kernels for explainable clustering?; and
+\textbf{(3)} Would more expressivity reduce the price of explaining complex clusters(cf., \rto)?
+% \textbf{(4)} Going beyond worst-case analysis, what are the \emph{expected} or the \emph{lower bound} to the price of explainability?; and
+% \textbf{(5)} Can we align approximation guarantees to the geometries of explanations and clusterings?
 
-Building on research from \rto, we seek to relate more expressive explanations to more expressive spectral or kernel clustering,
-thus understanding the prize of explainability in the light of potentially slightly reduced interpretability.
-For example, if a border between clusters is a sinusoidal curve, we would probably require many axis-aligned `step' functions to separate clusters. A more expressive, yet easily understandable description would be a simple function. 
-However, what if the border is not smooth and not easily explainable?
-In this case, humans are willing to use simpler approximations.
+We like to explore the limits of simple explanations for complex clusters.  
+Although post-hoc explanations might become arbitrarily bad for complex clusters, we do not yet know how well jointly explaining and clustering performs.
+That is, we want to raise the awareness of clustering algorithms for simple explanations, thus steering-away from hard-to-explain complex clusters towards simpler cases.
+This involves balancing clustering performance, explainability, and interpretability as a unified objective function for explainability and clustering.
+Solving for optimal clustering and optimal explanations (e.g., via trees) naively, however, requires joining two likely-to-be NP-hard problems into one.
+As this is not practical for real-world problems, we propose to develop novel efficient algorithms, aiming for relaxations of the joint mathematical optimization problem.
+So far, even for $k$-means there is only limited research on jointly clustering and explaining. 
+It remains unclear how to combine $k$-means with different explanations, such as decision rule lists or characteristic importance measures. 
+
+A common property of many clustering algorithms lies in their ability to separate non-linearly separable clusters using a different data representation, often involving the kernel trick.
+That means explainable clustering would cluster data points in one representation while we want to explain clusters in terms of their original representation.
+While post-hoc explanations for clusters might work in practice (although it might yield deep trees),
+how to jointly cluster and explain two different data representations is not clear.
+During optimization, we need to explain why data points are close in one representation using features from the original representation, 
+allowing for interpretable explanations in principle.
+Even if we postulate rules from the original features during optimization, we cannot directly derive the true reasons why data points are clustered.  
+One challenge of this research theme is to explore how to align different representations during optimization so that we can achieve inherently interpretable explainable clustering algorithms.
+However, The mathematical properties that allow to project data into a different representation that enables explainability and separability, are mostly unknown.
+In recent research~\cite{fleissner2024explaining} on explainable kernel $k$-means, interpretable kernels using interpretable feature maps, where each component in the kernel depends on exactly a single data feature, has been introduced.  
+This severe limitation rules out commonly-used kernels, such as the Gaussian kernel, and is a significant obstacle for using and advancing explainable kernel $k$-means and explainable Spectral Clustering.
+To overcome this issue, we propose to explore a less limited framework for interpretable kernel feature maps, allowing to attribute distances or clustering decisions to the original feature representation. 
+% It might, however, require to relax on the axis-aligned descriptions by considering richer and more expressive explanations.   
+
+% Implications on spectral clustering
+
+% Next, we like to explore \emph{expressive explanations for complex clusters}.  
+% That is, what are the easierst explanaitions for (non-linearly sepaerable) complex clusters?
+% As there are many different explanaitions that we like to consider in \rto, 
+% we plan to develop a more generalized approach to 
+
+\iffalse
+% research on  clustering algorithms with Explanations in terms of rule lists or importance measures are  
+
+% A different idea takes us to inherently interpretable kernel feature maps, 
+% seeking maps that allow us to trace similarities back to the original data features. 
+% We plan to explore suitably transparent kernels $\langle \phi(x), \phi(y) \rangle$ that allow 
+% for attributing cluster-decisions to features, 
+% by identifying inherently-interpretable kernel feature maps $\phi(x)$. 
+% The traceability might necessitate the development of novel algorithms that cluster via the kernel while extracting rules by leveraging the interpretability of the kernel. 
+
+% More generally, we see a lot of potential for developing new algorithms for interpretable kernelized clustering that steer-away from
+% clusters that are identifiable by our kernel but are hardly explainable in terms of less-expressive human-understandable models (such as axis-aligned decision trees), thereby allowing us to balance explainability with the power of kernel clustering.
+In a similar spirit, we will explore the idea of using multiple kernels 
+in which clustering is performed based on one kernel (e.g., the quadratic kernel), 
+while explanations come from inherently interpretable kernels.
+
+Next we seek to study \emph{expressive explanations for complex clusters}.
+For example, can guarantee a finite price for explaining geometric-kernel-based clustering with more-expressive sparse oblique trees?
+Further, in practice, we often observe cases that the majority points in clustered data are, generally speaking, well sepaerable.
+Few data points at the boundaries, however, create rough edges in between clusters.
+Precisely explaining those borders with simple expressions is costly.
+If humans, on the other hand, have to explain this situation, they would probably cut corners, so to speak.
+Focussing on the most important sailiant parts of the clustering, they would simply ignore the hard-to-explain cornercases.
+How can we algorithmically identify the parts of a cluster that we want to explain and the parts that require complex explanaitions?
+
+More concretely, we want to deliberately allow imperfect descriptions for complicated situations,
+for example, by turning to 
+
+% Building on research from \rto, 
+% Can we, for example, explain 
+% For example, if a border between clusters is a sinusoidal curve, we would probably require many axis-aligned `step' functions to separate clusters. 
+% A more expressive, yet easily understandable description would be a simple function. 
+% However, what if the border is not smooth and not easily explainable?
+Next, humans are willing to use simpler approximations.
 Similarly, we would like to explore fuzzy explanations 
 that may provide imperfect description of complicated border situations.
 More concretely, can we find fuzzy or Bayesian rule sets that explain clusters with high probability, 
@@ -551,20 +610,8 @@ however with simpler terms?
 We seek to study if these explanations are suitable to explain soft clustering, 
 like fuzzy $c$-means, and how to develop a \joint explainable fuzzy clustering algorithm, 
 which at the moment is an understudied research area.
-The theoretical challenge lies in exploring if and how to adapt the prize of explainability 
+The theoretical challenge lies in exploring if and how to adapt the price of explainability 
 for imperfect and uncertain explanations. 
-
-We also aim to explore inherently interpretable kernel feature maps, 
-seeking deterministic maps that allow us to trace similarities back to the original data features. 
-We plan to explore suitably transparent kernels $\langle \phi(x), \phi(y) \rangle$ that allow 
-for attributing cluster-decisions to features, 
-by identifying inherently-interpretable kernel feature maps $\phi(x)$. 
-The traceability might necessitate the development of novel algorithms that cluster via the kernel while extracting rules by leveraging the interpretability of the kernel. 
-More generally, we see a lot of potential for developing new algorithms for interpretable kernelized clustering that steer-away from
-clusters that are identifiable by our kernel but are hardly explainable in terms of less-expressive human-understandable models (such as axis-aligned decision trees), thereby allowing us to balance explainability with the power of kernel clustering.
-In a similar spirit, we will explore the idea of using multiple kernels 
-in which clustering is performed based on one kernel (e.g., the quadratic kernel), 
-while explanations come from inherently interpretable kernels.
 
 One potential avenue towards explainable kernelized clustering involves inherently interpretable `surrogates.'
 That is, can we approximate potentially hardly-interpretable projections with simpler estimations?
@@ -589,6 +636,7 @@ Inspired by robust clustering and polyhedral descriptions \cite{lawless2023polyh
 we hope to explore more complex geometric yet interpretable descriptions of complex clusters.
 % seeking to generalize polyhedral, study shape-interpretability. 
 We additionally plan to investigate approximation guarantees for complex kernel clusters and seek to develop a geometric explainable clustering algorithm.
+\fi
 
 % Here we will focus on developing methods providing explanations for clusterings 
 % that go beyond centroid-based approaches like $k$-means or $k$-median.
