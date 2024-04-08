@@ -423,15 +423,15 @@ That is, to attribute data to clusters,
 we only have to mechanistically answer a sequence of yes-no questions, 
 which have been algorithmically derived from data features, 
 thereby describing clusters with easily understandable and inherently interpretable axis-aligned rules (cuts), 
-such as 
+{\color{brown}such as 
 ``\texttt{if} $x_i \in [\textnormal{lb}, \textnormal{ub}]$ \texttt{then} 
-proceed with left subtree \texttt{else} proceed with right subtree \texttt{end} until a cluster at a leaf is reached.''
+proceed with left sub\-tree \texttt{else} proceed with right sub\-tree \texttt{end} until a cluster at a leaf is reached.''}
 Reaching clusters by means of such an interpretable model incurs 
 a cost in addition to the original $k$-means clustering cost, 
 which is called \emph{the price of explainability}.
-Central to our research is the question of how large the price to pay becomes, i.e., 
+Central to our research is the question of how large the price to pay becomes, {\color{brown} i.e., 
 what is the worst-case achievable approximation guarantee of expressing a clustering 
-in terms of a specific interpretable machine-learning model. 
+in terms of a specific interpretable machine-learning model. }
 
 Although the price for explaining $k$-means with axis-aligned decision tree might be low~\cite{gupta2023price}, 
 a recent investigation~\cite{deng2023impossibility} shows that the cost lies in the size of the tree.
@@ -588,12 +588,12 @@ while explanations come from inherently interpretable kernels.
 
 Next we seek to study \emph{expressive explanations for complex clusters}.
 For example, can guarantee a finite price for explaining geometric-kernel-based clustering with more-expressive sparse oblique trees?
-Further, in practice, we often observe cases that the majority points in clustered data are, generally speaking, well sepaerable.
+Further, in practice, we often observe cases that the majority points in clustered data are, generally speaking, well separable.
 Few data points at the boundaries, however, create rough edges in between clusters.
 Precisely explaining those borders with simple expressions is costly.
 If humans, on the other hand, have to explain this situation, they would probably cut corners, so to speak.
-Focussing on the most important sailiant parts of the clustering, they would simply ignore the hard-to-explain cornercases.
-How can we algorithmically identify the parts of a cluster that we want to explain and the parts that require complex explanaitions?
+Focusing on the most important salient parts of the clustering, they would simply ignore the hard-to-explain corner cases.
+How can we algorithmically identify the parts of a cluster that we want to explain and the parts that require complex explanations?
 
 More concretely, we want to deliberately allow imperfect descriptions for complicated situations,
 for example, by turning to 
