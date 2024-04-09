@@ -101,14 +101,13 @@ In particular, existing methods fail to integrate with the most common variants 
 thus failing to yield explainable clusters on models exploiting non-linear similarities.
 Second, existing methods do not cater to real-world data challenges where data has special features, 
 labels, or covariates, as they cannot distinguish between special covariate features and data features.
-Additionally, out of the large toolbox of explainable machine-learning models,
+Additionally, out of the large interpretable machine-learning toolbox,
 decision trees have primarily been used for explanations, 
-while other models could be better suited for certain applications. 
+while other models might be better-suited in different circumstances. 
 Last but not least, while the majority of existing methods focus on explaining black-box clusterings, 
 it is often important to \emph{a priori} cluster the data so that the result complies 
-\emph{by-design} with a family of explainable models.
-Our objective in this project is to address many of these challenges
-and make significance advances in the topic of explainable clustering.
+\emph{by-design} with a chosen family of explainable models.
+Our objective is to address these challenges, to significantly advance the area of explainable clustering.
 
 \medskip
 \noindent
@@ -174,7 +173,7 @@ and other researchers in the international collaboration-network of the PI.
 
 \vspace{-2mm}
 \noindent
-Next, we briefly discuss the state of the art in explainable clustering, before proposing our research approach.
+Next, we briefly discuss the state of the art in explainable clustering, before proposing our approach.
 
 \subsection*{2~~~State of the art}
 
@@ -377,9 +376,7 @@ based on covariate attributes.
 \end{description}
 
 \vspace{-2mm}
-When considering different approaches for explainable clustering we distinguish between 
-two different computational paradigms. 
-
+\noindent We distinguish between two computational paradigms for explainable clustering:
 % \vspace{-2mm}
 % \begin{description}
 % \setlength{\itemsep}{-2pt}
@@ -407,8 +404,7 @@ so our goal will be to bound the cost of the interpretable model with respect to
 % \end{description}
 
 \smallskip
-Next we discuss in more detail the three research themes of \acronym.
-We present formulations both in \posthoc\ and \joint paradigms.
+Next, we discuss the three research themes for \acronym, covering both \posthoc\ and \joint paradigms.
 
 % The two paradigms, \posthoc\ and \joint, are present in all three of our research themes.
 % When discussing different explainable-clustering approaches 
@@ -496,7 +492,7 @@ We hypothesize that features interact differently per cluster and that differenc
 %
 We plan to investigate novel higher-order importance measures to highlight the characteristics or contrastive per-cluster feature-interactions, leveraging ideas from information theory, statistics, and statistical learning.
 However, research on the importance of higher-order feature interactions for data clusters is still lacking, 
-as this poses significant algorithmic and statistical challenges, by involving exponentially many potential important interactions, for which non-linear or multi-variate analytics is necessary.  
+as this poses significant algorithmic and statistical challenges, by involving exponentially-many potentially important multi-variate  interactions. %, for which non-linear or multi-variate analytics is necessary.  
 % We plan to explore novel measures to judge the importance of higher-order feature interactions, leveraging ideas from information theory, statistics, and statistical learning, thus highlighting sets of important feature-interactions that are relevant for clusters.
 
 \iffalse
@@ -534,8 +530,8 @@ Most recent research on explainable clustering has focused on classical $k$-mean
 thereby resulting in algorithms that approximate $k$-means clusters with axis-aligned decision trees.
 However, the classical $k$-means algorithm has limited applicability in practice, as it is often not flexible enough to handle complex datasets that contain complicated cluster shapes.
 So far, the price of explainability in the context of other algorithms is understudied and questions such as ``how well axis-aligned decision trees explain DBSCAN in the worst case?''\ or\ ``how well do oblique decision trees approximate spectral-clustering~or hier\-archical-clustering results?''\ remain unanswered.
-We are interested in complex clusters that are neither identifiable with axis-aligned cuts nor are linearly separable,
-therefore we want we go beyond~classical $k$-means towards developing explaining clustering algorithms for complex clusters.
+We are interested in explaining complex clusters that might neither be identifiable with axis-aligned cuts nor are linearly separable,
+therefore going beyond~classical $k$-means towards explainable clustering for complex clusters.
 
 Arguably one of the most inhibiting factors is $k$-means inability to exploit non-linearities in the relationship between data, which is often addressed by kernelized $k$-means algorithms.
 Explaining kernel $k$-means, however, poses significant challenges, as clusters are harder to split apart 
@@ -668,20 +664,20 @@ We additionally plan to investigate approximation guarantees for complex kernel 
 \subsection*{Research theme 3 (\rth): \covariates}
 
 In many applications, data can be represented in more than one way: 
-Often, data can be represented in a vector space
-accompanied with appropriate distance or similarity functions.
-Such a vector space can be defined using directly data features, 
-or it can be learned using representation-learning techniques~\cite{hamilton2017representation,wang2020survey}.
-Second, data points are associated with covariates, 
-which are discrete (categorical) attributes, 
-representing certain aspects of the data. 
+Data is often represented in terms of vector spaces that are
+accompanied by appropriate distance or similarity functions.
+Vector spaces can be directly derived form data features, 
+or they can be learned from data with representation-learning techniques~\cite{hamilton2017representation,wang2020survey}.
+However, in practice data points often have discrete (categorical) covariates attributes
+that represent specific aspects of the data point. 
 Such covariates can be labels, tags, or other related information.
-Given the discrete nature of covariates it is typically not easy (or meaningful)
-to define distance functions based on them, 
-although sometimes coarse-grained distance functions can be specified.
+Because of the discrete nature of many covariate attributes, 
+it is typically not easy to define appropriate distance functions in terms of discrete covariates, 
+Although sometimes coarse-grained distance functions can be specified,
+they are typically not meaningful.
 
-For an example illustrating the setting described above, 
-consider a collection of news articles. 
+To illustrate, 
+we consider a collection of news articles. 
 Each news article can be represented by a vector in a high-dimensional space, 
 e.g., using bag-of-words, \tfidf-type weighting, or deep-learning embedding schemes. 
 Furthermore, each news article can be associated with a small 
@@ -690,18 +686,13 @@ e.g., an article on climate change could be labeled by
 `\texttt{\small ClimateCrisis}' and `\texttt{\small ExtremeWeather}.'
 We refer to these labels as covariates.
 
-When considering clustering data that are represented both as vectors and with covariates, 
-it is usually clear how to leverage the vectorial information
-and apply a standard clustering method, such as $k$-means or spectral clustering. 
-One of the other hand, it is not obvious how to use effectively the 
-covariate attributes in order to improve the clustering results. 
-
-In this research theme we propose finding high-quality clusterings of the data
-while using the covariates for explaining the resulting clusterings. 
-In particular, we aim to develop novel clustering methods
-that achieve low-cost solutions with respect to the vector-representation of the data, 
-while at the same time achieve high expressivity and high specificity of the clustering
-using the covariates. 
+On the one hand, It is usually clear how to leverage the non-covariate information for clustering.
+That is we can simply cluster the non-covariate space using, for example, $k$-means or spectral clustering. 
+On the other hand, it is not obvious how to effectively leverage 
+covariates to improve the clustering. 
+In this research theme, we propose to discover high-quality clusters, while explaining clusters with covariates. 
+We aim to specifically develop novel explainable clustering algorithms for data with covariates,
+that not only achieve low-cost clusterings using the vector-representation, but also achieve high expressivity and high specificity by considering covariates. 
 
 To be more concrete, as one possible problem formulation that we will explore, 
 let us consider a set of $n$ data points $\dataset=\{\vecx_1,\ldots,\vecx_n\}$
@@ -729,7 +720,7 @@ that is, we will aim to minimize the total cost, or worst-case cost, respectivel
 among all clusters. 
 
 A few observations are in order for the problem defined above.
-First we note that the problem belongs in the \joint paradigm, 
+First, we note that the problem belongs in the \joint paradigm, 
 that is, we aim to \emph{simultaneously} find a low-cost clustering, 
 according to vector representation of the data points,
 and an explanation of that clustering using the covariate attributes~(labels).
@@ -750,12 +741,11 @@ memberships of data points to clusters.
 In fact, such constraints are not necessary as minimizing 
 our distance-based objectives has the consequence of \emph{implicitly favoring}
 disjoint labels and disjoint clusters.
-Nevertheless, it would be interesting to study variants
-of our problem with explicitly stated disjointedness constraints
-and understand, theoretically and empirically, 
-the price in the clustering cost due to such constraints.
+Nevertheless, it is interesting to explore problem variants
+under explicitly-stated disjointedness constraints,
+to understand the theoretical and empirical price for explainable clustering with covariates under such constraints.
 
-The covariate-based explainability problem we propose in this theme
+The proposed covariate-based explainability problem
 has interesting connections with existing work, yet it poses novel research challenges.
 The most closely-related work is the \emph{cluster descriptor} problem
 proposed by Davidson et al.~\cite{davidson2018cluster} 
@@ -767,13 +757,11 @@ significantly better way of leveraging the covariate attributes into the explana
 It also poses significantly different computational challenges
 and the opportunity to exploit the geometric structure for solving the problem.
 
-Depending on the progress on this topic, further extensions of the problem can be considered. 
-Those include allowing for outliers, which can help to significantly reduce the clustering cost
-and improve explainability.
+Further extensions to this problem can be considered, including increasing the robustness under outliers, thereby significantly reducing the clustering cost while improving explainability.
 In other words, covariates can be used in the same manner
 to explain the both the clusters and the outliers.
-Additionally, we can apply the same framework to analyze network structure and find
-explainable communities in networks.
+Given the relationship between clustering and community detection,
+we see a promising avenue in employing our explainable clustering and explainable clustering under covariates frameworks to the problem of explaining and discovering communities in networks.
 The PI has relevant experience of developing methods for finding labeled-induced
 (and thus, explainable) densest subgraphs in networks~\cite{galbrun2014overlapping}.
 
@@ -796,7 +784,7 @@ The PI has relevant experience of developing methods for finding labeled-induced
 The time schedule of \acronym is depicted in Figure~\ref{figure:gantt}. 
 The diagram shows the duration of the research themes over the lifetime of the project
 and the personnel working on the project.
-
+%
 The funding by the Swedish Research Council will be used to recruit 
 one doctoral student who will work exclusively on this project, 
 in addition to their teaching duties in KTH.
@@ -935,7 +923,6 @@ This is a new line of research in our group.
 We have recently worked on data clustering~\cite{spoerhase2023constant,thejaswi2021diversity}
 and on explainable supervised-learning~\cite{ciaperoni2023concise,zhang2020diverse,zhang2023regularized}, 
 but research in explainable unsupervised learning is novel.
-
 
 {\small
 \setlength{\bibsep}{0pt}
