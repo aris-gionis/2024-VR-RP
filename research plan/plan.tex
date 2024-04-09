@@ -445,9 +445,9 @@ a recent investigation shows that the cost lies in the size of the tree~\cite{de
 Simply put, a precise explanation requires large trees.
 The larger the clustering complexity, the larger the explanations, thereby 
 % shrinking interpretability to a point where 
-the benefits of having an explanation over analyzing raw data diminishes.
+diminishing the benefits of having an explanation over analyzing raw data.
 The bottom line is: there is more to explainability than guaranteeing a clustering quality under interpretable rules.
-A core challenge of explainable clustering is to identify how to properly quantify explainability,
+A core challenge of explainable clustering is identifying how to properly quantify explainability,
 what are good explanations, and how well do they address real-world circumstances in theory and practice.
 We propose to holistically explore new kinds of explanations to enhance explainable clustering,
 by advancing decision trees, exploring rule-based explanations, and by investigating important features for clusters.
@@ -460,7 +460,7 @@ Therefore, a core challenge of this research theme is the question of how to fin
 In the context of hyperplanes $\mathbf{a}_i^{\!\top} \mathbf{x}^{\vphantom{\top}}_{\vphantom{i}} + b_i < c_i$, for example, we seek to reduce the complexity of individual hyperplanes using non-negativity constraints $\mathbf{a} \in \mathbb{R}^m_{\geq 0}$ and sparsity \emph{constraints} $\|\mathbf{a}\|_0 \leq q$, by employing combinatorial optimization techniques for small problems or (greedy) subspace algorithms such as orthogonal matching pursuit or sequential lasso.
 %  or top-$q$ important feature forward selection for large problems.
 
-An alternative approach is to go beyond decision trees to explore other models capable of explaining clusters. 
+An alternative approach is to go beyond decision trees towards other models capable of explaining clusters. 
 Machine-learning models such as Bayesian decision rules, cascading rule lists, and generalized linear models 
 are prime candidates to explore, given their widespread adoption and inherent interpretability. 
 One concrete goal is to study how we can explain clusters with concise decision rule lists 
@@ -473,7 +473,7 @@ where an under-researched problem is that (rule-based) explanations
 often repeat already-known salient signals, thus failing to convey new knowledge.
 For example, 
 % if the algorithm accurately explains a cluster `\texttt{\small ClimateCrisis}' in terms of a high concentration of `\texttt{\small CO\textsubscript{2}}', it would fail to tell us about `\texttt{\small methane}'; or 
-an explanation of `\texttt{\small Diabetes}' with a highly-expressed 
+explaining the `\texttt{\small Diabetes}' cluster with a highly-expressed 
 but known-to-be-relevant gene `\texttt{\small TCF7L2}', 
 might hide an almost equally relevant gene `\texttt{\small ZNT8}'.  
 As the algorithm does not know in advance which explanations are most informative to the user, 
@@ -485,18 +485,18 @@ penalized by the rule diversity~$d(\mathcal{R})$,
 that is, minimizing $\ell(\mathcal{R},Y;X) + \lambda \operatorname{d}(\mathcal{R})$~\cite{zhang2020diverse}.
 % \ag{Do you want to include more details, e.g., about \textsc{MaxSum} diversification?}
 So far, diverse explanations for clustering is an understudied subject, and quality, conciseness, and empirical performance are unknown. 
-We aspire to change this by studying the theoretical underpinning, the price of diversity for explainability clustering, its practical implication on clustering accuracy, and the ability to acquire new knowledge. 
+We aspire to change this by studying the theoretical underpinning, the price of diversity for explainable clustering, its practical implication on clustering accuracy, and the ability to acquire new knowledge. 
 
 A major challenge of finding interpretable explanations is in judging the importance of data features per cluster.
 Having an importance measure allows us to explain clusters in terms of importance `spectra' such as $\{\slifI,\slifII,\slifIII\}$, thereby highlighting informative feature-values that are characteristic, contrastive, or common in clusters.
 % In this example, we notice that feature $1$ and $2$ are significantly more important to cluster $b$ than $a$ or $c$.
-Although importance measures such as Shapely values or impurity typically consider features independently, 
+Although importance measures such as Shapley values or impurity typically consider features independently, 
 in reality, features often interact with each other.
 We hypothesize that features interact differently per cluster and that differences in those interactions are relevant reasons for specific clusters, as evidenced in our prior work~\cite{dalleiger2020explainable}.
 %
 We plan to investigate novel higher-order importance measures to highlight the characteristics or contrastive per-cluster feature-interactions, leveraging ideas from information theory, statistics, and statistical learning.
 However, research on the importance of higher-order feature interactions for data clusters is still lacking, 
-as this poses significant algorithmic and statistical challenges, by involving exponentially many potential interactions for which non-linear or multi-variate analytics is necessary to compute importance.  
+as this poses significant algorithmic and statistical challenges, by involving exponentially many potential important interactions, for which non-linear or multi-variate analytics is necessary.  
 % We plan to explore novel measures to judge the importance of higher-order feature interactions, leveraging ideas from information theory, statistics, and statistical learning, thus highlighting sets of important feature-interactions that are relevant for clusters.
 
 \iffalse
