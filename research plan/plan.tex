@@ -3,7 +3,7 @@
 
 % \setcounter{page}{1}
 
-\renewcommand{\baselinestretch}{1.00} 
+\renewcommand{\baselinestretch}{1.01} 
 \begin{document}
 
 
@@ -68,8 +68,8 @@ seeking to partition data into groups based on their similarity.
 Clustering algorithms enable data scientists and practitioners
 to uncover hidden patterns, extract meaningful insights, 
 and make informed decisions without the need for labeled data. 
-Clustering plays a pivotal role in various domains
-% , including  document analysis, bioinformatics, and recommendation systems, 
+Clustering plays a pivotal role in various domains, 
+including  document analysis, bioinformatics, and recommendation systems, 
 while it also serves as a preprocessing step for other machine-learning tasks, 
 helping to streamline feature engineering, visualization, and model~building.
 
@@ -197,7 +197,7 @@ Our proposal is situated in this dynamic and active research area.
 % whose state-of-the-art we will sketch in the following. 
 
 Considerable attention has been given to \emph{explaining clusters} with decision trees,
-% ---as depicted in Figure~\ref{fig:iris}, 
+% --- as depicted in Figure~\ref{fig:iris}, 
 including explaining using similarity-based prototypes for each cluster \cite{carrizosa2022interpreting}, 
 or by fitting oblique trees to describe clusters \cite{gabidolla2022optimal}.
 In their seminal work, Moshkovitz et al.~\cite{moshkovitz2020explainable} 
@@ -269,8 +269,8 @@ again using combinatorial optimization~\cite{lawless2023polyhedral}.
 algorithms design, knowledge discovery, and explainable machine learning.
 The problem domain we propose to study, 
 explainability in unsupervised machine learning and data clustering, 
-will enable scientists and practitioners in  different application areas to 
-make better sense of their data. 
+will enable scientists and practitioners % in  different application areas 
+to  make better sense of their data. 
 It will do so by not only allowing them to find meaningful clusters
 but also by helping the to understand the fundamental mechanisms in the creation of clusters, 
 the importance and contribution of features, and ways to explain the clusters
@@ -443,7 +443,7 @@ what is the worst-case achievable approximation guarantee of expressing a cluste
 in terms of a specific interpretable machine-learning model. 
 
 Although the price for explaining $k$-means with axis-aligned decision tree might be low~\cite{gupta2023price}, 
-a recent investigation~\cite{deng2023impossibility} shows that the cost lies in the size of the tree.
+a recent investigation shows that the cost lies in the size of the tree~\cite{deng2023impossibility}.
 Simply put, a precise explanation requires large trees.
 The larger the clustering complexity, the larger the explanations, thereby 
 % shrinking interpretability to a point where 
@@ -531,12 +531,12 @@ We hope to explore the cost that joining explanations with clustering would infl
 
 \subsection*{Research theme 2 (\rtw): \clusterings}
 
-Most related recent research on explainable clustering has focused on classical $k$-means,
+Most recent research on explainable clustering has focused on classical $k$-means,
 thereby resulting in algorithms that approximate $k$-means clusters with axis-aligned decision trees.
 However, the classical $k$-means algorithm has limited applicability in practice, as it is often not flexible enough to handle complex datasets that contain complicated cluster shapes.
-So far, the price of explainability in the context of other algorithms is understudied and questions such as ``how well axis-aligned decision trees could explain DBSCAN in the worst case?'' or ``how well do oblique decision trees approximate spectral clustering or hierarchical clustering results?'' remain unanswered.
-We are interested in complex clusters that are neither identifiable with axis-aligned cuts nor cluster that are linearly separable,
-therefore we want we go beyond classical $k$-means towards developing explaining clustering algorithms for complex clusters.
+So far, the price of explainability in the context of other algorithms is understudied and questions such as ``how well axis-aligned decision trees explain DBSCAN in the worst case?''\ or\ ``how well do oblique decision trees approximate spectral-clustering~or hier\-archical-clustering results?''\ remain unanswered.
+We are interested in complex clusters that are neither identifiable with axis-aligned cuts nor are linearly separable,
+therefore we want we go beyond~classical $k$-means towards developing explaining clustering algorithms for complex clusters.
 
 Arguably one of the most inhibiting factors is $k$-means inability to exploit non-linearities in the relationship between data, which is often addressed by kernelized $k$-means algorithms.
 Explaining kernel $k$-means, however, poses significant challenges, as clusters are harder to split apart 
