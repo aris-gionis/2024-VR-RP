@@ -668,9 +668,9 @@ We additionally plan to investigate approximation guarantees for complex kernel 
 
 \subsection*{Research theme 3 (\rth): \covariates}
 
-In many application scenarios data can be represented in different ways: 
-Most often, data can be represented in a vector space
-in which appropriate distance functions, or similarity functions, are considered.
+In many applications, data can be represented in more than one way: 
+Often, data can be represented in a vector space
+accompanied with appropriate distance or similarity functions.
 Such a vector space can be defined using directly data features, 
 or it can be learned using representation-learning techniques~\cite{hamilton2017representation,wang2020survey}.
 Second, data points are associated with covariates, 
@@ -685,34 +685,33 @@ For an example illustrating the setting described above,
 consider a collection of news articles. 
 Each news article can be represented by a vector in a high-dimensional space, 
 e.g., using bag-of-words, \tfidf-type weighting, or deep-learning embedding schemes. 
-Furthermore, for each news article we can associate a small 
+Furthermore, each news article can be associated with a small 
 set of tags, or labels, summarizing the topic of the article, 
-e.g., an article reporting on climate change could be labeled by
+e.g., an article on climate change could be labeled by
 `\texttt{\small ClimateCrisis}' and `\texttt{\small ExtremeWeather}.'
-We refer to these labels as covariate~attributes.
+We refer to these labels as covariates.
 
-When considering the problem of clustering a dataset in which the data points are 
-represented both in vector space and with covariate attributes, 
-it is immediate clear how to leverage the vectorial information
-using a standard clustering method, such as $k$-means or spectral clustering. 
+When considering clustering data that are represented both as vectors and with covariates, 
+it is usually clear how to leverage the vectorial information
+and apply a standard clustering method, such as $k$-means or spectral clustering. 
 One of the other hand, it is not obvious how to use effectively the 
 covariate attributes in order to improve the clustering results. 
 
 In this research theme we propose finding high-quality clusterings of the data
-while using the covariate attributes for explaining the resulting clusterings. 
+while using the covariates for explaining the resulting clusterings. 
 In particular, we aim to develop novel clustering methods
-that achieve low-cost solutions with respect to the vector-representation of the data points, 
-while at the same time achieve high expressivity and high specificity of the clusterings
-using the covariate attributes. 
+that achieve low-cost solutions with respect to the vector-representation of the data, 
+while at the same time achieve high expressivity and high specificity of the clustering
+using the covariates. 
 
 To be more concrete, as one possible problem formulation that we will explore, 
 let us consider a set of $n$ data points $\dataset=\{\vecx_1,\ldots,\vecx_n\}$
-and a set of covariate attributes {\labelset} representing labels for the data points. 
+and a set of covariates {\labelset} representing labels for the data points. 
 Each data point $\vecx_i$ is associated with a set of labels $\labels_i\subseteq\labelset$. 
 A set of labels $\labels=\{\alabel_1,\ldots,\alabel_k\}\subseteq\labelset$, 
 henceforth referred to as \emph{descriptor set}, 
 \emph{induces} a subset of the data points $\dataset(\labels)\subseteq\dataset$
-via a \emph{logic grammar}, such as, for example, 
+via a \emph{logic grammar}, for example,  
 $\dataset(\labels)$ consists of the data points in \dataset that 
 are associated with at least $s$ labels contained in \labels.
 For the set of points $\dataset(\labels)$ induced by \labels 
@@ -730,7 +729,7 @@ $d_{m}(\labels_1,\ldots,\labels_t) = \max_{j}\! \left\{ d(\dataset(\labels_j)) \
 that is, we will aim to minimize the total cost, or worst-case cost, respectively, 
 among all clusters. 
 
-A few observations are in order for the problem that we define above.
+A few observations are in order for the problem defined above.
 First we note that the problem belongs in the \joint paradigm, 
 that is, we aim to \emph{simultaneously} find a low-cost clustering, 
 according to vector representation of the data points,
@@ -770,12 +769,13 @@ It also poses significantly different computational challenges
 and the opportunity to exploit the geometric structure for solving the problem.
 
 Depending on the progress on this topic, further extensions of the problem can be considered. 
-Those include allowing for outliers that can help to significantly reduce the clustering cost.
-The benefit of this idea is that covariate attributes can be used in the same manner
-to also explain the outliers, as the clusters.
-Additionally, we can use the same framework analyzing networks and finding 
+Those include allowing for outliers, which can help to significantly reduce the clustering cost
+and improve explainability.
+In other words, covariates can be used in the same manner
+to explain the both the clusters and the outliers.
+Additionally, we can apply the same framework to analyze network structure and find
 explainable communities in networks.
-The PI has relevant experience of developing methods for finding the labeled-induced
+The PI has relevant experience of developing methods for finding labeled-induced
 (and thus, explainable) densest subgraphs in networks~\cite{galbrun2014overlapping}.
 
 \subsection*{5.2~~~Time plan and implementation}
@@ -847,7 +847,7 @@ Achieving this objective, however, offers the largest potential for scientific i
 %  in the computer science community. 
 If we are not able to prove theoretical results, 
 we will study problems with simplifying assumptions, and 
-will focus on devising heuristic methods and providing thorough empirical validation.
+will focus on devising heuristic methods and providing empirical validation.
 Another risk is recruiting strong team members for the project. 
 To mitigate this risk, we will leverage our international network
 and the excellent reputation of the research group and research environment in Sweden. 
