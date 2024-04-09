@@ -163,12 +163,14 @@ with postdocs in the group of the PI working on the same topic,
 as well as with other researchers in the international collaboration network of the PI.
 \end{description}
 
+\iffalse
 \begin{figure} 
     \centering
     \includegraphics[height=1.8in]{iris-exclus.pdf}
     \caption{\small Explaining $k$-means clusters through axis-aligned decision trees. First clustering the iris dataset with $k$-means, we then employ an axis-aligned decision tree as explanation, yielding interpretable description of clusters while resulting in a minimal quality loss. Left: Visualization of the decision boundaries. Right: Representation of the decision tree explanation.}
     \label{fig:iris}
 \end{figure}
+\fi
 
 \vspace{-2mm}
 \noindent
@@ -194,8 +196,10 @@ From the sprawling explainable machine-learning research, the area of explainabl
 Our proposal is situated in this dynamic and active research area. 
 % whose state-of-the-art we will sketch in the following. 
 
-Considerable attention has been given to \emph{explaining clusters} with decision trees---as depicted in Figure~\ref{fig:iris}, 
-including explaining using similarity-based prototypes for each cluster \cite{carrizosa2022interpreting}, 
+Considerable attention has been given to \emph{explaining clusters} with decision trees,
+% ---as depicted in Figure~\ref{fig:iris}, 
+including explaining using similarity-based prototypes for each cluster 
+%\cite{carrizosa2022interpreting}, 
 or by fitting oblique trees to describe clusters \cite{gabidolla2022optimal}.
 In their seminal work, Moshkovitz et al.~\cite{moshkovitz2020explainable} 
 explain $k$-means and $k$-medians with axis-aligned decision trees, 
@@ -430,15 +434,14 @@ That is, to attribute data to clusters,
 we only have to mechanistically answer a sequence of yes-no questions, 
 which have been algorithmically derived from data features, 
 thereby describing clusters with easily understandable and inherently interpretable axis-aligned rules (cuts), 
-{\color{brown}such as 
-``\texttt{if} $x_i \in [\textnormal{lb}, \textnormal{ub}]$ \texttt{then} 
-proceed with left sub\-tree \texttt{else} proceed with right sub\-tree \texttt{end} until a cluster at a leaf is reached.''}
+such as ``\texttt{if} $x_i \in [\textnormal{lb}, \textnormal{ub}]$ \texttt{then} 
+proceed with left sub\-tree \texttt{else} proceed with right sub\-tree \texttt{end} until a cluster at a leaf is reached.''
 Reaching clusters by means of such an interpretable model incurs 
 a cost in addition to the original $k$-means clustering cost, 
 which is called \emph{the price of explainability}.
-Central to our research is the question of how large the price to pay becomes, {\color{brown} i.e., 
+Central to our research is the question of how large the price to pay becomes, i.e., 
 what is the worst-case achievable approximation guarantee of expressing a clustering 
-in terms of a specific interpretable machine-learning model. }
+in terms of a specific interpretable machine-learning model.
 
 Although the price for explaining $k$-means with axis-aligned decision tree might be low~\cite{gupta2023price}, 
 a recent investigation~\cite{deng2023impossibility} shows that the cost lies in the size of the tree.
