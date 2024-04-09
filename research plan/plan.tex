@@ -3,7 +3,7 @@
 
 % \setcounter{page}{1}
 
-\renewcommand{\baselinestretch}{1.00} 
+\renewcommand{\baselinestretch}{1.02} 
 \begin{document}
 
 
@@ -475,13 +475,15 @@ might hide an almost equally relevant gene `\texttt{\small ZNT8}'.
 As the algorithm does not know in advance which explanations are most informative to the user, 
 we aim to provide sets of explanations that offer \emph{diverse perspectives} on the clustering.
 In the context of rule sets $\mathcal{R} = \{r_1, \dots, r_n\}$, 
-we seek to explain a clustering $Y$ of data points $X$ 
+we seek to explain a clustering~$Y$ of data points $X$ 
 by minimizing the loss $\ell(\mathcal{R},Y;X)$ between explained clustering and the estimated clustering 
 penalized by the rule diversity~$d(\mathcal{R})$, 
 that is, minimizing $\ell(\mathcal{R},Y;X) + \lambda \operatorname{d}(\mathcal{R})$~\cite{zhang2020diverse}.
 % \ag{Do you want to include more details, e.g., about \textsc{MaxSum} diversification?}
 So far, diverse explanations for clustering is an understudied subject, and quality, conciseness, and empirical performance are unknown. 
-We aspire to change this by studying the theoretical underpinning, the price of diversity for explainable clustering, its practical implication on clustering accuracy, and the ability to acquire new knowledge. 
+We aspire to change this by studying the theoretical underpinnings, 
+the price of diversity for explainable clustering, 
+the resulting accuracy, and ability to acquire new knowledge. 
 
 A major challenge of finding interpretable explanations is in judging the importance of data features per cluster.
 Having an importance measure allows us to explain clusters in terms of importance `spectra' such as $\{\slifI,\slifII,\slifIII\}$, thereby highlighting informative feature-values that are characteristic, contrastive, or common in clusters.
@@ -492,7 +494,7 @@ We hypothesize that features interact differently per cluster and that differenc
 %
 We plan to investigate novel higher-order importance measures to highlight the characteristics or contrastive per-cluster feature-interactions, leveraging ideas from information theory, statistics, and statistical learning.
 However, research on the importance of higher-order feature interactions for data clusters is still lacking, 
-as this poses significant algorithmic and statistical challenges, by involving exponentially-many potentially important multi-variate  interactions. %, for which non-linear or multi-variate analytics is necessary.  
+as this poses significant algorithmic and statistical challenges, by involving exponentially-many potentially important multi-variate~interactions. %, for which non-linear or multi-variate analytics is necessary.  
 % We plan to explore novel measures to judge the importance of higher-order feature interactions, leveraging ideas from information theory, statistics, and statistical learning, thus highlighting sets of important feature-interactions that are relevant for clusters.
 
 \iffalse
@@ -827,6 +829,7 @@ Our publications will be available via open access in {\small\url{arxiv.org}}.
 The software and the other outputs of the project 
 will become freely available to the scientific community via {\small\url{github.com}}. % and archived in {\small\url{zenoodo.org}}.
 
+\newpage
 \spara{Risks and mitigation.}
 Devising efficient algorithms with provable quality guarantees is a challenging task
 and the largest risk of the project. 
